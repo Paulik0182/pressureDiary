@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_advices.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_advice.xml" value="0.2975630611372381" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_bp_list.xml" value="0.2975630611372381" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_settings.xml" value="0.2975630611372381" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
       </map>
     </option>

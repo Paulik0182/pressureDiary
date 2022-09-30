@@ -3,6 +3,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+android
+apply plugin: 'kotlin-parcelize'
+
 android {
     compileSdk 33
 
@@ -40,6 +43,8 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
 
     //material
     implementation 'com.google.android.material:material:1.6.1'
