@@ -1,5 +1,9 @@
 package com.example.pressurediary.domain.repos
 
-interface DiaryRepo {
+import com.example.pressurediary.domain.entities.DiaryEntity
 
+interface DiaryRepo {
+    fun addParameterDiary(cardioMeasurements: DiaryEntity)//добавить
+    fun getParameterDiary(): List<DiaryEntity>//получить
+    fun removeParameterDiary(cardioMeasurements: DiaryEntity)//удалить
 }

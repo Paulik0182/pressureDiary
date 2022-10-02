@@ -1,6 +1,8 @@
 package com.example.pressurediary
 
 import android.app.Application
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.pressurediary.data.DiaryRepoImpl
 import com.example.pressurediary.di.appModule
 import com.example.pressurediary.domain.repos.DiaryRepo
@@ -17,6 +19,7 @@ import org.koin.core.context.startKoin
  * здесь необходимо инициализировать KOIN. здесь будет начало работы приложения. стартовая точка приложения onCreate
  */
 
+@RequiresApi(Build.VERSION_CODES.O)
 class App: Application() {
 
     val diaryRepo: DiaryRepo by lazy {
