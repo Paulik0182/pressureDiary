@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.pressurediary.AdviceFragment
-import com.example.pressurediary.BpListFragment
+import com.example.pressurediary.ui.advice.AdviceFragment
 import com.example.pressurediary.R
-import com.example.pressurediary.SettingsFragment
 import com.example.pressurediary.databinding.ActivityRootBinding
+import com.example.pressurediary.ui.diary.BpListFragment
+import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
-class RootActivity : AppCompatActivity() {
+class RootActivity : AppCompatActivity(),
+    BpListFragment.Controller {
 
     private lateinit var binding: ActivityRootBinding
 
@@ -20,10 +21,10 @@ class RootActivity : AppCompatActivity() {
         binding = ActivityRootBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavBar.setOnItemSelectedListener{
+        binding.bottomNavBar.setOnItemSelectedListener {
             title = it.title
 
-            val fragment = when(it.itemId){
+            val fragment = when (it.itemId) {
                 R.id.bp_list_item -> BpListFragment()
                 R.id.advice_item -> AdviceFragment()
                 R.id.settings_item -> SettingsFragment()
@@ -39,7 +40,7 @@ class RootActivity : AppCompatActivity() {
         binding.bottomNavBar.selectedItemId = R.id.bp_list_item
     }
 
-    private fun swapFragment(fragment: Fragment){
+    private fun swapFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(binding.fragmentContainerFrameLayout.id, fragment)

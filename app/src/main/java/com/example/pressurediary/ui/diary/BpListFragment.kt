@@ -1,59 +1,90 @@
 package com.example.pressurediary.ui.diary
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pressurediary.App
 import com.example.pressurediary.R
+import com.example.pressurediary.domain.entities.DiaryEntity
+import com.example.pressurediary.domain.repos.DiaryRepo
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BpListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BpListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var recordsTv: TextView
+
+    private val app: App by lazy { requireActivity().application as App }
+
+    private var param1: String? = null
+
+    private lateinit var adapter: BpListAdapter
+    private val listener = {diaryEntity: DiaryEntity ->
+        fillView(diaryEntity)
     }
+
+    private lateinit var diaryRepo: DiaryRepo
+    private lateinit var recyclerView: RecyclerView
+
+    private lateinit var bpList: MutableList<DiaryEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bp_list, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initView(view)
+
+        diaryRepo = app.diaryRepo
+
+        adapter.setData(diaryRepo.getParameterDiary())
+    }
+
+    private fun initView(view: View) {
+        recordsTv = view.findViewById(R.id.records_text_view)
+        recyclerView = view.findViewById(R.id.cardio_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter = BpListAdapter(emptyList(), listener)
+        recyclerView.adapter = adapter
+    }
+
+    private fun fillView(diaryEntity: DiaryEntity) {
+        recordsTv.text = "Записи"
+        adapter.setData(bpList)
+
+    }
+
+    interface Controller {
+        // TODO
+    }
+
+    private fun getController(): Controller = activity as Controller
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        getController()
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BpListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String) =
             BpListFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
                 }
             }
     }
