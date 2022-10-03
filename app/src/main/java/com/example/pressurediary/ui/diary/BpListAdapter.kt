@@ -13,8 +13,8 @@ class BpListAdapter(
 ) : RecyclerView.Adapter<BpListViewHolder>(){
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(cardio: List<BpEntity>){
-        data = cardio
+    fun setData(data: List<BpEntity>){
+        this.data = data.sortedByDescending { it.timeInMs }// Делаем обратную сортировку данных на конкретном экране
         notifyDataSetChanged()
     }
 
