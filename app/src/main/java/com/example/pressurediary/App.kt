@@ -3,9 +3,9 @@ package com.example.pressurediary
 import android.app.Application
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.pressurediary.data.DiaryRepoImpl
+import com.example.pressurediary.data.BpRepoImpl
 import com.example.pressurediary.di.appModule
-import com.example.pressurediary.domain.repos.DiaryRepo
+import com.example.pressurediary.domain.repos.BpRepo
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,8 +22,8 @@ import org.koin.core.context.startKoin
 @RequiresApi(Build.VERSION_CODES.O)
 class App: Application() {
 
-    val diaryRepo: DiaryRepo by lazy {
-        DiaryRepoImpl()
+    val bpRepo: BpRepo by lazy {
+        BpRepoImpl()
     }
 
     override fun onCreate() {

@@ -5,27 +5,27 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
-import com.example.pressurediary.domain.entities.DiaryEntity
+import com.example.pressurediary.domain.entities.BpEntity
 
 class BpListAdapter(
-    private var data: List<DiaryEntity>,
-    private var listener: (DiaryEntity) -> Unit
+    private var data: List<BpEntity>,
+    private var listener: (BpEntity) -> Unit
 ) : RecyclerView.Adapter<BpListViewHolder>(){
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(cardio: List<DiaryEntity>){
+    fun setData(cardio: List<BpEntity>){
         data = cardio
         notifyDataSetChanged()
     }
 
-    fun setOnItemClickListener(listener: (DiaryEntity) -> Unit){
+    fun setOnItemClickListener(listener: (BpEntity) -> Unit){
         this.listener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BpListViewHolder {
         return BpListViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_cardio, parent, false), listener
+                .inflate(R.layout.item_bp, parent, false), listener
         )
     }
 
@@ -33,7 +33,7 @@ class BpListAdapter(
         holder.bind(getItem(position))
     }
 
-    private fun getItem(position: Int): DiaryEntity = data[position]
+    private fun getItem(position: Int): BpEntity = data[position]
 
     override fun getItemCount(): Int = data.size
 }

@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.App
 import com.example.pressurediary.R
-import com.example.pressurediary.domain.entities.DiaryEntity
-import com.example.pressurediary.domain.repos.DiaryRepo
+import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.repos.BpRepo
 
 private const val ARG_PARAM1 = "param1"
 
@@ -27,14 +27,14 @@ class BpListFragment : Fragment() {
     private var param1: String? = null
 
     private lateinit var adapter: BpListAdapter
-    private val listener = {diaryEntity: DiaryEntity ->
-        fillView(diaryEntity)
+    private val listener = { bpEntity: BpEntity ->
+        fillView(bpEntity)
     }
 
-    private lateinit var diaryRepo: DiaryRepo
+    private lateinit var bpRepo: BpRepo
     private lateinit var recyclerView: RecyclerView
 
-    private lateinit var bpList: MutableList<DiaryEntity>
+    private lateinit var bpList: MutableList<BpEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,9 +49,9 @@ class BpListFragment : Fragment() {
 
         initView(view)
 
-        diaryRepo = app.diaryRepo
+        bpRepo = app.bpRepo
 
-        adapter.setData(diaryRepo.getParameterDiary())
+        adapter.setData(bpRepo.getParameterDiary())
     }
 
     private fun initView(view: View) {
@@ -62,7 +62,7 @@ class BpListFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun fillView(diaryEntity: DiaryEntity) {
+    private fun fillView(bpEntity: BpEntity) {
         recordsTv.text = "Записи"
         adapter.setData(bpList)
 
