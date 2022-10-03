@@ -1,13 +1,10 @@
 package com.example.pressurediary.data
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import java.util.*
 import kotlin.collections.ArrayList
 
-@RequiresApi(Build.VERSION_CODES.O)
 class BpRepoImpl: BpRepo {
 
     private var data: MutableList<BpEntity> = mutableListOf()

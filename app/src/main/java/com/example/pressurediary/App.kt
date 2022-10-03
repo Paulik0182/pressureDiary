@@ -19,12 +19,7 @@ import org.koin.core.context.startKoin
  * здесь необходимо инициализировать KOIN. здесь будет начало работы приложения. стартовая точка приложения onCreate
  */
 
-@RequiresApi(Build.VERSION_CODES.O)
 class App: Application() {
-
-    val bpRepo: BpRepo by lazy {
-        BpRepoImpl()
-    }
 
     override fun onCreate() {
         super.onCreate()

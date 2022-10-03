@@ -15,6 +15,7 @@ import com.example.pressurediary.App
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
+import org.koin.android.ext.android.inject
 
 private const val ARG_PARAM1 = "param1"
 
@@ -31,7 +32,7 @@ class BpListFragment : Fragment() {
         fillView(bpEntity)
     }
 
-    private lateinit var bpRepo: BpRepo
+    private val bpRepo: BpRepo by inject() //получили через Koin
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var bpList: MutableList<BpEntity>
@@ -43,13 +44,10 @@ class BpListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_bp_list, container, false)
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initView(view)
-
-        bpRepo = app.bpRepo
 
         adapter.setData(bpRepo.getAllBpList())
     }
