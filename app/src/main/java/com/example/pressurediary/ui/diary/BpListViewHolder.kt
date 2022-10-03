@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.utils.bpDataFormatter
+import com.example.pressurediary.utils.bpTimeFormatter
 import java.time.format.DateTimeFormatter
 
 class BpListViewHolder(
@@ -26,13 +28,14 @@ class BpListViewHolder(
     fun bind(bpEntity: BpEntity) {
         measurements = bpEntity
 
-        titleDataTv.text = bpEntity.data.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"))
+        titleDataTv.text = bpDataFormatter.format(bpEntity.timeInMs)
         systolicTv.text = bpEntity.systolicLevel.toString()
         diastolicTv.text = bpEntity.diastolicLevel.toString()
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
-        //форматируем вид представления времени (это работает только на новых андройдах). Не рекомендуемый способ.
-        timeTv.text = bpEntity.time.format(DateTimeFormatter.ofPattern("HH:mm"))
+        //форматируем вид представления времени. Рекомендуемый способ.
+        // Уневерсальный способ представление времени. Время считают в Long
+        timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
     }
 
     init {
