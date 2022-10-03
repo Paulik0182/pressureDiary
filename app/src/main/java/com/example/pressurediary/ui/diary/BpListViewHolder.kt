@@ -1,6 +1,7 @@
 package com.example.pressurediary.ui.diary
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,30 @@ class BpListViewHolder(
         //форматируем вид представления времени. Рекомендуемый способ.
         // Уневерсальный способ представление времени. Время считают в Long
         timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
+
+        val systolicMax = 136
+        val systolicMin = 114
+        val systolicTvInt = systolicTv.text.toString().toInt()
+
+        if (systolicTvInt >= systolicMax){
+            systolicTv.setTextColor(Color.RED)
+            diastolicTv.setTextColor(Color.RED)
+            pulseTv.setTextColor(Color.RED)
+            wellBeingTv.setTextColor(Color.RED)
+            timeTv.setTextColor(Color.RED)
+        } else if (systolicTvInt <= systolicMin) {
+            systolicTv.setTextColor(Color.MAGENTA)
+            diastolicTv.setTextColor(Color.MAGENTA)
+            pulseTv.setTextColor(Color.MAGENTA)
+            wellBeingTv.setTextColor(Color.MAGENTA)
+            timeTv.setTextColor(Color.MAGENTA)
+        }else {
+            systolicTv.setTextColor(Color.GREEN)
+            diastolicTv.setTextColor(Color.GREEN)
+            pulseTv.setTextColor(Color.GREEN)
+            wellBeingTv.setTextColor(Color.GREEN)
+            timeTv.setTextColor(Color.GREEN)
+        }
     }
 
     init {

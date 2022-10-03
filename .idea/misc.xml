@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/border.xml" value="0.1" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_advices.xml" value="0.2215" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_custom_background.xml" value="0.2215" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_background.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_root.xml" value="0.2975630611372381" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_advice.xml" value="0.2975630611372381" />

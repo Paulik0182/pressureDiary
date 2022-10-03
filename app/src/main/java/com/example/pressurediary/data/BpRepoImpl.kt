@@ -24,6 +24,8 @@ class BpRepoImpl: BpRepo {
         data.add(BpEntity(12,Calendar.getInstance().timeInMillis + 110, 130, 90, 80, 2, "Нормально"))
         data.add(BpEntity(13,Calendar.getInstance().timeInMillis + 120, 145, 60, 70, 1, "Плохо"))
         data.add(BpEntity(14,Calendar.getInstance().timeInMillis + 130, 155, 100, 80, 0, "Очень плохо"))
+        data.add(BpEntity(15,Calendar.getInstance().timeInMillis + 140, 110, 60, 55, 0, "Очень плохо"))
+        data.add(BpEntity(16,Calendar.getInstance().timeInMillis + 150, 100, 55, 60, 0, "Очень плохо"))
     }
 
     override fun addBp(bpEntity: BpEntity) {
