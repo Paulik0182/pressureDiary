@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#AEFDF5"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.diary.BpListFragment">
 
@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#BFBBBB">
 
         <TextView
             android:layout_width="0dp"
@@ -64,7 +65,7 @@
             android:id="@+id/cardio_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="6dp"
+            android:padding="1dp"
             android:layout_weight="1"
             android:scrollbarStyle="outsideOverlay"
             android:scrollbars="vertical"

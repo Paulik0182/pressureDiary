@@ -56,7 +56,7 @@ class BpListFragment : Fragment() {
         recordsTv = view.findViewById(R.id.records_text_view)
         recyclerView = view.findViewById(R.id.cardio_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = BpListAdapter(emptyList(), listener)
+        adapter = BpListAdapter(listener)
         recyclerView.adapter = adapter
     }
 
