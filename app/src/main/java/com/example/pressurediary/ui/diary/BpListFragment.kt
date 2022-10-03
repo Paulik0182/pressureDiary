@@ -51,7 +51,7 @@ class BpListFragment : Fragment() {
 
         bpRepo = app.bpRepo
 
-        adapter.setData(bpRepo.getParameterDiary())
+        adapter.setData(bpRepo.getAllBpList())
     }
 
     private fun initView(view: View) {

@@ -4,8 +4,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
-import java.time.LocalDate
-import java.time.LocalTime
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,15 +29,15 @@ class BpRepoImpl: BpRepo {
         data.add(BpEntity(14,Calendar.getInstance().timeInMillis, 155, 100, 80, 0, "Очень плохо"))
     }
 
-    override fun addParameterDiary(cardioMeasurements: BpEntity) {
-        data.add(cardioMeasurements)
+    override fun addBp(bpEntity: BpEntity) {
+        data.add(bpEntity)
     }
 
-    override fun getParameterDiary(): List<BpEntity> {
+    override fun getAllBpList(): List<BpEntity> {
         return ArrayList(data)
     }
 
-    override fun removeParameterDiary(cardioMeasurements: BpEntity) {
-        data.remove(cardioMeasurements)
+    override fun removeBp(bpEntity: BpEntity) {
+        data.remove(bpEntity)
     }
 }
