@@ -1,10 +1,12 @@
 package com.example.pressurediary.ui.diary
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
+import java.time.format.DateTimeFormatter
 
 class BpListViewHolder(
     itemView: View,
@@ -20,15 +22,17 @@ class BpListViewHolder(
 
     private lateinit var measurements: BpEntity
 
+    @SuppressLint("NewApi")
     fun bind(bpEntity: BpEntity) {
         measurements = bpEntity
 
-        titleDataTv.text = bpEntity.data.toString()
+        titleDataTv.text = bpEntity.data.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"))
         systolicTv.text = bpEntity.systolicLevel.toString()
         diastolicTv.text = bpEntity.diastolicLevel.toString()
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
-        timeTv.text = bpEntity.time.toString()
+        //форматируем вид представления времени (это работает только на новых андройдах). Не рекомендуемый способ.
+        timeTv.text = bpEntity.time.format(DateTimeFormatter.ofPattern("HH:mm"))
     }
 
     init {
