@@ -1,18 +1,24 @@
-package com.example.pressurediary.ui
+package com.example.pressurediary.ui.root
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.add
 import com.example.pressurediary.ui.advice.AdviceFragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
+import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.ui.details.DetailsBpFragment
 import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
+private const val TEG_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
+
 class RootActivity : AppCompatActivity(),
-    BpListFragment.Controller {
+    BpListFragment.Controller,
+    DetailsBpFragment.Controller {
 
     private lateinit var binding: ActivityRootBinding
 
@@ -46,5 +52,19 @@ class RootActivity : AppCompatActivity(),
             .replace(binding.fragmentContainerFrameLayout.id, fragment)
 //            .addToBackStack(null)
             .commit()
+    }
+
+    private fun openDetailsBpFragment(bpId: Long, bpEntity: BpEntity) {
+        val fragment: Fragment = DetailsBpFragment.newInstance(bpId, bpEntity)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_DETAILS_BP_KEY)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun openDetailsBp(bpId: Long, bpEntity: BpEntity) {
+        openDetailsBpFragment(bpId, bpEntity)
+        title = "Подробности"
     }
 }

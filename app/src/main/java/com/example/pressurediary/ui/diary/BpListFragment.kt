@@ -17,15 +17,9 @@ import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import org.koin.android.ext.android.inject
 
-private const val ARG_PARAM1 = "param1"
-
-class BpListFragment : Fragment() {
+class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var recordsTv: TextView
-
-    private val app: App by lazy { requireActivity().application as App }
-
-    private var param1: String? = null
 
     private lateinit var adapter: BpListAdapter
     private val listener = { bpEntity: BpEntity ->
@@ -37,19 +31,15 @@ class BpListFragment : Fragment() {
 
     private lateinit var bpList: MutableList<BpEntity>
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_bp_list, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initView(view)
 
         adapter.setData(bpRepo.getAllBpList())
+        adapter.setOnItemClickListener{
+            getController().openDetailsBp(it.id, it)
+        }
     }
 
     private fun initView(view: View) {
@@ -67,7 +57,7 @@ class BpListFragment : Fragment() {
     }
 
     interface Controller {
-        // TODO
+        fun openDetailsBp(bpId: Long, bpEntity: BpEntity)
     }
 
     private fun getController(): Controller = activity as Controller
@@ -75,15 +65,5 @@ class BpListFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String) =
-            BpListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                }
-            }
     }
 }

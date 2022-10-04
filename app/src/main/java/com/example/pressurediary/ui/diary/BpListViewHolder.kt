@@ -52,12 +52,6 @@ class BpListViewHolder(
             pulseTv.setTextColor(Color.MAGENTA)
             wellBeingTv.setTextColor(Color.MAGENTA)
             timeTv.setTextColor(Color.MAGENTA)
-        }else {
-            systolicTv.setTextColor(Color.GREEN)
-            diastolicTv.setTextColor(Color.GREEN)
-            pulseTv.setTextColor(Color.GREEN)
-            wellBeingTv.setTextColor(Color.GREEN)
-            timeTv.setTextColor(Color.GREEN)
         }
     }
 

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_radius_background"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="3dp"
             android:layout_marginEnd="5dp"
             android:orientation="horizontal">
 
@@ -30,9 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp"
                 tools:text="000" />
 
             <TextView
@@ -41,9 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#2B9B3E"
                 android:textSize="26sp"
-                android:textStyle="bold"
                 tools:text="000" />
 
             <TextView
@@ -52,9 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#2B9B3E"
                 android:textSize="26sp"
-                android:textStyle="bold"
                 tools:text="000" />
 
             <TextView
@@ -63,9 +60,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#2B9B3E"
                 android:textSize="26sp"
-                android:textStyle="bold"
                 tools:text="0" />
 
             <TextView
@@ -74,9 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textColor="#2B9B3E"
                 android:textSize="26sp"
-                android:textStyle="bold"
                 tools:text="00:00" />
 
         </LinearLayout>
