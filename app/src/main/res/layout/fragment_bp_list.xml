@@ -71,6 +71,15 @@
             android:scrollbars="vertical"
             tools:listitem="@layout/item_bp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/add_header"
+        android:contentDescription="@string/submit"
+        android:layout_margin="16dp" />
+
         <TextView
             android:id="@+id/records_text_view"
             android:layout_width="match_parent"

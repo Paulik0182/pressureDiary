@@ -50,5 +50,12 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                 putParcelable(DETAILS_BP_KEY, bpEntity)
             }
         }
+
+        @JvmStatic
+        fun newAddInstance() = DetailsBpFragment().apply {
+            arguments = Bundle().apply {
+                putString(DETAILS_BP_ID_KEY, "addDetailsBp")
+            }
+        }
     }
 }

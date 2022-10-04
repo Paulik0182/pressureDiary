@@ -15,6 +15,7 @@ import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
 private const val TEG_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
+private const val TEG_ADD_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
 
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
@@ -63,8 +64,21 @@ class RootActivity : AppCompatActivity(),
             .commit()
     }
 
+    private fun addDetailBpFragment() {
+        val fragment: Fragment = DetailsBpFragment.newAddInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_ADD_DETAILS_BP_KEY)
+            .addToBackStack(null)
+            .commit()
+    }
+
     override fun openDetailsBp(bpId: Long, bpEntity: BpEntity) {
         openDetailsBpFragment(bpId, bpEntity)
         title = "Подробности"
+    }
+
+    override fun addDetailBp() {
+        addDetailBpFragment()
     }
 }

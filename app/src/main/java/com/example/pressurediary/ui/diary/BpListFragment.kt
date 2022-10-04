@@ -15,11 +15,13 @@ import com.example.pressurediary.App
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var recordsTv: TextView
+    private lateinit var fab: View
 
     private lateinit var adapter: BpListAdapter
     private val listener = { bpEntity: BpEntity ->
@@ -37,12 +39,22 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         initView(view)
 
         adapter.setData(bpRepo.getAllBpList())
-        adapter.setOnItemClickListener{
+        adapter.setOnItemClickListener {
             getController().openDetailsBp(it.id, it)
+        }
+
+        recordsTv.text = "Записи:"
+
+        fab.setOnClickListener {
+            getController().addDetailBp()
+            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("Action", null)
+                .show()
         }
     }
 
     private fun initView(view: View) {
+        fab = view.findViewById(R.id.fab)
         recordsTv = view.findViewById(R.id.records_text_view)
         recyclerView = view.findViewById(R.id.cardio_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -58,6 +70,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     interface Controller {
         fun openDetailsBp(bpId: Long, bpEntity: BpEntity)
+        fun addDetailBp()
     }
 
     private fun getController(): Controller = activity as Controller
