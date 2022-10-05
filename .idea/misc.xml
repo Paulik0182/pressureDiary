@@ -7,6 +7,7 @@
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/add_header.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/border.xml" value="0.1" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_advices.xml" value="0.2215" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_heart.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/ic_settings.xml" value="0.2215" />
@@ -26,6 +27,7 @@
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/item_cardio.xml" value="0.33" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/keyboard.xml" value="0.2967079948696024" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/menu/menu_for_detailed_fragment.xml" value="0.2975630611372381" />
       </map>
     </option>
   </component>

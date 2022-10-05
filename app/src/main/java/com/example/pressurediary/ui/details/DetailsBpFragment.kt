@@ -2,10 +2,9 @@ package com.example.pressurediary.ui.details
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
@@ -16,12 +15,18 @@ private const val DETAILS_BP_ID_KEY = "DETAILS_BP_ID_KEY"
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
+
+
     private val bpRepo: BpRepo by inject() //получили через Koin
 
     private lateinit var bpEntity: MutableList<BpEntity>
 
+    private lateinit var MenuItem: MenuItem
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setHasOptionsMenu(true)
 
 //        initView(view)
     }
@@ -30,6 +35,25 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         TODO("Not yet implemented")
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_for_detailed_fragment, menu)
+        MenuItem = menu.findItem(R.id.save_icon_menu_items)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.save_icon_menu_items -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Сохнанить",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     interface Controller {
         // TODO
