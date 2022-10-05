@@ -1,17 +1,12 @@
 package com.example.pressurediary.ui.diary
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pressurediary.App
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
@@ -40,7 +35,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         adapter.setData(bpRepo.getAllBpList())
         adapter.setOnItemClickListener {
-            getController().openDetailsBp(it.id, it)
+            getController().openDetailsBp(it)
         }
 
         recordsTv.text = "Записи:"
@@ -69,7 +64,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     interface Controller {
-        fun openDetailsBp(bpId: Long, bpEntity: BpEntity)
+        fun openDetailsBp(bpEntity: BpEntity)
         fun addDetailBp()
     }
 
@@ -78,5 +73,9 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
+    }
+
+    fun onDataChanged() {
+        adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
     }
 }

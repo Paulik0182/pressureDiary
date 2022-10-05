@@ -1,25 +1,41 @@
 package com.example.pressurediary.ui.details
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
+import com.example.pressurediary.utils.bpDataTimeFormatter
+import com.example.pressurediary.utils.bpTimeFormatter
 import org.koin.android.ext.android.inject
+import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
-private const val DETAILS_BP_ID_KEY = "DETAILS_BP_ID_KEY"
+private const val ADD_DETAILS_BP_ID_KEY = "DETAILS_BP_ID_KEY"
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
-
+    private lateinit var titleDataTimeTv: TextView
+    private lateinit var systolicEt: EditText
+    private lateinit var diastolicEt: EditText
+    private lateinit var pulseEt: EditText
+    private lateinit var conditionTv: TextView
+    private lateinit var emojiFatalTv: TextView
+    private lateinit var emojiBadlyTv: TextView
+    private lateinit var emojiFineTv: TextView
+    private lateinit var emojiWellTv: TextView
+    private lateinit var emojiExcellentTv: TextView
+    private lateinit var descriptionEt: EditText
 
     private val bpRepo: BpRepo by inject() //получили через Koin
 
-    private lateinit var bpEntity: MutableList<BpEntity>
+    private lateinit var bpEntity: BpEntity
 
     private lateinit var MenuItem: MenuItem
 
@@ -28,22 +44,81 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
         setHasOptionsMenu(true)
 
-//        initView(view)
+        initView(view)
+
+        bpEntity = requireArguments().getParcelable(DETAILS_BP_KEY)!!//взяли передоваемое значение
+        setBpEntity(bpEntity)//Положили переданное значение в метод
     }
 
     private fun initView(view: View) {
-        TODO("Not yet implemented")
+        titleDataTimeTv = view.findViewById(R.id.title_data_time_text_view)
+        systolicEt = view.findViewById(R.id.systolic_detail_edit_text)
+        diastolicEt = view.findViewById(R.id.diastolic_detail_edit_text)
+        pulseEt = view.findViewById(R.id.pulse_detail_edit_text)
+        conditionTv = view.findViewById(R.id.condition_text_view)
+
+        emojiFatalTv = view.findViewById(R.id.emoji_fatal_text_view)
+        emojiBadlyTv = view.findViewById(R.id.emoji_badly_text_view)
+        emojiFineTv = view.findViewById(R.id.emoji_fine_text_view)
+        emojiWellTv = view.findViewById(R.id.emoji_well_text_view)
+        emojiExcellentTv = view.findViewById(R.id.emoji_excellent_text_view)
+
+        descriptionEt = view.findViewById(R.id.description_edit_text)
     }
 
+    private fun setBpEntity(bpEntity: BpEntity){
+        titleDataTimeTv.text = bpDataTimeFormatter.format(bpEntity.timeInMs)
+        systolicEt.setText(bpEntity.systolicLevel.toString())
+        diastolicEt.setText(bpEntity.diastolicLevel.toString())
+        pulseEt.setText(bpEntity.pulse.toString())
+        descriptionEt.setText(bpEntity.conditionUser)
+
+        val systolicMax = 136
+        val systolicMin = 114
+        val systolicTvInt = systolicEt.text.toString().toInt()
+        if (systolicTvInt >= systolicMax){
+            systolicEt.setTextColor(Color.RED)
+            diastolicEt.setTextColor(Color.RED)
+            pulseEt.setTextColor(Color.RED)
+            conditionTv.setTextColor(Color.RED)
+            conditionTv.text = "У Вас ВЫСОКОЕ давление!"
+        } else if (systolicTvInt <= systolicMin) {
+            systolicEt.setTextColor(Color.MAGENTA)
+            diastolicEt.setTextColor(Color.MAGENTA)
+            pulseEt.setTextColor(Color.MAGENTA)
+            conditionTv.setTextColor(Color.MAGENTA)
+            conditionTv.text = "У Вас НИЗКОЕ давление!"
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_for_detailed_fragment, menu)
         MenuItem = menu.findItem(R.id.save_icon_menu_items)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
             R.id.save_icon_menu_items -> {
+                val changedTimeInMs = Calendar.getInstance().timeInMillis//TODO Возможно не правильно
+                val changedSystolic = systolicEt.text.toString()
+                val changedDiastolic = diastolicEt.text.toString()
+                val changedPulse = pulseEt.text.toString()
+                val changedDescription = descriptionEt.text.toString()
+
+                //Собираем новую заметку
+                val changedBpEntity = BpEntity(
+                    timeInMs = changedTimeInMs,
+                    systolicLevel = changedSystolic.toInt(),
+                    diastolicLevel = changedDiastolic.toInt(),
+                    pulse = changedPulse.toInt(),
+                    conditionUser = changedDescription
+                )
+                val bpRepo = bpRepo
+                bpRepo.updateBp(changedBpEntity)//добавили новые данные
+                getController().onDataChanged()//обновили данные
+
                         Toast.makeText(
                             requireContext(),
                             "Сохнанить",
@@ -56,7 +131,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     }
 
     interface Controller {
-        // TODO
+        fun onDataChanged()
     }
 
     private fun getController(): Controller = activity as Controller
@@ -68,9 +143,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
     companion object {
         @JvmStatic
-        fun newInstance(bpId: Long, bpEntity: BpEntity) = DetailsBpFragment().apply {
+        fun newInstance(bpEntity: BpEntity) = DetailsBpFragment().apply {
             arguments = Bundle().apply {
-                putLong(DETAILS_BP_ID_KEY, bpId)
                 putParcelable(DETAILS_BP_KEY, bpEntity)
             }
         }
@@ -78,7 +152,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         @JvmStatic
         fun newAddInstance() = DetailsBpFragment().apply {
             arguments = Bundle().apply {
-                putString(DETAILS_BP_ID_KEY, "addDetailsBp")
+                putString(ADD_DETAILS_BP_ID_KEY, "addDetailsBp")
             }
         }
     }

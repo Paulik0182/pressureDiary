@@ -11,3 +11,5 @@ import java.text.SimpleDateFormat
 var bpTimeFormatter = SimpleDateFormat("HH:mm")
 @SuppressLint("SimpleDateFormat")
 var bpDataFormatter = SimpleDateFormat("dd.MM.yyyy")
+@SuppressLint("SimpleDateFormat")
+var bpDataTimeFormatter = SimpleDateFormat("dd.MM.yyyy   HH:mm")

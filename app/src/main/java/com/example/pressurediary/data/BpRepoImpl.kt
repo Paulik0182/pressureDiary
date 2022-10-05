@@ -39,4 +39,27 @@ class BpRepoImpl: BpRepo {
     override fun removeBp(bpEntity: BpEntity) {
         data.remove(bpEntity)
     }
+
+    override fun updateBp(changedBp: BpEntity) {
+        val id = changedBp.id//изменяемая запись (id записи)
+
+        //ищим старую заметку
+        var oldBpList: BpEntity? = null
+        for(i in data.indices){
+            if (data[i].id == id){//ищем нужную запись (id)
+                oldBpList = data[i]//получаем нужный элемент, записываем его в переменную
+                break
+            }
+        }
+        if (oldBpList == null){
+            addBp(changedBp)//если не нашли заметку, то добавляем ее
+        }else{
+            //если нашли заметку, то меняем ее
+            oldBpList.timeInMs = changedBp.timeInMs
+            oldBpList.systolicLevel = changedBp.systolicLevel
+            oldBpList.diastolicLevel = changedBp.diastolicLevel
+            oldBpList.pulse = changedBp.pulse
+            oldBpList.conditionUser = changedBp.conditionUser
+        }
+    }
 }

@@ -7,24 +7,24 @@
     android:orientation="vertical"
     tools:context=".ui.details.DetailsBpFragment">
 
-    <EditText
-        android:id="@+id/title_data_text_view"
+    <TextView
+        android:id="@+id/title_data_time_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:gravity="center"
-        android:textColor="@color/black"
         android:background="@drawable/my_radius_110"
-        android:textSize="22sp"
-        android:hint="00.00.0000  00:00" />
+        android:gravity="center"
+        android:hint="00.00.0000  00:00"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/my_radius_35"
         android:orientation="vertical">
 
@@ -33,32 +33,32 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:text="СИС" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="СИС"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:text="ДИА" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="ДИА"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:text="Пульс" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Пульс"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -67,58 +67,58 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
-        <EditText
-            android:id="@+id/systolic_detail_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="36sp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/border"
-            android:maxLength="3"
-            android:inputType="number"
-            android:hint="000" />
+            <EditText
+                android:id="@+id/systolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
 
-        <EditText
-            android:id="@+id/diastolic_detail_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="36sp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/border"
-            android:maxLength="3"
-            android:inputType="number"
-            android:hint="000" />
+            <EditText
+                android:id="@+id/diastolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
 
-        <EditText
-            android:id="@+id/pulse_detail_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="36sp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/border"
-            android:maxLength="3"
-            android:inputType="number"
-            android:hint="000" />
+            <EditText
+                android:id="@+id/pulse_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp">
 
             <TextView
@@ -126,27 +126,27 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
+                android:text="мм.рт.ст."
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:text="мм.рт.ст." />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
+                android:text="мм.рт.ст."
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:text="мм.рт.ст." />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
+                android:text="чсс"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                android:text="чсс" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -160,9 +160,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:text="У Вас хорошее давление!"
                 android:textColor="#2B9B3E"
-                android:textSize="26sp"
-                android:text="У Вас хорошее давление!" />
+                android:textSize="26sp" />
 
         </LinearLayout>
 
@@ -171,10 +171,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/my_radius_35"
         android:orientation="horizontal">
 
@@ -182,89 +182,101 @@
             android:id="@+id/emoji_fatal_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="36sp"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="@string/emoji_1" />
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_1"
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/emoji_badly_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="36sp"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="@string/emoji_2" />
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_2"
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/emoji_fine_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="36sp"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="@string/emoji_3" />
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_3"
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/emoji_well_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="36sp"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="@string/emoji_4" />
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_4"
+            android:textSize="36sp" />
 
         <TextView
             android:id="@+id/emoji_excellent_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textSize="36sp"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:text="@string/emoji_5" />
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_5"
+            android:textSize="36sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/my_radius_35"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/description_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_margin="10dp"
-        android:gravity="left|top"
-        android:textColor="@color/black"
-        android:maxLength="60"
-        android:textSize="18sp"
-        android:hint="Примечание"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left|top"
+            android:hint="Примечание:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="16dp"
+            android:gravity="left|top"
+            android:hint="Примечание"
+            android:maxLength="60"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

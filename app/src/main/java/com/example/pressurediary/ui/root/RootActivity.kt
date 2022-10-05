@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
 import com.example.pressurediary.ui.advice.AdviceFragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
@@ -14,6 +13,7 @@ import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
+private const val TEG_MAIN_CONTAINER_LAYOUT_KEY = "TEG_DETAILS_BP_KEY"
 private const val TEG_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
 private const val TEG_ADD_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
 
@@ -50,13 +50,13 @@ class RootActivity : AppCompatActivity(),
     private fun swapFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment)
+            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_MAIN_CONTAINER_LAYOUT_KEY)
 //            .addToBackStack(null)
             .commit()
     }
 
-    private fun openDetailsBpFragment(bpId: Long, bpEntity: BpEntity) {
-        val fragment: Fragment = DetailsBpFragment.newInstance(bpId, bpEntity)
+    private fun openDetailsBpFragment(bpEntity: BpEntity) {
+        val fragment: Fragment = DetailsBpFragment.newInstance(bpEntity)
         supportFragmentManager
             .beginTransaction()
             .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_DETAILS_BP_KEY)
@@ -73,12 +73,17 @@ class RootActivity : AppCompatActivity(),
             .commit()
     }
 
-    override fun openDetailsBp(bpId: Long, bpEntity: BpEntity) {
-        openDetailsBpFragment(bpId, bpEntity)
+    override fun openDetailsBp(bpEntity: BpEntity) {
+        openDetailsBpFragment(bpEntity)
         title = "Подробности"
     }
 
     override fun addDetailBp() {
         addDetailBpFragment()
+    }
+
+    override fun onDataChanged() {
+        val fragment = supportFragmentManager.findFragmentByTag(TEG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
+        fragment.onDataChanged()
     }
 }
