@@ -17,7 +17,7 @@ import org.koin.android.ext.android.inject
 import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
-private const val ADD_DETAILS_BP_ID_KEY = "DETAILS_BP_ID_KEY"
+private const val ADD_DETAILS_BP_KEY = "DETAILS_BP_KEY"
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
@@ -152,7 +152,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         @JvmStatic
         fun newAddInstance() = DetailsBpFragment().apply {
             arguments = Bundle().apply {
-                putString(ADD_DETAILS_BP_ID_KEY, "addDetailsBp")
+                putString(ADD_DETAILS_BP_KEY, "DETAILS_BP_KEY")
             }
         }
     }

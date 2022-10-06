@@ -10,6 +10,7 @@ import com.example.pressurediary.databinding.ActivityRootBinding
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.ui.details.DetailsBpFragment
 import com.example.pressurediary.ui.diary.BpListFragment
+import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
@@ -19,9 +20,13 @@ private const val TEG_ADD_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
 
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
-    DetailsBpFragment.Controller {
+    DetailsBpFragment.Controller,
+    SettingsFragment.Controller,
+    AdviceFragment.Controller,
+    AboutAppFragment.Controller {
 
     private lateinit var binding: ActivityRootBinding
+    var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +35,16 @@ class RootActivity : AppCompatActivity(),
 
         binding.bottomNavBar.setOnItemSelectedListener {
             title = it.title
+//            when (it.itemId) {
+//                R.id.bp_list_item -> {
+//                    val fragment: Fragment = BpListFragment.newInstance()
+//                    supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_MAIN_CONTAINER_LAYOUT_KEY)
+////                        .addToBackStack(null)
+//                        .commit()
+//                }
+//            }
 
             val fragment = when (it.itemId) {
                 R.id.bp_list_item -> BpListFragment()
@@ -50,7 +65,11 @@ class RootActivity : AppCompatActivity(),
     private fun swapFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_MAIN_CONTAINER_LAYOUT_KEY)
+            .replace(
+                binding.fragmentContainerFrameLayout.id,
+                fragment,
+                TEG_MAIN_CONTAINER_LAYOUT_KEY
+            )
 //            .addToBackStack(null)
             .commit()
     }
@@ -73,6 +92,35 @@ class RootActivity : AppCompatActivity(),
             .commit()
     }
 
+    private fun onAboutApp() {
+        val fragment: Fragment = AboutAppFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainerFrameLayout.id, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onBackPressed() {
+        exitingApplicationDoubleClick()
+    }
+
+    //выход из приложения по двойному нажатию на кнопку
+    private fun exitingApplicationDoubleClick() {
+        if (System.currentTimeMillis() - backPressedTime <= 3_000) {
+            super.onBackPressed()
+//            title =
+            backPressedTime = 0//обнуляем время если вышли из фрагмента
+        } else {
+            Toast.makeText(
+                this,
+                "Нажмите еще раз, чтобы выйти из приложения", Toast.LENGTH_LONG
+            )
+                .show()
+        }
+        backPressedTime = System.currentTimeMillis()
+    }
+
     override fun openDetailsBp(bpEntity: BpEntity) {
         openDetailsBpFragment(bpEntity)
         title = "Подробности"
@@ -83,7 +131,13 @@ class RootActivity : AppCompatActivity(),
     }
 
     override fun onDataChanged() {
-        val fragment = supportFragmentManager.findFragmentByTag(TEG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
+        val fragment =
+            supportFragmentManager.findFragmentByTag(TEG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
         fragment.onDataChanged()
+    }
+
+    override fun openAboutApp() {
+        onAboutApp()
+        title = "О приложении"
     }
 }

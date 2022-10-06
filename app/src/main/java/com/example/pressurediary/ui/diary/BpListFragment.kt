@@ -13,6 +13,8 @@ import com.example.pressurediary.domain.repos.BpRepo
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
+private const val BP_LIST_KEY = "BP_LIST_KEY"
+
 class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var recordsTv: TextView
@@ -77,5 +79,14 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     fun onDataChanged() {
         adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = BpListFragment().apply {
+            arguments = Bundle().apply {
+                putString(BP_LIST_KEY, "BP_LIST_KEY")
+            }
+        }
     }
 }
