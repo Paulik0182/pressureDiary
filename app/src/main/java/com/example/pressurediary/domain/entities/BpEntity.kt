@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class BpEntity(
-    val id: Long = 0,
+    var id: Long = 0,
     var timeInMs: Long = 0,
     @SerializedName("upper_level")
     var systolicLevel: Int = 120,

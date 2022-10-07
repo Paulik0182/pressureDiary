@@ -7,6 +7,8 @@ import kotlin.collections.ArrayList
 
 class BpRepoImpl: BpRepo {
 
+    private var idCounter: Long = 0L
+
     private var data: MutableList<BpEntity> = mutableListOf()
 
     init {
@@ -26,9 +28,11 @@ class BpRepoImpl: BpRepo {
         data.add(BpEntity(14,Calendar.getInstance().timeInMillis + 130, 155, 100, 80, 0, "Очень плохо"))
         data.add(BpEntity(15,Calendar.getInstance().timeInMillis + 140, 110, 60, 55, 0, "Очень плохо"))
         data.add(BpEntity(16,Calendar.getInstance().timeInMillis + 150, 100, 55, 60, 0, "Очень плохо"))
+        idCounter = 16
     }
 
     override fun addBp(bpEntity: BpEntity) {
+        bpEntity.id = ++idCounter//добавляем к id по одному значению. Сначало плюс один, а потом читаем значение
         data.add(bpEntity)
     }
 
