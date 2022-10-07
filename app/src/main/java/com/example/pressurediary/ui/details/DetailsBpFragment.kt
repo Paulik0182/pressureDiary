@@ -12,12 +12,12 @@ import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
-import com.example.pressurediary.utils.bpTimeFormatter
 import org.koin.android.ext.android.inject
-import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
-private const val ADD_DETAILS_BP_KEY = "DETAILS_BP_KEY"
+private const val ADD_DETAILS_BP_KEY = "ADD_DETAILS_BP_KEY"
+private const val SYSTOLIC_MAX_KEY = 134
+private const val SYSTOLIC_MIN_KEY = 114
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
@@ -73,21 +73,19 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         pulseEt.setText(bpEntity.pulse.toString())
         descriptionEt.setText(bpEntity.conditionUser)
 
-        val systolicMax = 136
-        val systolicMin = 114
         val systolicTvInt = systolicEt.text.toString().toInt()
-        if (systolicTvInt >= systolicMax){
+        if (systolicTvInt >= SYSTOLIC_MAX_KEY){
             systolicEt.setTextColor(Color.RED)
             diastolicEt.setTextColor(Color.RED)
             pulseEt.setTextColor(Color.RED)
             conditionTv.setTextColor(Color.RED)
-            conditionTv.text = "У Вас ВЫСОКОЕ давление!"
-        } else if (systolicTvInt <= systolicMin) {
+            conditionTv.setBackgroundResource(R.drawable.ic_heat_red_24)
+        } else if (systolicTvInt <= SYSTOLIC_MIN_KEY) {
             systolicEt.setTextColor(Color.MAGENTA)
             diastolicEt.setTextColor(Color.MAGENTA)
             pulseEt.setTextColor(Color.MAGENTA)
             conditionTv.setTextColor(Color.MAGENTA)
-            conditionTv.text = "У Вас НИЗКОЕ давление!"
+            conditionTv.setBackgroundResource(R.drawable.ic_heat_yellow_24)
         }
     }
 
@@ -101,7 +99,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.save_icon_menu_items -> {
-                val changedTimeInMs = Calendar.getInstance().timeInMillis//TODO Возможно не правильно
+                val changedTimeInMs = bpEntity.timeInMs//TODO Возможно не правильно
+//                val changedTimeInMs = Calendar.getInstance().timeInMillis//TODO Возможно не правильно
                 val changedSystolic = systolicEt.text.toString()
                 val changedDiastolic = diastolicEt.text.toString()
                 val changedPulse = pulseEt.text.toString()
@@ -109,6 +108,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
                 //Собираем новую заметку
                 val changedBpEntity = BpEntity(
+
                     timeInMs = changedTimeInMs,
                     systolicLevel = changedSystolic.toInt(),
                     diastolicLevel = changedDiastolic.toInt(),
