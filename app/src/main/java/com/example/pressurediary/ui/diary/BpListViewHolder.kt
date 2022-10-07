@@ -8,6 +8,9 @@ import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.utils.bpTimeFormatter
 
+private const val SYSTOLIC_MAX_KEY = 134
+private const val SYSTOLIC_MIN_KEY = 114
+
 class BpListViewHolder(
     itemView: View,
     listener: (BpEntity) -> Unit
@@ -29,25 +32,28 @@ class BpListViewHolder(
         diastolicTv.text = bpEntity.diastolicLevel.toString()
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
+        when (bpEntity.wellBeing) {
+            1 -> wellBeingTv.setText(R.string.emoji_1)
+            2 -> wellBeingTv.setText(R.string.emoji_2)
+            3 -> wellBeingTv.setText(R.string.emoji_3)
+            4 -> wellBeingTv.setText(R.string.emoji_4)
+            5 -> wellBeingTv.setText(R.string.emoji_5)
+        }
         //форматируем вид представления времени. Рекомендуемый способ.
         // Уневерсальный способ представление времени. Время считают в Long
         timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
 
-        val systolicMax = 136
-        val systolicMin = 114
         val systolicTvInt = systolicTv.text.toString().toInt()
 
-        if (systolicTvInt >= systolicMax){
+        if (systolicTvInt >= SYSTOLIC_MAX_KEY) {
             systolicTv.setTextColor(Color.RED)
             diastolicTv.setTextColor(Color.RED)
             pulseTv.setTextColor(Color.RED)
-            wellBeingTv.setTextColor(Color.RED)
             timeTv.setTextColor(Color.RED)
-        } else if (systolicTvInt <= systolicMin) {
+        } else if (systolicTvInt <= SYSTOLIC_MIN_KEY) {
             systolicTv.setTextColor(Color.MAGENTA)
             diastolicTv.setTextColor(Color.MAGENTA)
             pulseTv.setTextColor(Color.MAGENTA)
-            wellBeingTv.setTextColor(Color.MAGENTA)
             timeTv.setTextColor(Color.MAGENTA)
         }
     }
