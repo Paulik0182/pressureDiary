@@ -13,6 +13,7 @@ import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
 import org.koin.android.ext.android.inject
+import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
 private const val ADD_DETAILS_BP_KEY = "ADD_DETAILS_BP_KEY"
@@ -137,17 +138,15 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     }
 
     companion object {
+        //начало записи гласит о том, что если уже существует, то возмем ее, если нет то создадим новую
         @JvmStatic
-        fun newInstance(bpEntity: BpEntity) = DetailsBpFragment().apply {
+        fun newInstance(
+            bpEntity: BpEntity = BpEntity(
+                timeInMs = Calendar.getInstance().timeInMillis
+            )
+        ) = DetailsBpFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(DETAILS_BP_KEY, bpEntity)
-            }
-        }
-
-        @JvmStatic
-        fun newAddInstance() = DetailsBpFragment().apply {
-            arguments = Bundle().apply {
-                putString(ADD_DETAILS_BP_KEY, "DETAILS_BP_KEY")
             }
         }
     }

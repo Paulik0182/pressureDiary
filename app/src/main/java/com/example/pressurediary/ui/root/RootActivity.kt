@@ -73,7 +73,7 @@ class RootActivity : AppCompatActivity(),
     }
 
     private fun addDetailBpFragment() {
-        val fragment: Fragment = DetailsBpFragment.newAddInstance()
+        val fragment: Fragment = DetailsBpFragment.newInstance()
         supportFragmentManager
             .beginTransaction()
             .replace(binding.fragmentContainerFrameLayout.id, fragment, TAG_ADD_DETAILS_BP_KEY)
