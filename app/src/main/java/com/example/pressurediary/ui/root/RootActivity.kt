@@ -14,9 +14,9 @@ import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
-private const val TEG_MAIN_CONTAINER_LAYOUT_KEY = "TEG_DETAILS_BP_KEY"
+private const val TEG_MAIN_CONTAINER_LAYOUT_KEY = "TEG_MAIN_CONTAINER_LAYOUT_KEY"
 private const val TEG_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
-private const val TEG_ADD_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
+private const val TEG_ADD_DETAILS_BP_KEY = "TEG_ADD_DETAILS_BP_KEY"
 
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
