@@ -9,7 +9,6 @@ import android.widget.TextView
 import com.example.pressurediary.BuildConfig
 import com.example.pressurediary.R
 
-
 class AboutAppFragment : Fragment(R.layout.fragment_about_app) {
 
     private lateinit var versionTv: TextView

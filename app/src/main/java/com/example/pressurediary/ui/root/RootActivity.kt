@@ -14,9 +14,9 @@ import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
-private const val TEG_MAIN_CONTAINER_LAYOUT_KEY = "TEG_MAIN_CONTAINER_LAYOUT_KEY"
-private const val TEG_DETAILS_BP_KEY = "TEG_DETAILS_BP_KEY"
-private const val TEG_ADD_DETAILS_BP_KEY = "TEG_ADD_DETAILS_BP_KEY"
+private const val TAG_MAIN_CONTAINER_LAYOUT_KEY = "TAG_MAIN_CONTAINER_LAYOUT_KEY"
+private const val TAG_DETAILS_BP_KEY = "TAG_DETAILS_BP_KEY"
+private const val TAG_ADD_DETAILS_BP_KEY = "TAG_ADD_DETAILS_BP_KEY"
 
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
@@ -35,17 +35,6 @@ class RootActivity : AppCompatActivity(),
 
         binding.bottomNavBar.setOnItemSelectedListener {
             title = it.title
-//            when (it.itemId) {
-//                R.id.bp_list_item -> {
-//                    val fragment: Fragment = BpListFragment.newInstance()
-//                    supportFragmentManager
-//                        .beginTransaction()
-//                        .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_MAIN_CONTAINER_LAYOUT_KEY)
-////                        .addToBackStack(null)
-//                        .commit()
-//                }
-//            }
-
             val fragment = when (it.itemId) {
                 R.id.bp_list_item -> BpListFragment()
                 R.id.advice_item -> AdviceFragment()
@@ -68,7 +57,7 @@ class RootActivity : AppCompatActivity(),
             .replace(
                 binding.fragmentContainerFrameLayout.id,
                 fragment,
-                TEG_MAIN_CONTAINER_LAYOUT_KEY
+                TAG_MAIN_CONTAINER_LAYOUT_KEY
             )
 //            .addToBackStack(null)
             .commit()
@@ -78,7 +67,7 @@ class RootActivity : AppCompatActivity(),
         val fragment: Fragment = DetailsBpFragment.newInstance(bpEntity)
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_DETAILS_BP_KEY)
+            .replace(binding.fragmentContainerFrameLayout.id, fragment, TAG_DETAILS_BP_KEY)
             .addToBackStack(null)
             .commit()
     }
@@ -87,7 +76,7 @@ class RootActivity : AppCompatActivity(),
         val fragment: Fragment = DetailsBpFragment.newAddInstance()
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment, TEG_ADD_DETAILS_BP_KEY)
+            .replace(binding.fragmentContainerFrameLayout.id, fragment, TAG_ADD_DETAILS_BP_KEY)
             .addToBackStack(null)
             .commit()
     }
@@ -132,7 +121,7 @@ class RootActivity : AppCompatActivity(),
 
     override fun onDataChanged() {
         val fragment =
-            supportFragmentManager.findFragmentByTag(TEG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
+            supportFragmentManager.findFragmentByTag(TAG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
         fragment.onDataChanged()
     }
 

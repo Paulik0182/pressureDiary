@@ -99,8 +99,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.save_icon_menu_items -> {
-                val changedTimeInMs = bpEntity.timeInMs//TODO Возможно не правильно
-//                val changedTimeInMs = Calendar.getInstance().timeInMillis//TODO Возможно не правильно
+                val changedTimeInMs = bpEntity.timeInMs
+//                val changedTimeInMs = Calendar.getInstance().timeInMillis//Устанавливается новое время
                 val changedSystolic = systolicEt.text.toString()
                 val changedDiastolic = diastolicEt.text.toString()
                 val changedPulse = pulseEt.text.toString()
@@ -108,7 +108,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
                 //Собираем новую заметку
                 val changedBpEntity = BpEntity(
-
+                    id = bpEntity.id,
                     timeInMs = changedTimeInMs,
                     systolicLevel = changedSystolic.toInt(),
                     diastolicLevel = changedDiastolic.toInt(),
