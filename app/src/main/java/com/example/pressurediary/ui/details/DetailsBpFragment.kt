@@ -16,7 +16,6 @@ import org.koin.android.ext.android.inject
 import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
-private const val ADD_DETAILS_BP_KEY = "ADD_DETAILS_BP_KEY"
 private const val SYSTOLIC_MAX_KEY = 134
 private const val SYSTOLIC_MIN_KEY = 114
 
@@ -49,6 +48,53 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
         bpEntity = requireArguments().getParcelable(DETAILS_BP_KEY)!!//взяли передоваемое значение
         setBpEntity(bpEntity)//Положили переданное значение в метод
+
+        setupListener()
+    }
+
+    private fun setupListener(){
+        emojiFatalTv.setOnClickListener{
+            deselectEmoji()
+            it.setBackgroundColor(Color.YELLOW)
+            bpEntity.wellBeing = 1//присваиваем значение састояничя
+        }
+        emojiBadlyTv.setOnClickListener{
+            deselectEmoji()
+            it.setBackgroundColor(Color.YELLOW)
+            bpEntity.wellBeing = 2
+        }
+        emojiFineTv.setOnClickListener{
+            deselectEmoji()
+            it.setBackgroundColor(Color.YELLOW)
+            bpEntity.wellBeing = 3
+        }
+        emojiWellTv.setOnClickListener{
+            deselectEmoji()
+            it.setBackgroundColor(Color.YELLOW)
+            bpEntity.wellBeing = 4
+        }
+        emojiExcellentTv.setOnClickListener{
+            deselectEmoji()
+            it.setBackgroundColor(Color.YELLOW)
+            bpEntity.wellBeing = 5
+        }
+
+        // чтобы на старте проставлялось соответствующее значение
+        when(bpEntity.wellBeing){
+            1-> emojiFatalTv.callOnClick()
+            2-> emojiBadlyTv.callOnClick()
+            3-> emojiFineTv.callOnClick()
+            4-> emojiWellTv.callOnClick()
+            5-> emojiExcellentTv.callOnClick()
+        }
+    }
+
+    private fun deselectEmoji(){
+        emojiFatalTv.setBackgroundColor(Color.TRANSPARENT)
+        emojiBadlyTv.setBackgroundColor(Color.TRANSPARENT)
+        emojiFineTv.setBackgroundColor(Color.TRANSPARENT)
+        emojiWellTv.setBackgroundColor(Color.TRANSPARENT)
+        emojiExcellentTv.setBackgroundColor(Color.TRANSPARENT)
     }
 
     private fun initView(view: View) {
