@@ -66,7 +66,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         descriptionEt = view.findViewById(R.id.description_edit_text)
     }
 
-    private fun setBpEntity(bpEntity: BpEntity){
+    private fun setBpEntity(bpEntity: BpEntity) {
         titleDataTimeTv.text = bpDataTimeFormatter.format(bpEntity.timeInMs)
         systolicEt.setText(bpEntity.systolicLevel.toString())
         diastolicEt.setText(bpEntity.diastolicLevel.toString())
@@ -74,7 +74,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         descriptionEt.setText(bpEntity.conditionUser)
 
         val systolicTvInt = systolicEt.text.toString().toInt()
-        if (systolicTvInt >= SYSTOLIC_MAX_KEY){
+        if (systolicTvInt >= SYSTOLIC_MAX_KEY) {
             systolicEt.setTextColor(Color.RED)
             diastolicEt.setTextColor(Color.RED)
             pulseEt.setTextColor(Color.RED)
@@ -99,31 +99,26 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.save_icon_menu_items -> {
-                val changedTimeInMs = bpEntity.timeInMs
-//                val changedTimeInMs = Calendar.getInstance().timeInMillis//Устанавливается новое время
-                val changedSystolic = systolicEt.text.toString()
-                val changedDiastolic = diastolicEt.text.toString()
-                val changedPulse = pulseEt.text.toString()
-                val changedDescription = descriptionEt.text.toString()
-
-                //Собираем новую заметку
-                val changedBpEntity = BpEntity(
-                    id = bpEntity.id,
-                    timeInMs = changedTimeInMs,
-                    systolicLevel = changedSystolic.toInt(),
-                    diastolicLevel = changedDiastolic.toInt(),
-                    pulse = changedPulse.toInt(),
-                    conditionUser = changedDescription
+                //Второй способ. Делаем копию данных чтобы потом изменить часть данных.
+                // Первый способ в предыдущем коммите
+                val changedBpEntity = bpEntity.copy(
+                    systolicLevel = systolicEt.text.toString().toInt(),
+                    diastolicLevel = diastolicEt.text.toString().toInt(),
+                    pulse = pulseEt.text.toString().toInt(),
+                    conditionUser = descriptionEt.text.toString()
+                //В данном коде мы взяли только часть интересующих полей и изменили их,
+                    // остальные поля остались прежними
                 )
+
                 val bpRepo = bpRepo
                 bpRepo.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
 
-                        Toast.makeText(
-                            requireContext(),
-                            "Сохнанить",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Сохнанить",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return true
             }
         }

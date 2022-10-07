@@ -6,12 +6,13 @@ import kotlinx.android.parcel.Parcelize
 
 /**
  * Уневерсальный способ представление времени. Время считают (хранят) в Long
+ * в data class метод copy генирируется атоматически. Пример метода ниже.
  */
 
 @Parcelize
 data class BpEntity(
     val id: Long = 0,
-    var timeInMs: Long,
+    var timeInMs: Long = 0,
     @SerializedName("upper_level")
     var systolicLevel: Int = 120,
     @SerializedName("lower_level")
@@ -23,3 +24,18 @@ data class BpEntity(
     var conditionUser: String = "Хорошее"
 ) : Parcelable
 
+{
+//    Пример метода. под капотом это выглядит так. Это полная копия объекта
+//     Если сделать так самостоятельно, компилятор будет ругатся
+    fun myCopy(
+        id: Long = this.id,
+        timeInMs: Long = this.timeInMs,
+        systolicLevel: Int = this.systolicLevel,
+        diastolicLevel: Int = this.diastolicLevel,
+        pulse: Int = this.pulse,
+        wellBeing: Int = this.wellBeing,
+        conditionUser: String = this.conditionUser
+    ): BpEntity {
+        return BpEntity(id, timeInMs,systolicLevel,diastolicLevel,pulse,wellBeing,conditionUser)
+    }
+}
