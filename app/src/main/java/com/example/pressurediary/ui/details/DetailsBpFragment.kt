@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
+import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
@@ -56,36 +57,36 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         emojiFatalTv.setOnClickListener{
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
-            bpEntity.wellBeing = 1//присваиваем значение састояничя
+            bpEntity.wellBeing = Emoji.FATAL//присваиваем значение састояничя
         }
         emojiBadlyTv.setOnClickListener{
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
-            bpEntity.wellBeing = 2
+            bpEntity.wellBeing = Emoji.BADLY
         }
         emojiFineTv.setOnClickListener{
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
-            bpEntity.wellBeing = 3
+            bpEntity.wellBeing = Emoji.FINE
         }
         emojiWellTv.setOnClickListener{
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
-            bpEntity.wellBeing = 4
+            bpEntity.wellBeing = Emoji.WELL
         }
         emojiExcellentTv.setOnClickListener{
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
-            bpEntity.wellBeing = 5
+            bpEntity.wellBeing = Emoji.EXCELLENT
         }
 
         // чтобы на старте проставлялось соответствующее значение
         when(bpEntity.wellBeing){
-            1-> emojiFatalTv.callOnClick()
-            2-> emojiBadlyTv.callOnClick()
-            3-> emojiFineTv.callOnClick()
-            4-> emojiWellTv.callOnClick()
-            5-> emojiExcellentTv.callOnClick()
+            Emoji.FATAL -> emojiFatalTv.callOnClick()
+            Emoji.BADLY -> emojiBadlyTv.callOnClick()
+            Emoji.FINE -> emojiFineTv.callOnClick()
+            Emoji.WELL -> emojiWellTv.callOnClick()
+            Emoji.EXCELLENT -> emojiExcellentTv.callOnClick()
         }
     }
 

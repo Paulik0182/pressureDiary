@@ -1,6 +1,7 @@
 package com.example.pressurediary.domain.entities
 
 import android.os.Parcelable
+import com.example.pressurediary.domain.Emoji
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -19,7 +20,7 @@ data class BpEntity(
     var diastolicLevel: Int = 80,
     var pulse: Int = 60,
     @SerializedName("well_being")
-    var wellBeing: Int = 3,
+    var wellBeing: Emoji = Emoji.FINE,
     @SerializedName("condition_user")
     var conditionUser: String = "Хорошее"
 ) : Parcelable
@@ -33,7 +34,7 @@ data class BpEntity(
         systolicLevel: Int = this.systolicLevel,
         diastolicLevel: Int = this.diastolicLevel,
         pulse: Int = this.pulse,
-        wellBeing: Int = this.wellBeing,
+        wellBeing: Emoji = this.wellBeing,
         conditionUser: String = this.conditionUser
     ): BpEntity {
         return BpEntity(id, timeInMs,systolicLevel,diastolicLevel,pulse,wellBeing,conditionUser)

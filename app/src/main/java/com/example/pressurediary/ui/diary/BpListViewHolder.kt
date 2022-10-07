@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import com.example.pressurediary.R
+import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.utils.bpTimeFormatter
 
@@ -33,11 +34,11 @@ class BpListViewHolder(
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
         when (bpEntity.wellBeing) {
-            1 -> wellBeingTv.setText(R.string.emoji_1)
-            2 -> wellBeingTv.setText(R.string.emoji_2)
-            3 -> wellBeingTv.setText(R.string.emoji_3)
-            4 -> wellBeingTv.setText(R.string.emoji_4)
-            5 -> wellBeingTv.setText(R.string.emoji_5)
+            Emoji.FATAL -> wellBeingTv.setText(R.string.emoji_1)
+            Emoji.BADLY -> wellBeingTv.setText(R.string.emoji_2)
+            Emoji.FINE -> wellBeingTv.setText(R.string.emoji_3)
+            Emoji.WELL -> wellBeingTv.setText(R.string.emoji_4)
+            Emoji.EXCELLENT -> wellBeingTv.setText(R.string.emoji_5)
         }
         //форматируем вид представления времени. Рекомендуемый способ.
         // Уневерсальный способ представление времени. Время считают в Long
