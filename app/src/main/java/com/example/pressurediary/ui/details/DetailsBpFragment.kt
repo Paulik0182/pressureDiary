@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactor.EmoticonsHeaderInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
 import org.koin.android.ext.android.inject
@@ -35,6 +36,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private lateinit var descriptionEt: EditText
 
     private val bpRepo: BpRepo by inject() //получили через Koin
+    private val emoticonsHeaderInteractor: EmoticonsHeaderInteractor by inject() //получили через Koin
 
     private lateinit var bpEntity: BpEntity
 
@@ -160,8 +162,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                     // остальные поля остались прежними
                 )
 
-                val bpRepo = bpRepo
-                bpRepo.updateBp(changedBpEntity)//добавили новые данные
+                val emoticonsHeaderInteractor = emoticonsHeaderInteractor
+                emoticonsHeaderInteractor.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
                 getController().finishDetailsBpFragment()//выход
 

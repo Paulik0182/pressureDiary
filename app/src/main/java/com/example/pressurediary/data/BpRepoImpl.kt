@@ -8,9 +8,9 @@ import kotlin.collections.ArrayList
 
 class BpRepoImpl: BpRepo {
 
-    private var idCounter: Long = 0L
+    internal var idCounter: Long = 0L
 
-    private var data: MutableList<BpEntity> = mutableListOf()
+    internal var data: MutableList<BpEntity> = mutableListOf()
 
     init {
         data.add(BpEntity(1, Calendar.getInstance().timeInMillis,140, 75, 55, Emoji.FINE, "Нормально"))

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactor.EmoticonsHeaderInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
@@ -26,6 +27,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     private val bpRepo: BpRepo by inject() //получили через Koin
+    private val emoticonsHeaderInteractor: EmoticonsHeaderInteractor by inject() //получили через Koin
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var bpList: MutableList<BpEntity>
@@ -35,7 +37,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         initView(view)
 
-        adapter.setData(bpRepo.getAllBpList())
+        adapter.setData(emoticonsHeaderInteractor.getBpList())
         adapter.setOnItemClickListener {
             getController().openDetailsBp(it)
         }
@@ -78,7 +80,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     fun onDataChanged() {
-        adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
+        adapter.setData(emoticonsHeaderInteractor.getBpList())//Если изменились данные, вставляем их в адаптер
     }
 
     companion object {
