@@ -38,7 +38,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
     private lateinit var bpEntity: BpEntity
 
-    private lateinit var MenuItem: MenuItem
+    private lateinit var saveMenuItem: MenuItem
+    private lateinit var exitMenuItem: MenuItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -140,7 +141,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_for_detailed_fragment, menu)
-        MenuItem = menu.findItem(R.id.save_icon_menu_items)
+        saveMenuItem = menu.findItem(R.id.save_icon_menu_items)
+        exitMenuItem = menu.findItem(R.id.exit_icon_menu_items)
     }
 
     @Deprecated("Deprecated in Java")
@@ -161,13 +163,18 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                 val bpRepo = bpRepo
                 bpRepo.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
+                getController().finishDetailsBpFragment()//выход
 
                 Toast.makeText(
                     requireContext(),
                     "Сохнанить",
                     Toast.LENGTH_SHORT
                 ).show()
+
                 return true
+            }
+            R.id.exit_icon_menu_items->{
+                getController().finishDetailsBpFragment()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -175,6 +182,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
     interface Controller {
         fun onDataChanged()
+        fun finishDetailsBpFragment()
     }
 
     private fun getController(): Controller = activity as Controller
