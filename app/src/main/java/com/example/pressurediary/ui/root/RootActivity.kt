@@ -125,26 +125,6 @@ class RootActivity : AppCompatActivity(),
         fragment.onDataChanged()
     }
 
-    override fun finishDetailsBpFragment() {
-        val openFragment = supportFragmentManager.findFragmentByTag(TAG_DETAILS_BP_KEY)
-        val addFragment = supportFragmentManager.findFragmentByTag(TAG_ADD_DETAILS_BP_KEY)
-        if (openFragment != null) {
-            openFragment.let {
-                supportFragmentManager
-                    .beginTransaction()
-                    .remove(it)
-                    .commit()
-            }
-        } else {
-            addFragment?.let {
-                supportFragmentManager
-                    .beginTransaction()
-                    .remove(it)
-                    .commit()
-            }
-        }
-    }
-
     override fun openAboutApp() {
         onAboutApp()
         title = "О приложении"

@@ -165,18 +165,18 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                 val emoticonsHeaderInteractor = emoticonsHeaderInteractor
                 emoticonsHeaderInteractor.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
-                getController().finishDetailsBpFragment()//выход
+                activity?.supportFragmentManager?.popBackStack()//выход
 
                 Toast.makeText(
                     requireContext(),
-                    "Сохнанить",
+                    "Сохранить",
                     Toast.LENGTH_SHORT
                 ).show()
 
                 return true
             }
             R.id.exit_icon_menu_items->{
-                getController().finishDetailsBpFragment()
+                activity?.supportFragmentManager?.popBackStack()//выход (фрагмент финиширует сам себя)
             }
         }
         return super.onOptionsItemSelected(item)
@@ -184,7 +184,6 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
     interface Controller {
         fun onDataChanged()
-        fun finishDetailsBpFragment()
     }
 
     private fun getController(): Controller = activity as Controller
