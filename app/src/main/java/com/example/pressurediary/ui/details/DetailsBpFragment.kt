@@ -9,17 +9,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
+import com.example.pressurediary.domain.BpEvaluation
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
-import com.example.pressurediary.domain.interactors.EmoticonsHeaderInteractor
+import com.example.pressurediary.domain.interactors.BpEvaluator
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
 import org.koin.android.ext.android.inject
 import java.util.*
 
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
-private const val SYSTOLIC_MAX_KEY = 134
-private const val SYSTOLIC_MIN_KEY = 114
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
@@ -36,7 +35,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private lateinit var descriptionEt: EditText
 
     private val bpRepo: BpRepo by inject() //получили через Koin
-    private val emoticonsHeaderInteractor: EmoticonsHeaderInteractor by inject() //получили через Koin
+    private val evaluator: BpEvaluator by inject()
 
     private lateinit var bpEntity: BpEntity
 
@@ -56,35 +55,35 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         setupListener()
     }
 
-    private fun setupListener(){
-        emojiFatalTv.setOnClickListener{
+    private fun setupListener() {
+        emojiFatalTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
             bpEntity.wellBeing = Emoji.FATAL//присваиваем значение састояничя
         }
-        emojiBadlyTv.setOnClickListener{
+        emojiBadlyTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
             bpEntity.wellBeing = Emoji.BADLY
         }
-        emojiFineTv.setOnClickListener{
+        emojiFineTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
             bpEntity.wellBeing = Emoji.FINE
         }
-        emojiWellTv.setOnClickListener{
+        emojiWellTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
             bpEntity.wellBeing = Emoji.WELL
         }
-        emojiExcellentTv.setOnClickListener{
+        emojiExcellentTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundColor(Color.YELLOW)
             bpEntity.wellBeing = Emoji.EXCELLENT
         }
 
         // чтобы на старте проставлялось соответствующее значение
-        when(bpEntity.wellBeing){
+        when (bpEntity.wellBeing) {
             Emoji.FATAL -> emojiFatalTv.callOnClick()
             Emoji.BADLY -> emojiBadlyTv.callOnClick()
             Emoji.FINE -> emojiFineTv.callOnClick()
@@ -93,7 +92,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         }
     }
 
-    private fun deselectEmoji(){
+    private fun deselectEmoji() {
         emojiFatalTv.setBackgroundColor(Color.TRANSPARENT)
         emojiBadlyTv.setBackgroundColor(Color.TRANSPARENT)
         emojiFineTv.setBackgroundColor(Color.TRANSPARENT)
@@ -124,20 +123,27 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         pulseEt.setText(bpEntity.pulse.toString())
         descriptionEt.setText(bpEntity.conditionUser)
 
-        val systolicTvInt = systolicEt.text.toString().toInt()
-        if (systolicTvInt >= SYSTOLIC_MAX_KEY) {
-            systolicEt.setTextColor(Color.RED)
-            diastolicEt.setTextColor(Color.RED)
-            pulseEt.setTextColor(Color.RED)
-            conditionTv.setTextColor(Color.RED)
-            conditionTv.setBackgroundResource(R.drawable.ic_heat_red_24)
-        } else if (systolicTvInt <= SYSTOLIC_MIN_KEY) {
-            systolicEt.setTextColor(Color.MAGENTA)
-            diastolicEt.setTextColor(Color.MAGENTA)
-            pulseEt.setTextColor(Color.MAGENTA)
-            conditionTv.setTextColor(Color.MAGENTA)
-            conditionTv.setBackgroundResource(R.drawable.ic_heat_yellow_24)
+        val color = when (evaluator.evaluate(bpEntity)) {
+            BpEvaluation.NORMAL -> Color.GREEN
+            BpEvaluation.PRE_HYPERTENSION -> Color.BLUE
+            BpEvaluation.HYPERTENSION_1 -> Color.YELLOW
+            BpEvaluation.HYPERTENSION_2 -> Color.RED
+            BpEvaluation.UNKNOWN -> Color.GRAY
         }
+
+        val header = when (evaluator.evaluate(bpEntity)) {
+            BpEvaluation.NORMAL -> R.drawable.ic_heat_yellow_24
+            BpEvaluation.PRE_HYPERTENSION -> R.drawable.ic_heat_green_24
+            BpEvaluation.HYPERTENSION_1 -> R.drawable.ic_heat_red_24
+            BpEvaluation.HYPERTENSION_2 -> R.drawable.ic_heat_red_24
+            BpEvaluation.UNKNOWN -> R.drawable.ic_heat_red_24
+        }
+
+        systolicEt.setTextColor(color)
+        diastolicEt.setTextColor(color)
+        pulseEt.setTextColor(color)
+        conditionTv.setTextColor(color)
+        conditionTv.setBackgroundResource(header)
     }
 
     @Deprecated("Deprecated in Java")
@@ -158,12 +164,12 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                     diastolicLevel = diastolicEt.text.toString().toInt(),
                     pulse = pulseEt.text.toString().toInt(),
                     conditionUser = descriptionEt.text.toString()
-                //В данном коде мы взяли только часть интересующих полей и изменили их,
+                    //В данном коде мы взяли только часть интересующих полей и изменили их,
                     // остальные поля остались прежними
                 )
 
-                val emoticonsHeaderInteractor = emoticonsHeaderInteractor
-                emoticonsHeaderInteractor.updateBp(changedBpEntity)//добавили новые данные
+                val bpRepo = bpRepo
+                bpRepo.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
                 activity?.onBackPressed()//выход
 
@@ -175,7 +181,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
                 return true
             }
-            R.id.exit_icon_menu_items->{
+            R.id.exit_icon_menu_items -> {
                 activity?.onBackPressed()//выход (кнопка назад)
             }
         }

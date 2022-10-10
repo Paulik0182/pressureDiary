@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
-import com.example.pressurediary.domain.interactors.EmoticonsHeaderInteractor
+import com.example.pressurediary.domain.interactors.BpEvaluator
 import com.example.pressurediary.domain.repos.BpRepo
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
@@ -21,13 +21,14 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     private lateinit var recordsTv: TextView
     private lateinit var fab: View
 
+    private val evaluator: BpEvaluator by inject()
+
     private lateinit var adapter: BpListAdapter
     private val listener = { bpEntity: BpEntity ->
         fillView(bpEntity)
     }
 
     private val bpRepo: BpRepo by inject() //получили через Koin
-    private val emoticonsHeaderInteractor: EmoticonsHeaderInteractor by inject() //получили через Koin
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var bpList: MutableList<BpEntity>
@@ -37,7 +38,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         initView(view)
 
-        adapter.setData(emoticonsHeaderInteractor.getBpList())
+        adapter.setData(bpRepo.getAllBpList())
         adapter.setOnItemClickListener {
             getController().openDetailsBp(it)
         }
@@ -57,7 +58,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         recordsTv = view.findViewById(R.id.records_text_view)
         recyclerView = view.findViewById(R.id.cardio_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = BpListAdapter(listener)
+        adapter = BpListAdapter(evaluator, listener)
         recyclerView.adapter = adapter
     }
 
@@ -79,7 +80,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     fun onDataChanged() {
-        adapter.setData(emoticonsHeaderInteractor.getBpList())//Если изменились данные, вставляем их в адаптер
+        adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
     }
 
     companion object {

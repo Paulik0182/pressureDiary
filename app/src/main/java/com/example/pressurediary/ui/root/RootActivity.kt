@@ -10,7 +10,6 @@ import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.ui.details.DetailsActivity
-import com.example.pressurediary.ui.details.DetailsBpFragment
 import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment

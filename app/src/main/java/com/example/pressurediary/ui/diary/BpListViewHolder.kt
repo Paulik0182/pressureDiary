@@ -5,12 +5,10 @@ import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import com.example.pressurediary.R
+import com.example.pressurediary.domain.BpEvaluation
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.utils.bpTimeFormatter
-
-private const val SYSTOLIC_MAX_KEY = 134
-private const val SYSTOLIC_MIN_KEY = 114
 
 class BpListViewHolder(
     itemView: View,
@@ -26,7 +24,7 @@ class BpListViewHolder(
     private lateinit var measurements: BpEntity
 
     @SuppressLint("NewApi")
-    fun bind(bpEntity: BpEntity) {
+    fun bind(bpEntity: BpEntity, evaluation: BpEvaluation) {
         measurements = bpEntity
 
         systolicTv.text = bpEntity.systolicLevel.toString()
@@ -44,19 +42,17 @@ class BpListViewHolder(
         // Уневерсальный способ представление времени. Время считают в Long
         timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
 
-        val systolicTvInt = systolicTv.text.toString().toInt()
-
-        if (systolicTvInt >= SYSTOLIC_MAX_KEY) {
-            systolicTv.setTextColor(Color.RED)
-            diastolicTv.setTextColor(Color.RED)
-            pulseTv.setTextColor(Color.RED)
-            timeTv.setTextColor(Color.RED)
-        } else if (systolicTvInt <= SYSTOLIC_MIN_KEY) {
-            systolicTv.setTextColor(Color.MAGENTA)
-            diastolicTv.setTextColor(Color.MAGENTA)
-            pulseTv.setTextColor(Color.MAGENTA)
-            timeTv.setTextColor(Color.MAGENTA)
+        val color = when (evaluation) {
+            BpEvaluation.NORMAL -> Color.GREEN
+            BpEvaluation.PRE_HYPERTENSION -> Color.BLUE
+            BpEvaluation.HYPERTENSION_1 -> Color.YELLOW
+            BpEvaluation.HYPERTENSION_2 -> Color.RED
+            BpEvaluation.UNKNOWN -> Color.GRAY
         }
+        systolicTv.setTextColor(color)
+        diastolicTv.setTextColor(color)
+        pulseTv.setTextColor(color)
+        timeTv.setTextColor(color)
     }
 
     init {

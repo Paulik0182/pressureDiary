@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactors.BpEvaluator
 import java.lang.IllegalStateException
 import java.util.*
 
@@ -26,6 +27,7 @@ data class BaseBpAdapterItem(
 )
 
 class BpListAdapter(
+    private var evaluator: BpEvaluator,
     private var listener: (BpEntity) -> Unit
 ) : RecyclerView.Adapter<BaseBpViewHolder>() {
 
@@ -91,9 +93,8 @@ class BpListAdapter(
     override fun onBindViewHolder(holder: BaseBpViewHolder, position: Int) {
         // Определяем тип bind. Устанавливаем соответствующие значения
         val item = getItem((position))
-//        when (item.viewHolderType){
         when (getItemViewType(position)){
-            BP_HOLDER_TYPE -> (holder as BpListViewHolder).bind(item.bpEntity!!)
+            BP_HOLDER_TYPE -> (holder as BpListViewHolder).bind(item.bpEntity!!, evaluator.evaluate(item.bpEntity))
             HEADER_HOLDER_TYPE -> (holder as BpDayHeaderViewHolder).bind(item.data!!)
             else -> throw IllegalStateException("Нет такого холдера")
         }
