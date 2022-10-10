@@ -1,4 +1,4 @@
-package com.example.pressurediary.domain.interactor
+package com.example.pressurediary.domain.interactors
 
 import com.example.pressurediary.domain.entities.BpEntity
 

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
-import com.example.pressurediary.domain.interactor.EmoticonsHeaderInteractor
+import com.example.pressurediary.domain.interactors.EmoticonsHeaderInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
 import org.koin.android.ext.android.inject

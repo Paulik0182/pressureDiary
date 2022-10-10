@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
-import com.example.pressurediary.domain.interactor.EmoticonsHeaderInteractor
+import com.example.pressurediary.domain.interactors.EmoticonsHeaderInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject

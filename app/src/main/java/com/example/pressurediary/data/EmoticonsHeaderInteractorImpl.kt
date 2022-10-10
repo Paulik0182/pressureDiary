@@ -3,8 +3,7 @@ package com.example.pressurediary.data
 import android.graphics.Color
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
-import com.example.pressurediary.domain.interactor.EmoticonsHeaderInteractor
-import com.example.pressurediary.domain.repos.BpRepo
+import com.example.pressurediary.domain.interactors.EmoticonsHeaderInteractor
 import java.util.*
 import kotlin.collections.ArrayList
 
