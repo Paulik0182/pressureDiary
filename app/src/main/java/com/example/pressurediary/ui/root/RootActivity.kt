@@ -1,5 +1,6 @@
 package com.example.pressurediary.ui.root
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +9,7 @@ import com.example.pressurediary.ui.advice.AdviceFragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.ui.details.DetailsActivity
 import com.example.pressurediary.ui.details.DetailsBpFragment
 import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.AboutAppFragment
@@ -15,12 +17,11 @@ import com.example.pressurediary.ui.settings.SettingsFragment
 import java.lang.IllegalStateException
 
 private const val TAG_MAIN_CONTAINER_LAYOUT_KEY = "TAG_MAIN_CONTAINER_LAYOUT_KEY"
-private const val TAG_DETAILS_BP_KEY = "TAG_DETAILS_BP_KEY"
-private const val TAG_ADD_DETAILS_BP_KEY = "TAG_ADD_DETAILS_BP_KEY"
+private const val BP_ENTITY_DETAILS_KEY = "BP_ENTITY_DETAILS_KEY"
+private const val DETAILS_REQUEST_KOD = 100
 
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
-    DetailsBpFragment.Controller,
     SettingsFragment.Controller,
     AdviceFragment.Controller,
     AboutAppFragment.Controller {
@@ -63,22 +64,13 @@ class RootActivity : AppCompatActivity(),
             .commit()
     }
 
-    private fun openDetailsBpFragment(bpEntity: BpEntity) {
-        val fragment: Fragment = DetailsBpFragment.newInstance(bpEntity)
-        supportFragmentManager
-            .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment, TAG_DETAILS_BP_KEY)
-            .addToBackStack(null)
-            .commit()
-    }
 
-    private fun addDetailBpFragment() {
-        val fragment: Fragment = DetailsBpFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(binding.fragmentContainerFrameLayout.id, fragment, TAG_ADD_DETAILS_BP_KEY)
-            .addToBackStack(null)
-            .commit()
+    override fun openDetailsBp(bpEntity: BpEntity?){
+        val intent = Intent(this, DetailsActivity::class.java)
+        bpEntity?.let {
+            intent.putExtra(BP_ENTITY_DETAILS_KEY, bpEntity)
+        }
+        startActivityForResult(intent, DETAILS_REQUEST_KOD)
     }
 
     private fun onAboutApp() {
@@ -110,16 +102,14 @@ class RootActivity : AppCompatActivity(),
         backPressedTime = System.currentTimeMillis()
     }
 
-    override fun openDetailsBp(bpEntity: BpEntity) {
-        openDetailsBpFragment(bpEntity)
-        title = "Подробности"
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val fragment =
+            supportFragmentManager.findFragmentByTag(TAG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
+        fragment.onDataChanged()
     }
 
-    override fun addDetailBp() {
-        addDetailBpFragment()
-    }
-
-    override fun onDataChanged() {
+    fun onDataChanged() {
         val fragment =
             supportFragmentManager.findFragmentByTag(TAG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
         fragment.onDataChanged()

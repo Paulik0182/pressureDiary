@@ -45,7 +45,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         recordsTv.text = "Записи:"
 
         fab.setOnClickListener {
-            getController().addDetailBp()
+            getController().openDetailsBp(null)
             Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()
@@ -68,8 +68,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     interface Controller {
-        fun openDetailsBp(bpEntity: BpEntity)
-        fun addDetailBp()
+        fun openDetailsBp(bpEntity: BpEntity?)
     }
 
     private fun getController(): Controller = activity as Controller

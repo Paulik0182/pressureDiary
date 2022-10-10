@@ -165,7 +165,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                 val emoticonsHeaderInteractor = emoticonsHeaderInteractor
                 emoticonsHeaderInteractor.updateBp(changedBpEntity)//добавили новые данные
                 getController().onDataChanged()//обновили данные
-                activity?.supportFragmentManager?.popBackStack()//выход
+                activity?.onBackPressed()//выход
 
                 Toast.makeText(
                     requireContext(),
@@ -176,7 +176,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                 return true
             }
             R.id.exit_icon_menu_items->{
-                activity?.supportFragmentManager?.popBackStack()//выход (фрагмент финиширует сам себя)
+                activity?.onBackPressed()//выход (кнопка назад)
             }
         }
         return super.onOptionsItemSelected(item)
