@@ -7,4 +7,8 @@ interface BpRepo {
     fun getAllBpList(): List<BpEntity>//получить
     fun removeBp(bpEntity: BpEntity)//удалить
     fun updateBp(changedBp: BpEntity)//обновить
+
+    //Runnable - это исполняемый код
+    fun addOnDataChangedListener(listener: Runnable)
+    fun removeListener(listener: Runnable)
 }

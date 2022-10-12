@@ -6,8 +6,8 @@
         android:title="Измерение"/>
     <item
         android:id="@+id/advice_item"
-        android:icon="@drawable/ic_advices"
-        android:title="Советы"/>
+        android:icon="@drawable/ic_chart_24"
+        android:title="График"/>
     <item
         android:id="@+id/settings_item"
         android:icon="@drawable/ic_settings"

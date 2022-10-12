@@ -43,14 +43,25 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
             getController().openDetailsBp(it)
         }
 
-        recordsTv.text = "Записи:"
+        recordsTv.text = "Записи: "
 
         fab.setOnClickListener {
             getController().openDetailsBp(null)
-            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
+//            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null)
+//                .show()
         }
+
+//        bpRepo.addOnDataChangedListener(listenerDataChange)
+    }
+
+    private val listenerDataChange = Runnable {
+        onDataChanged()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        bpRepo.removeListener(listenerDataChange)
     }
 
     private fun initView(view: View) {
@@ -63,7 +74,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     }
 
     private fun fillView(bpEntity: BpEntity) {
-        recordsTv.text = "Записи"
+//        recordsTv.text
         adapter.setData(bpList)
 
     }

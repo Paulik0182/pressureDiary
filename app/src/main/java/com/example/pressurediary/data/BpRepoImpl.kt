@@ -74,4 +74,12 @@ class BpRepoImpl: BpRepo {
             oldBpList.conditionUser = changedBp.conditionUser
         }
     }
+
+    override fun addOnDataChangedListener(listener: Runnable) {
+        //TODO("Not yet implemented")
+    }
+
+    override fun removeListener(listener: Runnable) {
+        //TODO("Not yet implemented")
+    }
 }
