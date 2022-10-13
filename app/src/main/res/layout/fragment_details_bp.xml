@@ -274,6 +274,7 @@
             android:layout_marginStart="16dp"
             android:gravity="left|top"
             android:hint="Примечание"
+            android:singleLine="true"
             android:maxLength="60"
             android:textColor="@color/black"
             android:textSize="18sp" />

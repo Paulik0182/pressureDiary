@@ -39,6 +39,8 @@ class BpListAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<BpEntity>) {
+        // очищаем список (обязательно очищаем или данные будут множется, задваиватся)
+        bpListWithHeaders.clear()
         // Делаем обратную сортировку данных на конкретном экране
         // проходим по всему массиву данных и заполняем bpListWithHeaders (элементами список)
         data
