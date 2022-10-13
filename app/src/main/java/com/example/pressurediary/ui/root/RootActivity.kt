@@ -101,19 +101,6 @@ class RootActivity : AppCompatActivity(),
         backPressedTime = System.currentTimeMillis()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val fragment =
-            supportFragmentManager.findFragmentByTag(TAG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
-        fragment.onDataChanged()
-    }
-
-    fun onDataChanged() {
-        val fragment =
-            supportFragmentManager.findFragmentByTag(TAG_MAIN_CONTAINER_LAYOUT_KEY) as BpListFragment
-        fragment.onDataChanged()
-    }
-
     override fun openAboutApp() {
         onAboutApp()
         title = "О приложении"

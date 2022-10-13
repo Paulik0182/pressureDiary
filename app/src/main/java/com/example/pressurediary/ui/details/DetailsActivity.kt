@@ -1,6 +1,5 @@
 package com.example.pressurediary.ui.details
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
@@ -31,7 +30,6 @@ class DetailsActivity : AppCompatActivity(),
     }
 
     override fun onDataChanged() {
-       setResult(Activity.RESULT_OK)
         finish()
     }
 }

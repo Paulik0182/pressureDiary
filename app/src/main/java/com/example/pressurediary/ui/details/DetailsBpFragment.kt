@@ -12,8 +12,8 @@ import com.example.pressurediary.R
 import com.example.pressurediary.domain.BpEvaluation
 import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
-import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.utils.bpDataTimeFormatter
 import org.koin.android.ext.android.inject
 import java.util.*
@@ -34,7 +34,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private lateinit var emojiExcellentTv: TextView
     private lateinit var descriptionEt: EditText
 
-    private val bpRepo: BpRepo by inject() //получили через Koin
+    private val bpRepo: BpDaoInteractor by inject() //получили через Koin
     private val evaluator: BpEvaluator by inject()
 
     private lateinit var bpEntity: BpEntity

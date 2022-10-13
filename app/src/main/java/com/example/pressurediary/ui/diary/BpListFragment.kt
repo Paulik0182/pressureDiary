@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
-import com.example.pressurediary.domain.repos.BpRepo
-import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 private const val BP_LIST_KEY = "BP_LIST_KEY"
@@ -28,7 +27,7 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         fillView(bpEntity)
     }
 
-    private val bpRepo: BpRepo by inject() //получили через Koin
+    private val bpRepo: BpDaoInteractor by inject() //получили через Koin
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var bpList: MutableList<BpEntity>
@@ -52,7 +51,8 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 //                .show()
         }
 
-//        bpRepo.addOnDataChangedListener(listenerDataChange)
+        // подписка на изменения
+        bpRepo.addOnDataChangedListener(listenerDataChange)
     }
 
     private val listenerDataChange = Runnable {
