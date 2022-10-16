@@ -1,11 +1,11 @@
-package com.example.pressurediary.ui.advice
+package com.example.pressurediary.ui.chart
 
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 
-class AdviceFragment : Fragment(R.layout.fragment_advice) {
+class ChartFragment : Fragment(R.layout.fragment_chart) {
 
     interface Controller {
         //TODO
@@ -20,7 +20,7 @@ class AdviceFragment : Fragment(R.layout.fragment_advice) {
 
     companion object {
         @JvmStatic
-        fun newInstance() = AdviceFragment().apply {
+        fun newInstance() = ChartFragment().apply {
             arguments = Bundle().apply {
 
             }

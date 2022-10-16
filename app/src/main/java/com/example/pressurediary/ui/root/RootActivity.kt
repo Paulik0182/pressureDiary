@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.pressurediary.ui.advice.AdviceFragment
+import com.example.pressurediary.ui.chart.ChartFragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
 import com.example.pressurediary.domain.entities.BpEntity
@@ -22,7 +22,7 @@ private const val DETAILS_REQUEST_KOD = 100
 class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
     SettingsFragment.Controller,
-    AdviceFragment.Controller,
+    ChartFragment.Controller,
     AboutAppFragment.Controller {
 
     private lateinit var binding: ActivityRootBinding
@@ -37,7 +37,7 @@ class RootActivity : AppCompatActivity(),
             title = it.title
             val fragment = when (it.itemId) {
                 R.id.bp_list_item -> BpListFragment()
-                R.id.advice_item -> AdviceFragment()
+                R.id.chart_item -> ChartFragment()
                 R.id.settings_item -> SettingsFragment()
                 else -> throw IllegalStateException("Такого фрагмента нет")
             }
