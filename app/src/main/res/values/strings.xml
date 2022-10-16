@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Pressure diary</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="submit">Добавить измерение</string>
+    <string name="emoji_1">&#129301;</string>
+    <string name="emoji_2">&#128532;</string>
+    <string name="emoji_3">&#128528;</string>
+    <string name="emoji_4">&#128522;</string>
+    <string name="emoji_5">&#129303;</string>
 </resources>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDADA"
+    android:orientation="vertical"
+    tools:context=".ui.details.DetailsBpFragment">
+
+    <TextView
+        android:id="@+id/title_data_time_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/my_radius_110"
+        android:gravity="center"
+        android:hint="00.00.0000  00:00"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/my_radius_35"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="СИС"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="ДИА"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Пульс"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <EditText
+                android:id="@+id/systolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
+
+            <EditText
+                android:id="@+id/diastolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
+
+            <EditText
+                android:id="@+id/pulse_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="#2B9B3E"
+                android:textSize="36sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="мм.рт.ст."
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="мм.рт.ст."
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="чсс"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/condition_text_view"
+                android:layout_width="107dp"
+                android:layout_height="81dp"
+                android:background="@drawable/ic_heat_green_24"
+                android:gravity="center"
+                android:textSize="26sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/my_radius_35"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/emoji_fatal_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_1"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/emoji_badly_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_2"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/emoji_fine_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_3"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/emoji_well_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_4"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/emoji_excellent_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_5"
+            android:textSize="36sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/my_radius_35"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left|top"
+            android:hint="Примечание:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="16dp"
+            android:gravity="left|top"
+            android:hint="Примечание"
+            android:singleLine="true"
+            android:maxLength="60"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
