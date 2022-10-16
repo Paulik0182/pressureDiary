@@ -22,6 +22,8 @@ private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
+    var backPressedTime: Long = 0
+
     private lateinit var titleDataTimeTv: TextView
     private lateinit var systolicEt: EditText
     private lateinit var diastolicEt: EditText
@@ -40,6 +42,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private lateinit var bpEntity: BpEntity
 
     private lateinit var saveMenuItem: MenuItem
+    private lateinit var delMenuItem: MenuItem
     private lateinit var exitMenuItem: MenuItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -150,6 +153,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_for_detailed_fragment, menu)
         saveMenuItem = menu.findItem(R.id.save_icon_menu_items)
+        delMenuItem = menu.findItem(R.id.delete_icon_menu_items)
         exitMenuItem = menu.findItem(R.id.exit_icon_menu_items)
     }
 
@@ -183,6 +187,25 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
             }
             R.id.exit_icon_menu_items -> {
                 activity?.onBackPressed()//выход (кнопка назад)
+            }
+
+            R.id.delete_icon_menu_items -> {
+                val bpRepo = bpRepo
+
+                if (System.currentTimeMillis() - backPressedTime <= 3_000) {
+                    bpRepo.removeBp(bpEntity)
+                    activity?.onBackPressed()//выход (кнопка назад)
+                    backPressedTime = 0//обнуляем время если вышли из фрагмента
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Вы уверены что хотите удалить запись?\nЕсли \"ДА\" нажмите еще раз!", Toast.LENGTH_LONG
+                    )
+                        .show()
+                }
+                backPressedTime = System.currentTimeMillis()
+
+                bpRepo.removeBp(bpEntity)
             }
         }
         return super.onOptionsItemSelected(item)
