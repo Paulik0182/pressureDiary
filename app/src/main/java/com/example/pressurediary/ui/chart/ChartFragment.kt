@@ -31,32 +31,51 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
         val bpList = bpRepo.getAllBpList()//получили данные
 
-        // делаем списки с состояниями (у нас есть типы оценки состояния) завели Счетчик
-        var normalBpCount = 0
-        var preHypertensionBpCount = 0
-        var hypertension1BpCount = 0
-        var hypertension2BpCount = 0
-        var unknownBpCount = 0
-
-        // заполняем данными (прошлись по всем, в зависимости от оценки поставили оценку)
+        //ВАРИАНТ 2 БОЛЕЕ КОРОТКИЙ, но менее понятный
+        //ключь -это BpEvaluation (оценка), а значение - это счетчик
+        val bpEvaluationCountMap = HashMap<BpEvaluation, Int>()
+            // (это *Табличка) заполняем табличку нулями
+        BpEvaluation.values().forEach {
+            bpEvaluationCountMap[it] = 0
+        }
+        //проходимся по всем данным, сделать оценку
         bpList.forEach {
-            when (bpEvaluator.evaluate(it)) {
-                BpEvaluation.NORMAL -> normalBpCount++
-                BpEvaluation.PRE_HYPERTENSION -> preHypertensionBpCount++
-                BpEvaluation.HYPERTENSION_1 -> hypertension1BpCount++
-                BpEvaluation.HYPERTENSION_2 -> hypertension2BpCount++
-                BpEvaluation.UNKNOWN -> unknownBpCount++
-            }
+            val evaluation = bpEvaluator.evaluate(it)
+            bpEvaluationCountMap[evaluation] = bpEvaluationCountMap[evaluation]!! +1
         }
 
-        //Заводим некий лист входных псевдо данных
-        val pieEntries = listOf<PieEntry>(
-            PieEntry(normalBpCount.toFloat(), "Нормальное"),
-            PieEntry(preHypertensionBpCount.toFloat(), "Предгипертензия"),
-            PieEntry(hypertension1BpCount.toFloat(), "Гипертензия 1"),
-            PieEntry(hypertension2BpCount.toFloat(), "Гипертензия 2"),
-            PieEntry(unknownBpCount.toFloat(), "Не известно 1")
-        )
+        //наполнили данными
+        val pieEntries = bpEvaluationCountMap.keys.map{
+            PieEntry(bpEvaluationCountMap[it]!!.toFloat())
+        }
+
+        //ВАРИАНТ 1 более подробный
+        // (это *Табличка) делаем списки с состояниями (у нас есть типы оценки состояния) завели Счетчик
+//        var normalBpCount = 0
+//        var preHypertensionBpCount = 0
+//        var hypertension1BpCount = 0
+//        var hypertension2BpCount = 0
+//        var unknownBpCount = 0
+//
+//        // заполняем данными (прошлись по всем, в зависимости от оценки поставили оценку)
+//        bpList.forEach {
+//            when (bpEvaluator.evaluate(it)) {
+//                BpEvaluation.NORMAL -> normalBpCount++
+//                BpEvaluation.PRE_HYPERTENSION -> preHypertensionBpCount++
+//                BpEvaluation.HYPERTENSION_1 -> hypertension1BpCount++
+//                BpEvaluation.HYPERTENSION_2 -> hypertension2BpCount++
+//                BpEvaluation.UNKNOWN -> unknownBpCount++
+//            }
+//        }
+//
+//        //Заводим некий лист входных псевдо данных
+//        val pieEntries = listOf<PieEntry>(
+//            PieEntry(normalBpCount.toFloat(), "Нормальное"),
+//            PieEntry(preHypertensionBpCount.toFloat(), "Предгипертензия"),
+//            PieEntry(hypertension1BpCount.toFloat(), "Гипертензия 1"),
+//            PieEntry(hypertension2BpCount.toFloat(), "Гипертензия 2"),
+//            PieEntry(unknownBpCount.toFloat(), "Не известно 1")
+//        )
 
         //получаем количество значений и название
         val pieDataSet = PieDataSet(pieEntries, "Давление")
