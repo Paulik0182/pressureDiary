@@ -36,7 +36,9 @@ class BpRepoImpl: BpRepo {
         data.add(BpEntity(14,Calendar.getInstance().timeInMillis + 130, 155, 100, 80, Emoji.FATAL, "Очень плохо"))
         data.add(BpEntity(15,Calendar.getInstance().timeInMillis + 140, 110, 60, 55, Emoji.FATAL, "Очень плохо"))
         data.add(BpEntity(16,Calendar.getInstance().timeInMillis + 150, 100, 55, 60, Emoji.FATAL, "Очень плохо"))
-        idCounter = 16
+        data.add(BpEntity(17, Calendar.getInstance().timeInMillis + 200000000,170, 100, 75,
+            Emoji.WELL, "Хорошо"))
+        idCounter = 17
     }
 
     override fun addBp(bpEntity: BpEntity) {

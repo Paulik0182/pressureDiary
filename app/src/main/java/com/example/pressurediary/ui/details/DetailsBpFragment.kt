@@ -61,27 +61,27 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private fun setupListener() {
         emojiFatalTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Color.YELLOW)
+            it.setBackgroundColor(Emoji.FATAL.color)
             bpEntity.wellBeing = Emoji.FATAL//присваиваем значение састояничя
         }
         emojiBadlyTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Color.YELLOW)
+            it.setBackgroundColor(Emoji.BADLY.color)
             bpEntity.wellBeing = Emoji.BADLY
         }
         emojiFineTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Color.YELLOW)
+            it.setBackgroundColor(Emoji.FINE.color)
             bpEntity.wellBeing = Emoji.FINE
         }
         emojiWellTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Color.YELLOW)
+            it.setBackgroundColor(Emoji.WELL.color)
             bpEntity.wellBeing = Emoji.WELL
         }
         emojiExcellentTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Color.YELLOW)
+            it.setBackgroundColor(Emoji.EXCELLENT.color)
             bpEntity.wellBeing = Emoji.EXCELLENT
         }
 
@@ -127,11 +127,11 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         descriptionEt.setText(bpEntity.conditionUser)
 
         val color = when (evaluator.evaluate(bpEntity)) {
-            BpEvaluation.NORMAL -> Color.GREEN
-            BpEvaluation.PRE_HYPERTENSION -> Color.BLUE
-            BpEvaluation.HYPERTENSION_1 -> Color.YELLOW
-            BpEvaluation.HYPERTENSION_2 -> Color.RED
-            BpEvaluation.UNKNOWN -> Color.GRAY
+            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
+            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
+            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
+            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
+            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
         }
 
         val header = when (evaluator.evaluate(bpEntity)) {

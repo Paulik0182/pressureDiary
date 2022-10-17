@@ -1,7 +1,6 @@
 package com.example.pressurediary.ui.diary
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import com.example.pressurediary.R
@@ -43,11 +42,11 @@ class BpListViewHolder(
         timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
 
         val color = when (evaluation) {
-            BpEvaluation.NORMAL -> Color.GREEN
-            BpEvaluation.PRE_HYPERTENSION -> Color.BLUE
-            BpEvaluation.HYPERTENSION_1 -> Color.YELLOW
-            BpEvaluation.HYPERTENSION_2 -> Color.RED
-            BpEvaluation.UNKNOWN -> Color.GRAY
+            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
+            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
+            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
+            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
+            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
         }
         systolicTv.setTextColor(color)
         diastolicTv.setTextColor(color)

@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pre_hypertension">#F48A04</color>
+    <color name="hypertension">#F11202</color>
+    <color name="normal">#43A047</color>
 </resources>

@@ -12,8 +12,8 @@ class BpEvaluatorImpl: BpEvaluator {
 
     override fun evaluate(bpEntity: BpEntity): BpEvaluation =
         when (bpEntity.systolicLevel){
-            in 1..119 -> BpEvaluation.NORMAL
-            in 120..139 -> BpEvaluation.PRE_HYPERTENSION
+            in 1..129 -> BpEvaluation.NORMAL
+            in 130..139 -> BpEvaluation.PRE_HYPERTENSION
             in 140..159 -> BpEvaluation.HYPERTENSION_1
             in 160..180 -> BpEvaluation.HYPERTENSION_2
             else -> BpEvaluation.UNKNOWN
