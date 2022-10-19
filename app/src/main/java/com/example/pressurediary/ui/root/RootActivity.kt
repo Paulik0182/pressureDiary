@@ -13,6 +13,7 @@ import com.example.pressurediary.ui.details.DetailsActivity
 import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
+import com.example.pressurediary.ui.settings.reference.ReferenceFragment
 import java.lang.IllegalStateException
 
 private const val TAG_MAIN_CONTAINER_LAYOUT_KEY = "TAG_MAIN_CONTAINER_LAYOUT_KEY"
@@ -23,7 +24,8 @@ class RootActivity : AppCompatActivity(),
     BpListFragment.Controller,
     SettingsFragment.Controller,
     ChartFragment.Controller,
-    AboutAppFragment.Controller {
+    AboutAppFragment.Controller,
+    ReferenceFragment.Controller {
 
     private lateinit var binding: ActivityRootBinding
     var backPressedTime: Long = 0
@@ -64,7 +66,7 @@ class RootActivity : AppCompatActivity(),
     }
 
 
-    override fun openDetailsBp(bpEntity: BpEntity?){
+    override fun openDetailsBp(bpEntity: BpEntity?) {
         val intent = Intent(this, DetailsActivity::class.java)
         bpEntity?.let {
             intent.putExtra(BP_ENTITY_DETAILS_KEY, bpEntity)
@@ -74,6 +76,15 @@ class RootActivity : AppCompatActivity(),
 
     private fun onAboutApp() {
         val fragment: Fragment = AboutAppFragment.newInstance()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainerFrameLayout.id, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun onReferenceApp() {
+        val fragment: Fragment = ReferenceFragment.newInstance()
         supportFragmentManager
             .beginTransaction()
             .replace(binding.fragmentContainerFrameLayout.id, fragment)
@@ -104,5 +115,10 @@ class RootActivity : AppCompatActivity(),
     override fun openAboutApp() {
         onAboutApp()
         title = "О приложении"
+    }
+
+    override fun openReferenceApp() {
+        onReferenceApp()
+        title = "Справка"
     }
 }
