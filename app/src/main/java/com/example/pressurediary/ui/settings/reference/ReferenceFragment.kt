@@ -13,6 +13,8 @@ import com.example.pressurediary.R
 import com.example.pressurediary.domain.repos.ReferenceRepo
 import org.koin.android.ext.android.inject
 
+private const val HTTP_MP_ANDROID_CHART_KEY = "http://github.com/PhilJay/MPAndroidChart"
+
 class ReferenceFragment : Fragment(R.layout.fragment_reference) {
 
     private lateinit var exitButton: Button
@@ -43,15 +45,15 @@ class ReferenceFragment : Fragment(R.layout.fragment_reference) {
         }
         adapter = ReferenceAdapter(
             openLink = {
-                sendMessage()
+                sendBrowser()
             })
         recyclerView.adapter = adapter
     }
 
-    private fun sendMessage() {
+    private fun sendBrowser() {
         val intent = Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("http://github.com/PhilJay/MPAndroidChart")
+            Uri.parse(HTTP_MP_ANDROID_CHART_KEY)
         )
         startActivity(intent)
     }
@@ -69,11 +71,6 @@ class ReferenceFragment : Fragment(R.layout.fragment_reference) {
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            ReferenceFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+        fun newInstance() = ReferenceFragment()
     }
 }
