@@ -1,4 +1,4 @@
-package com.example.pressurediary.utils
+package com.example.pressurediary.ui.utils
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat

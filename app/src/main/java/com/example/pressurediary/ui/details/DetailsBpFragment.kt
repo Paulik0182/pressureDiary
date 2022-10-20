@@ -14,7 +14,8 @@ import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
-import com.example.pressurediary.utils.bpDataTimeFormatter
+import com.example.pressurediary.ui.utils.bpDataTimeFormatter
+import com.example.pressurediary.ui.utils.getColor
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -126,13 +127,20 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         pulseEt.setText(bpEntity.pulse.toString())
         descriptionEt.setText(bpEntity.conditionUser)
 
-        val color = when (evaluator.evaluate(bpEntity)) {
-            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
-            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
-            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
-            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
-            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
-        }
+        //вариант 3. раскрашиваем цветами
+        val color = evaluator.evaluate(bpEntity).getColor(requireActivity())
+
+        //вариант 2. раскрашиваем цветами
+//        val color = MappersExtensions.getColor(requireActivity(), evaluator.evaluate(bpEntity))
+
+//вариант 1. раскрашиваем цветами
+//        val color = when (evaluator.evaluate(bpEntity)) {
+//            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
+//            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
+//            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
+//            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
+//            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
+//        }
 
         val header = when (evaluator.evaluate(bpEntity)) {
             BpEvaluation.NORMAL -> R.drawable.ic_heat_yellow_24

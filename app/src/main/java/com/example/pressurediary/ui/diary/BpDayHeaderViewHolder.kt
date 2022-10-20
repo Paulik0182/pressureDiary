@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import com.example.pressurediary.R
-import com.example.pressurediary.utils.bpDataFormatter
+import com.example.pressurediary.ui.utils.bpDataFormatter
 
 /**
  * Это заголовок дня показаний давлений

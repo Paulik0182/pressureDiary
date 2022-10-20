@@ -9,6 +9,7 @@ import com.example.pressurediary.R
 import com.example.pressurediary.domain.BpEvaluation
 import com.example.pressurediary.domain.interactors.BpEvaluator
 import com.example.pressurediary.domain.repos.BpRepo
+import com.example.pressurediary.ui.utils.getColor
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -78,14 +79,25 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
         //получаем количество значений и название
         val pieDataSet = PieDataSet(pieEntries, "Давление")
 
+        //Вариант 3 (расширяем функцию. экстеншен)
         //Раскрашиваем значения. ВНИМАНИЕ на написание colors
         pieDataSet.colors = listOf(
-            BpEvaluation.NORMAL.color,
-            BpEvaluation.PRE_HYPERTENSION.color,
-            BpEvaluation.HYPERTENSION_1.color,
-            BpEvaluation.HYPERTENSION_2.color,
-            BpEvaluation.UNKNOWN.color
+            BpEvaluation.NORMAL.getColor(requireContext()),
+            BpEvaluation.PRE_HYPERTENSION.getColor(requireContext()),
+            BpEvaluation.HYPERTENSION_1.getColor(requireContext()),
+            BpEvaluation.HYPERTENSION_2.getColor(requireContext()),
+            BpEvaluation.UNKNOWN.getColor(requireContext())
         )
+
+        //Вариант 2
+//        //Раскрашиваем значения. ВНИМАНИЕ на написание colors
+//        pieDataSet.colors = listOf(
+//            MappersExtensions.getColor(requireContext(), BpEvaluation.NORMAL),
+//            MappersExtensions.getColor(requireContext(), BpEvaluation.PRE_HYPERTENSION),
+//            MappersExtensions.getColor(requireContext(), BpEvaluation.HYPERTENSION_1),
+//            MappersExtensions.getColor(requireContext(), BpEvaluation.HYPERTENSION_2),
+//            MappersExtensions.getColor(requireContext(), BpEvaluation.UNKNOWN)
+//        )
 
         //заводим сущьность pie data
         val pieData = PieData(pieDataSet)
