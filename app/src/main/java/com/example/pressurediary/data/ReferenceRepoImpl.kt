@@ -22,7 +22,7 @@ class ReferenceRepoImpl : ReferenceRepo {
                 1,
                 "MP Android Chart",
                 "В данном приложении была использована библиотека MP Android Chart.  " +
-                        "Эта библиотека, предназначенная для рисования диаграмм на Android." +
+                        "Эта библиотека (http://github.com/PhilJay/MPAndroidChart), предназначенная для рисования диаграмм на Android." +
                         "\nВыражаем благодарность создателю Библиотеки ",
                 R.drawable.mp_android_chart,
                 "http://github.com/PhilJay/MPAndroidChart"

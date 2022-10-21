@@ -47,14 +47,6 @@
             android:textColor="@color/purple_700"
             android:textSize="16dp" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:overScrollMode="never"
-            android:padding="8dp"
-            android:scrollbarStyle="insideOverlay">
-
             <TextView
                 android:id="@+id/description_text_view"
                 android:layout_width="match_parent"
@@ -63,9 +55,8 @@
                 android:text="описание"
                 android:textColor="@color/black"
                 android:textSize="16dp"
+                android:autoLink="web"
                 android:textStyle="italic" />
-
-        </ScrollView>
 
     </LinearLayout>
 
