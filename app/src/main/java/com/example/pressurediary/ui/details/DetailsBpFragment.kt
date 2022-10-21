@@ -62,27 +62,27 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private fun setupListener() {
         emojiFatalTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Emoji.FATAL.color)
+            it.setBackgroundResource(Emoji.FATAL.getColor(requireContext()))
             bpEntity.wellBeing = Emoji.FATAL//присваиваем значение састояничя
         }
         emojiBadlyTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Emoji.BADLY.color)
+            it.setBackgroundResource(Emoji.BADLY.getColor(requireContext()))
             bpEntity.wellBeing = Emoji.BADLY
         }
         emojiFineTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Emoji.FINE.color)
+            it.setBackgroundResource(Emoji.FINE.getColor(requireContext()))
             bpEntity.wellBeing = Emoji.FINE
         }
         emojiWellTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Emoji.WELL.color)
+            it.setBackgroundResource(Emoji.WELL.getColor(requireContext()))
             bpEntity.wellBeing = Emoji.WELL
         }
         emojiExcellentTv.setOnClickListener {
             deselectEmoji()
-            it.setBackgroundColor(Emoji.EXCELLENT.color)
+            it.setBackgroundResource(Emoji.EXCELLENT.getColor(requireContext()))
             bpEntity.wellBeing = Emoji.EXCELLENT
         }
 

@@ -26,6 +26,7 @@
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_110.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_35.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_50.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_55.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_background.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_details.xml" value="0.2975630611372381" />
@@ -35,7 +36,7 @@
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_advice.xml" value="0.2975630611372381" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_bp_list.xml" value="0.2" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_chart.xml" value="0.17672413793103448" />
-        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_details_bp.xml" value="0.2975630611372381" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_details_bp.xml" value="0.25" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_reference.xml" value="0.2975630611372381" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_root.xml" value="0.2860196665241556" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/fragment_settings.xml" value="0.25" />

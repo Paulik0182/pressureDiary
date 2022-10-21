@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCDADA"
+    android:background="#F1EEEE"
     android:orientation="vertical"
     tools:context=".ui.details.DetailsBpFragment">
 
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/my_radius_110"
+        android:background="@drawable/my_radius_25"
         android:gravity="center"
         android:hint="00.00.0000  00:00"
         android:textColor="@color/black"
@@ -25,7 +26,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="2dp"
-        android:background="@drawable/my_radius_35"
+        android:background="@drawable/my_radius_25"
         android:orientation="vertical">
 
         <LinearLayout
@@ -146,7 +147,7 @@
                 android:gravity="center_horizontal"
                 android:text="чсс"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -175,7 +176,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="2dp"
-        android:background="@drawable/my_radius_35"
+        android:background="@drawable/my_radius_25"
         android:orientation="horizontal">
 
         <TextView
@@ -252,7 +253,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="2dp"
-        android:background="@drawable/my_radius_35"
+        android:background="@drawable/my_radius_25"
         android:orientation="vertical">
 
         <TextView
