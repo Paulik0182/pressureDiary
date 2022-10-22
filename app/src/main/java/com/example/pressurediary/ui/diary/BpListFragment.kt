@@ -1,17 +1,22 @@
 package com.example.pressurediary.ui.diary
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
+import okhttp3.internal.toImmutableList
+import okio.utf8Size
 import org.koin.android.ext.android.inject
+import org.koin.core.component.getScopeId
 
 private const val BP_LIST_KEY = "BP_LIST_KEY"
 
@@ -32,17 +37,20 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var bpList: MutableList<BpEntity>
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initView(view)
 
+        //подсчет количество записей в БД (не правильный, исправить)
+        val  records = bpRepo.getAllBpList().size
+        recordsTv.text = "Записи: $records"
+
         adapter.setData(bpRepo.getAllBpList())
         adapter.setOnItemClickListener {
             getController().openDetailsBp(it)
         }
-
-        recordsTv.text = "Записи: "
 
         fab.setOnClickListener {
             getController().openDetailsBp(null)

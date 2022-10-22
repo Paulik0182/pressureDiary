@@ -25,10 +25,16 @@
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_custom_background.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_110.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_25.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_35.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_50.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_55.xml" value="0.2215" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_background.xml" value="0.2215" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_emoji.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_emoji_excellent.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_emoji_fatal.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_emoji_fatal_badly.xml" value="0.2445" />
+        <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/drawable/my_radius_emoji_well.xml" value="0.2445" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_details.xml" value="0.2975630611372381" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/ProjectAndroid/Pressurediary/app/src/main/res/layout/activity_root.xml" value="0.2975630611372381" />
