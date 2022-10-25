@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="@dimen/default_margin_top"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:orientation="vertical">
 
         <TextView
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Настройки" />
+            android:text="@string/settings" />
 
     </LinearLayout>
 
@@ -29,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:layout_marginTop="@dimen/default_margin_top"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:orientation="vertical">
 
     </LinearLayout>
@@ -39,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="@dimen/default_margin_top"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ClickButton"
-            android:text="@dimen/share_app"
+            android:text="@string/share_app"
             android:textColor="@color/black"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"

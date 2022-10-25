@@ -30,6 +30,15 @@
     <string name="link">Ссылка</string>
     <string name="description">Описание</string>
 
+    <!-- fragment chart -->
+    <string name="pressure_distribution">Расспределение давления</string>
+    <string name="normal">Нормальное</string>
+    <string name="prehypertension">Предгипертензия</string>
+    <string name="hypertension_1">Гипертензия 1</string>
+    <string name="hypertension_2">Гипертензия 2</string>
+    <string name="unknown">Не известно</string>
+    <string name="pressure">Давление</string>
+
     <!-- bottom nav menu -->
     <string name="measurement">Измерение</string>
     <string name="chart">График</string>
@@ -45,7 +54,8 @@
     <string name="emoji_3">&#128528;</string>
     <string name="emoji_4">&#128522;</string>
     <string name="emoji_5">&#129303;</string>
+
+    <!-- @string/settings -->
 </resources>
 
 
-    <!-- @string/save

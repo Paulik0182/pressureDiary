@@ -12,7 +12,7 @@
         android:id="@+id/title_data_time_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/default_margin"
         android:background="@drawable/my_radius_25"
         android:gravity="center"
         android:hint="00.00.0000  00:00"
@@ -23,9 +23,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
         android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:background="@drawable/my_radius_25"
         android:orientation="vertical">
 
@@ -154,7 +154,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_layout_details_bp"
+            android:layout_margin="@dimen/default_margin"
             android:gravity="center_horizontal">
 
             <TextView
@@ -172,9 +172,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
         android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:background="@drawable/my_radius_25"
         android:orientation="horizontal">
 
@@ -249,9 +249,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
         android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin_bottom"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:background="@drawable/my_radius_25"
         android:orientation="vertical">
 

@@ -14,7 +14,10 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import org.koin.android.ext.android.inject
+
+private const val DEFAULT_CHART_TEXT_SIZE = 16f
 
 class ChartFragment : Fragment(R.layout.fragment_chart) {
 
@@ -69,15 +72,15 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
         //Заводим некий лист входных псевдо данных
         val pieEntries = listOf<PieEntry>(
-            PieEntry(normalBpCount.toFloat(), "Нормальное"),
-            PieEntry(preHypertensionBpCount.toFloat(), "Предгипертензия"),
-            PieEntry(hypertension1BpCount.toFloat(), "Гипертензия 1"),
-            PieEntry(hypertension2BpCount.toFloat(), "Гипертензия 2"),
-            PieEntry(unknownBpCount.toFloat(), "Не известно 1")
+            PieEntry(normalBpCount.toFloat(), getText(R.string.normal).toString()),
+            PieEntry(preHypertensionBpCount.toFloat(), getText(R.string.prehypertension).toString()),
+            PieEntry(hypertension1BpCount.toFloat(), getText(R.string.hypertension_1).toString()),
+            PieEntry(hypertension2BpCount.toFloat(), getText(R.string.hypertension_2).toString()),
+            PieEntry(unknownBpCount.toFloat(), getText(R.string.unknown).toString())
         )
 
         //получаем количество значений и название
-        val pieDataSet = PieDataSet(pieEntries, "Давление")
+        val pieDataSet = PieDataSet(pieEntries, getText(R.string.pressure).toString())
 
         //Вариант 3 (расширяем функцию. экстеншен)
         //Раскрашиваем значения. ВНИМАНИЕ на написание colors
@@ -101,7 +104,7 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
         //заводим сущьность pie data
         val pieData = PieData(pieDataSet)
-        pieData.setValueTextSize(16f)//задали размер выведеных значений
+        pieData.setValueTextSize(DEFAULT_CHART_TEXT_SIZE)//задали размер выведеных значений
 
         //принимает на вход некую сущьность (данные)
         pieChart.data = pieData
@@ -115,9 +118,15 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 //        pieChart.setEntryLabelTextSize(22f)//размер только надписей
         pieChart.setUsePercentValues(true)//Использовать процентные соотношения %
 
+        //Если не инициализировать свою PercentFormatter круговую диаграмму, она не будет отображать %
+        // Вариант 1
+//        pieData.setValueFormatter(PercentFormatter(pieChart))//отформатировали значения (на графике рисуется значек %)
+        // Вариант 2
+        pieDataSet.valueFormatter = PercentFormatter(pieChart)
+
         //Условное название графика
-        pieChart.description.text = "Расспределение давления"
-        pieChart.description.textSize = 16f//размер названия
+        pieChart.description.text = getText(R.string.pressure_distribution).toString()
+        pieChart.description.textSize = DEFAULT_CHART_TEXT_SIZE//размер названия
 
         //Цвет фона
         pieChart.setBackgroundColor(Color.WHITE)

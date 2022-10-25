@@ -6,8 +6,6 @@
     <dimen name="default_description_text">16sp</dimen>
     <dimen name="default_margin">10dp</dimen>
     <dimen name="default_margin_top_bottom">2dp</dimen>
-    <dimen name="default_margin_bottom">2dp</dimen>
-    <dimen name="default_margin_top">2dp</dimen>
     <dimen name="default_padding_recycler_view_dp">1dp</dimen>
     <dimen name="default_margin_layout">8dp</dimen>
     <dimen name="default_values_text">26sp</dimen>
@@ -42,6 +40,8 @@
     <!-- fragment details -->
     <dimen name="size_text_reference">24sp</dimen>
 
-</resources>
+    <!-- fragment chart -->
+    <dimen name="size_text_chart">16</dimen>
 
-    <!-- @dimen/height_reference_image_view   -->
+    <!-- @dimen/default_padding_recycler_view_dp   -->
+</resources>

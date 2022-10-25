@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/default_margin_bottom"
-    android:layout_marginTop="@dimen/default_margin_top"
+    android:layout_marginBottom="@dimen/default_margin_top_bottom"
+    android:layout_marginTop="@dimen/default_margin_top_bottom"
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/orange">
