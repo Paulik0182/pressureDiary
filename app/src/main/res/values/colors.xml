@@ -10,4 +10,26 @@
     <color name="pre_hypertension">#F48A04</color>
     <color name="hypertension">#F11202</color>
     <color name="normal">#43A047</color>
+
+    <color name="bnv_default">#8DEDCB</color>
+    <color name="light_grey">#BFBBBB</color>
+    <color name="light_green">#2B9B3E</color>
+    <color name="white_grey">#F1EEEE</color>
+    <color name="translucent_black_grey">#2A2BBC43</color>
+    <color name="orange">#F39420</color>
+
+    <!--  drawable  -->
+    <color name="orange_500">#A08500</color>
+    <color name="red">#EE0C0C</color>
+    <color name="purple">#A20DC5</color>
+    <color name="heart_light_green">#2BED15</color>
+    <color name="heart_orange">#F3BE00</color>
+    <!--  drawable  emoji-->
+    <color name="coral">#F3568F</color>
+    <color name="red_fatal">#981C49</color>
+    <color name="sand">#F3E775</color>
+    <color name="well_light_green">#7CE981</color>
+
 </resources>
+
+    <!--  @color/well_light_green

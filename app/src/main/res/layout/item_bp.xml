@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
+    android:layout_marginBottom="@dimen/default_margin_bottom"
+    android:layout_marginTop="@dimen/default_margin_top"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="#F39420">
+    app:cardBackgroundColor="@color/orange">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/my_radius_background"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="@dimen/margin_start_end"
+            android:layout_marginEnd="@dimen/margin_start_end"
             android:orientation="horizontal">
 
             <TextView
@@ -30,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="#2B9B3E"
-                android:textSize="36sp"
-                tools:text="000" />
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/values_text"
+                tools:text="@string/meaning_text" />
 
             <TextView
                 android:id="@+id/diastolic_text_view"
@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="#2B9B3E"
-                android:textSize="26sp"
-                tools:text="000" />
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/default_values_text"
+                tools:text="@string/meaning_text" />
 
             <TextView
                 android:id="@+id/pulse_text_view"
@@ -50,9 +50,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="#2B9B3E"
-                android:textSize="26sp"
-                tools:text="000" />
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/default_values_text"
+                tools:text="@string/meaning_text" />
 
             <TextView
                 android:id="@+id/well_being_text_view"
@@ -60,9 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="#2B9B3E"
-                android:textSize="26sp"
-                tools:text="0" />
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/default_values_text"
+                tools:text="@string/meaning_text_zero" />
 
             <TextView
                 android:id="@+id/time_text_view"
@@ -70,9 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="#2B9B3E"
-                android:textSize="26sp"
-                tools:text="00:00" />
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/default_values_text"
+                tools:text="@string/meaning_text_time" />
 
         </LinearLayout>
 

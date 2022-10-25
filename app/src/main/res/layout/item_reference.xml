@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_marginStart="5dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginEnd="5dp"
-    android:layout_marginBottom="2dp"
+    android:layout_marginStart="@dimen/margin_other"
+    android:layout_marginTop="@dimen/default_margin_top_bottom"
+    android:layout_marginEnd="@dimen/margin_other"
+    android:layout_marginBottom="@dimen/default_margin_top_bottom"
     android:background="@drawable/border"
     android:backgroundTint="@color/white"
     android:clickable="true"
@@ -15,14 +15,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="7dp"
+        android:layout_margin="@dimen/margin_not_standard"
         android:gravity="center"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/logo_image_view"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/height_reference_image_view"
             android:layout_gravity="end"
             android:adjustViewBounds="true"
             android:scaleType="fitXY" />
@@ -32,9 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Название библиотеки"
+            android:text="@string/library_name"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/default_text"
             android:textStyle="bold" />
 
         <TextView
@@ -42,19 +42,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Ссылка"
+            android:text="@string/link"
             android:clickable="true"
             android:textColor="@color/purple_700"
-            android:textSize="16dp" />
+            android:textSize="@dimen/default_description_text" />
 
             <TextView
                 android:id="@+id/description_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="описание"
+                android:text="@string/description"
                 android:textColor="@color/black"
-                android:textSize="16dp"
+                android:textSize="@dimen/default_description_text"
                 android:autoLink="web"
                 android:textStyle="italic" />
 

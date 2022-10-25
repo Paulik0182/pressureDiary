@@ -14,7 +14,7 @@ class BpDayHeaderViewHolder(
     itemView: View,
 ) : BaseBpViewHolder(itemView) {
 
-    private val titleHeaderTv = itemView.findViewById<TextView>(R.id.title_data_text_view)
+    private val titleHeaderTv = itemView.findViewById<TextView>(R.id.title_date_text_view)
 
     @SuppressLint("NewApi")
     fun bind(dey: Long) {

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:orientation="horizontal"
-        android:background="#BFBBBB">
+        android:background="@color/light_grey">
 
         <TextView
             android:layout_width="0dp"
@@ -23,8 +23,8 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="СИС" />
+            android:textSize="@dimen/default_text"
+            android:text="@string/heading_sis_bp_list" />
 
         <TextView
             android:layout_width="0dp"
@@ -32,8 +32,8 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="ДИА" />
+            android:textSize="@dimen/default_text"
+            android:text="@string/heading_dia_bp_list" />
 
         <TextView
             android:layout_width="0dp"
@@ -41,8 +41,8 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="Пульс" />
+            android:textSize="@dimen/default_text"
+            android:text="@string/heading_pulse_bp_list" />
 
         <TextView
             android:layout_width="0dp"
@@ -50,8 +50,8 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="Самоч." />
+            android:textSize="@dimen/default_text"
+            android:text="@string/heading_wellbeing_bp_list" />
 
         <TextView
             android:layout_width="0dp"
@@ -59,8 +59,8 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:text="Время" />
+            android:textSize="@dimen/default_text"
+            android:text="@string/heading_time_bp_list" />
 
     </LinearLayout>
 
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="1dp"
+        android:padding="@dimen/default_padding_recycler_view"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbars="vertical"
         tools:listitem="@layout/item_bp" />
@@ -80,9 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="@dimen/records_text_view"
             android:gravity="center"
-            android:text="Записи:" />
+            android:text="@string/records_bp_list" />
 
 </LinearLayout>
 
@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/margin_fab_dp"
         android:contentDescription="@string/submit"
         android:src="@drawable/add_header" />
 

@@ -18,7 +18,7 @@
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         app:menu="@menu/bottom_nav_menu"
-        android:background="#8DEDCB"
+        android:background="@color/bnv_default"
         android:layout_height="wrap_content"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"

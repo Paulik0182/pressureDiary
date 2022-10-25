@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginBottom="@dimen/default_margin_bottom"
         android:orientation="vertical">
 
         <TextView
@@ -29,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginBottom="@dimen/default_margin_bottom"
         android:orientation="vertical">
 
     </LinearLayout>
@@ -39,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:layout_marginBottom="@dimen/default_margin_bottom"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -49,39 +49,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ClickButton"
-            android:text="О приложении"
+            android:text="@string/about_app"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="14sp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:textSize="@dimen/size_text_button"
             android:drawableLeft="@drawable/ic_baseline_receipt_long_24"
-            app:backgroundTint="#2A2BBC43" />
+            app:backgroundTint="@color/translucent_black_grey" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/share_app_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ClickButton"
-            android:text="Поделится приложением"
+            android:text="@dimen/share_app"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_baseline_share_24"
-            android:textSize="14sp"
-            app:backgroundTint="#2A2BBC43" />
+            android:textSize="@dimen/size_text_button"
+            app:backgroundTint="@color/translucent_black_grey" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/reference_app_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ClickButton"
-            android:text="Справка"
+            android:text="@string/reference"
             android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_baseline_room_preferences_24"
-            android:textSize="14sp"
-            app:backgroundTint="#2A2BBC43" />
+            android:textSize="@dimen/size_text_button"
+            app:backgroundTint="@color/translucent_black_grey" />
 
     </LinearLayout>
 
