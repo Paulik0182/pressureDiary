@@ -8,7 +8,7 @@
     android:layout_marginTop="@dimen/default_margin_top_bottom"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/orange">
+    app:cardBackgroundColor="?attr/measurement_frame">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@color/light_green"
+                android:textColor="?attr/measurement_value"
                 android:textSize="@dimen/values_text"
                 tools:text="@string/meaning_text" />
 

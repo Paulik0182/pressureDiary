@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 
@@ -15,6 +18,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private lateinit var shareAppButton: Button
     private lateinit var referenceAppButton: Button
     private lateinit var messageTitleTv: TextView
+    private lateinit var lightDarkThemeSwitch: SwitchCompat
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +37,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         referenceAppButton.setOnClickListener{
             getController().openReferenceApp()
         }
+
+        lightDarkThemeSwitch.setOnCheckedChangeListener{ buttonView, isChecked ->
+            if (isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                Toast.makeText(requireContext(), "Темная тема", Toast.LENGTH_SHORT).show()
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Toast.makeText(requireContext(), "Светлая тема", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun initViews(view: View) {
@@ -40,6 +54,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         shareAppButton = view.findViewById(R.id.share_app_button)
         referenceAppButton = view.findViewById(R.id.reference_app_button)
         messageTitleTv = view.findViewById(R.id.message_title_text_view)
+        lightDarkThemeSwitch = view.findViewById(R.id.switch_themes)
     }
 
     private fun sendMessage(message: String) {

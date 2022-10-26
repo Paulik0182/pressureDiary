@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <!-- Область данных измерений главный экран -->
+        <attr name="measurement_value" format="color"/>
+        <attr name="measurement_frame" format="color"/>
+        <attr name="measurement_second_plan" format="color"/>
+
+        <!-- Заголовок времени главный экран -->
+        <attr name="time_background" format="color"/>
+
+        <!-- значения по умолчанию -->
+        <attr name="default_text" format="color"/>
+    </declare-styleable>
+</resources>

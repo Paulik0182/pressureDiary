@@ -7,7 +7,7 @@
     android:layout_margin="@dimen/margin_other"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/white_grey">
+    app:cardBackgroundColor="?attr/time_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margin"
             android:gravity="start"
-            android:textColor="@color/black"
+            android:textColor="?attr/default_text"
             android:textSize="@dimen/title_text_view"
             tools:text="@string/format_date" />
 
