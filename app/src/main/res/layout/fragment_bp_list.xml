@@ -10,81 +10,82 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal"
-        android:background="@color/light_grey">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="?attr/bp_list_background"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_sis_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/default_text" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_dia_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/default_text" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_pulse_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/default_text" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_wellbeing_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/default_text" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_time_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/default_text" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cardio_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/default_padding_recycler_view_dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/item_bp" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/default_text"
-            android:text="@string/heading_sis_bp_list" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/default_text"
-            android:text="@string/heading_dia_bp_list" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/default_text"
-            android:text="@string/heading_pulse_bp_list" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/default_text"
-            android:text="@string/heading_wellbeing_bp_list" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="@dimen/default_text"
-            android:text="@string/heading_time_bp_list" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cardio_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="@dimen/default_padding_recycler_view_dp"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/item_bp" />
-
-    <TextView
             android:id="@+id/records_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:textColor="@color/black"
-            android:textSize="@dimen/records_text_view"
             android:gravity="center"
-            android:text="@string/records_bp_list" />
+            android:background="?attr/band_with_counting_background"
+            android:text="@string/records_bp_list"
+            android:textColor="?attr/default_text"
+            android:textSize="@dimen/records_text_view" />
 
-</LinearLayout>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

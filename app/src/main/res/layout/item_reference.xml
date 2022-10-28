@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/margin_other"
     android:layout_marginBottom="@dimen/default_margin_top_bottom"
     android:background="@drawable/border"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="?attr/bp_details_background"
     android:clickable="true"
     android:focusable="true">
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/library_name"
-            android:textColor="@color/black"
+            android:textColor="?attr/default_text"
             android:textSize="@dimen/default_text"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/description"
-                android:textColor="@color/black"
+                android:textColor="?attr/default_text"
                 android:textSize="@dimen/default_description_text"
                 android:autoLink="web"
                 android:textStyle="italic" />

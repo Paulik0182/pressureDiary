@@ -17,7 +17,7 @@
 
         <!-- Область данных измерений -->
         <item name="measurement_value">@color/white</item>
-        <item name="measurement_frame">@color/white</item>
+        <item name="measurement_frame">@color/pre_hypertension</item>
         <item name="measurement_second_plan">@color/black</item>
 
         <!-- Заголовок времени главный экран -->
@@ -25,5 +25,23 @@
 
         <!-- значения по умолчанию -->
         <item name="default_text">@color/white</item>
+        <item name="second_plan_background">@color/almost_black</item>
+        <item name="button_background">@color/translucent_black_grey_diary</item>
+        <item name="ic_background">@color/orange_300</item>
+
+        <!-- fragment bp list -->
+        <item name="bp_list_background">@color/white_grey_diary</item>
+        <item name="band_with_counting_background">@color/almost_black</item>
+
+        <!-- RootActivity -->
+        <item name="bottom_navigation_view">@color/bnv_default_diary</item>
+        <item name="item_icon_tint">@color/white</item>
+        <item name="item_text">@color/white</item>
+
+        <!-- fragment details bp -->
+        <item name="bp_details_background">@color/white_grey_diary</item>
+
+        <!-- item reference -->
+        <item name="link_text">@color/purple_010</item>
     </style>
 </resources>

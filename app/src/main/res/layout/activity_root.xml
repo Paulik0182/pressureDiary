@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="?attr/second_plan_background"
     android:orientation="vertical"
     tools:context=".ui.root.RootActivity">
 
@@ -18,10 +18,10 @@
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         app:menu="@menu/bottom_nav_menu"
-        android:background="@color/bnv_default"
+        android:background="?attr/bottom_navigation_view"
         android:layout_height="wrap_content"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        app:itemIconTint="?attr/item_icon_tint"
+        app:itemTextColor="?attr/item_text"
         app:labelVisibilityMode="selected"/>
 
 </LinearLayout>

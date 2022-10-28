@@ -33,24 +33,6 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
         val bpList = bpRepo.getAllBpList()//получили данные
 
-        //ВАРИАНТ 2 БОЛЕЕ КОРОТКИЙ, но менее понятный
-        //ключь -это BpEvaluation (оценка), а значение - это счетчик
-//        val bpEvaluationCountMap = HashMap<BpEvaluation, Int>()
-//            // (это *Табличка) заполняем табличку нулями
-//        BpEvaluation.values().forEach {
-//            bpEvaluationCountMap[it] = 0
-//        }
-//        //проходимся по всем данным, сделать оценку
-//        bpList.forEach {
-//            val evaluation = bpEvaluator.evaluate(it)
-//            bpEvaluationCountMap[evaluation] = bpEvaluationCountMap[evaluation]!! +1
-//        }
-//
-//        //наполнили данными
-//        val pieEntries = bpEvaluationCountMap.keys.map{
-//            PieEntry(bpEvaluationCountMap[it]!!.toFloat())
-//        }
-
         //ВАРИАНТ 1 более подробный
         // (это *Табличка) делаем списки с состояниями (у нас есть типы оценки состояния) завели Счетчик
         var normalBpCount = 0
@@ -92,16 +74,6 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
             BpEvaluation.UNKNOWN.getColor(requireContext())
         )
 
-        //Вариант 2
-//        //Раскрашиваем значения. ВНИМАНИЕ на написание colors
-//        pieDataSet.colors = listOf(
-//            MappersExtensions.getColor(requireContext(), BpEvaluation.NORMAL),
-//            MappersExtensions.getColor(requireContext(), BpEvaluation.PRE_HYPERTENSION),
-//            MappersExtensions.getColor(requireContext(), BpEvaluation.HYPERTENSION_1),
-//            MappersExtensions.getColor(requireContext(), BpEvaluation.HYPERTENSION_2),
-//            MappersExtensions.getColor(requireContext(), BpEvaluation.UNKNOWN)
-//        )
-
         //заводим сущьность pie data
         val pieData = PieData(pieDataSet)
         pieData.setValueTextSize(DEFAULT_CHART_TEXT_SIZE)//задали размер выведеных значений
@@ -113,7 +85,8 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 //        pieChart.holeRadius = 0f
         pieChart.isDrawHoleEnabled = false // Убрать отверстие
 //        pieChart.setCenterTextColor(Color.BLACK)//цвет значений (не названий)
-        pieChart.setEntryLabelColor(Color.BLACK)//цвет всех надписей
+//        pieChart.setEntryLabelColor(Color.BLACK)//цвет всех надписей
+        pieChart.setEntryLabelColor(R.attr.default_text)//цвет всех надписей
         pieChart.setDrawEntryLabels(false)//отключили надписи
 //        pieChart.setEntryLabelTextSize(22f)//размер только надписей
         pieChart.setUsePercentValues(true)//Использовать процентные соотношения %
@@ -122,7 +95,7 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
         // Вариант 1
 //        pieData.setValueFormatter(PercentFormatter(pieChart))//отформатировали значения (на графике рисуется значек %)
         // Вариант 2
-        pieDataSet.valueFormatter = PercentFormatter(pieChart)
+        pieDataSet.valueFormatter = PercentFormatter(pieChart) //на графике рисуется значек %
 
         //Условное название графика
         pieChart.description.text = getText(R.string.pressure_distribution).toString()

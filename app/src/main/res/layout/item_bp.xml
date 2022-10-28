@@ -22,6 +22,7 @@
             android:background="@drawable/my_radius_background"
             android:layout_marginStart="@dimen/margin_start_end"
             android:layout_marginEnd="@dimen/margin_start_end"
+            android:layout_marginBottom="1dp"
             android:orientation="horizontal">
 
             <TextView

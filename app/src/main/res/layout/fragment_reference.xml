@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="?attr/bp_details_background"
     android:orientation="vertical"
     tools:context=".ui.settings.reference.ReferenceFragment">
 
@@ -14,7 +14,7 @@
         android:layout_weight="0.5"
         android:textSize="@dimen/size_text_reference"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="?attr/default_text"
         android:textStyle="bold"
         android:text="@string/libraries_used" />
 
@@ -48,12 +48,12 @@
             android:layout_height="wrap_content"
             android:onClick="ClickButton"
             android:text="@string/close"
-            android:textColor="@color/black"
+            android:textColor="?attr/default_text"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_exit_fragment_24"
             android:textSize="@dimen/size_text_button"
-            app:backgroundTint="@color/translucent_black_grey" />
+            app:backgroundTint="?attr/button_background" />
 
     </LinearLayout>
 
