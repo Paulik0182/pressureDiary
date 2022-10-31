@@ -1,20 +1,19 @@
 package com.example.pressurediary.ui.root
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.pressurediary.ui.chart.ChartFragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.ActivityRootBinding
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.ui.chart.ChartFragment
 import com.example.pressurediary.ui.details.DetailsActivity
 import com.example.pressurediary.ui.diary.BpListFragment
 import com.example.pressurediary.ui.settings.AboutAppFragment
 import com.example.pressurediary.ui.settings.SettingsFragment
 import com.example.pressurediary.ui.settings.reference.ReferenceFragment
-import java.lang.IllegalStateException
 
 private const val TAG_MAIN_CONTAINER_LAYOUT_KEY = "TAG_MAIN_CONTAINER_LAYOUT_KEY"
 private const val BP_ENTITY_DETAILS_KEY = "BP_ENTITY_DETAILS_KEY"
@@ -50,7 +49,11 @@ class RootActivity : AppCompatActivity(),
 
         }
         //значение по умилчанию (экран)
-        binding.bottomNavBar.selectedItemId = R.id.bp_list_item
+        if (savedInstanceState == null) {
+            binding.bottomNavBar.selectedItemId = R.id.bp_list_item
+        } else {
+            //todo иначе достать из --
+        }
     }
 
     private fun swapFragment(fragment: Fragment) {

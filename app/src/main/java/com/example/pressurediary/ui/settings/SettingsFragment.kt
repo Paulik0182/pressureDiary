@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
@@ -25,27 +24,29 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         initViews(view)
 
-        aboutAppButton.setOnClickListener{
+        aboutAppButton.setOnClickListener {
             getController().openAboutApp()
         }
 
-        shareAppButton.setOnClickListener{
+        shareAppButton.setOnClickListener {
             val message = messageTitleTv.text.toString()
             sendMessage(message)
         }
 
-        referenceAppButton.setOnClickListener{
+        referenceAppButton.setOnClickListener {
             getController().openReferenceApp()
         }
 
-        lightDarkThemeSwitch.setOnCheckedChangeListener{ buttonView, isChecked ->
-            if (isChecked){
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                Toast.makeText(requireContext(), "Темная тема", Toast.LENGTH_SHORT).show()
-            }else{
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                Toast.makeText(requireContext(), "Светлая тема", Toast.LENGTH_SHORT).show()
-            }
+        //установили бигунок в соответствии с темой
+        lightDarkThemeSwitch.isChecked =
+            AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+        //Более котлин вариант
+        lightDarkThemeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            AppCompatDelegate.setDefaultNightMode(
+                if (isChecked)
+                    AppCompatDelegate.MODE_NIGHT_YES
+                else AppCompatDelegate.MODE_NIGHT_NO
+            )
         }
     }
 
