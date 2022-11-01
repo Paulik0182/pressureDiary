@@ -27,15 +27,6 @@ object MappersExtensions {
             Emoji.WELL -> Color.GREEN
             Emoji.EXCELLENT -> Color.GREEN
         }
-
-    fun getEmoji1(context: Context, emoji: Emoji): CharSequence =
-        when (emoji) {
-            Emoji.FATAL -> context.getText(R.string.emoji_1)
-            Emoji.BADLY -> context.getText(R.string.emoji_2)
-            Emoji.FINE -> context.getText(R.string.emoji_3)
-            Emoji.WELL -> context.getText(R.string.emoji_4)
-            Emoji.EXCELLENT -> context.getText(R.string.emoji_5)
-        }
 }
 
 //Вариант 2

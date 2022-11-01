@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.TextView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.BpEvaluation
-import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.ui.utils.bpTimeFormatter
 import com.example.pressurediary.ui.utils.getColor
@@ -33,15 +32,8 @@ class BpListViewHolder(
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
 
-//        val emoji1 = emoji.getEmoji(itemView.context)
-//        wellBeingTv.setText(emoji1)
-        when (bpEntity.wellBeing) {
-            Emoji.FATAL -> wellBeingTv.setText(R.string.emoji_1)
-            Emoji.BADLY -> wellBeingTv.setText(R.string.emoji_2)
-            Emoji.FINE -> wellBeingTv.setText(R.string.emoji_3)
-            Emoji.WELL -> wellBeingTv.setText(R.string.emoji_4)
-            Emoji.EXCELLENT -> wellBeingTv.setText(R.string.emoji_5)
-        }
+        //реализация Emoji через ENUM
+        wellBeingTv.text = bpEntity.wellBeing.getEmoji(itemView.context)
 
         //форматируем вид представления времени. Рекомендуемый способ.
         // Уневерсальный способ представление времени. Время считают в Long
