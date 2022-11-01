@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.BpEvaluator
-import java.lang.IllegalStateException
 import java.util.*
 
 
@@ -28,7 +27,7 @@ data class BaseBpAdapterItem(
 
 class BpListAdapter(
     private var evaluator: BpEvaluator,
-    private var listener: (BpEntity) -> Unit
+    private var listener: (BpEntity) -> Unit = {}
 ) : RecyclerView.Adapter<BaseBpViewHolder>() {
 
     //Создали класс для промежуточных данных

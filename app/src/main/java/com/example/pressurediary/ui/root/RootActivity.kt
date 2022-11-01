@@ -44,7 +44,6 @@ class RootActivity : AppCompatActivity(),
             }
 
             swapFragment(fragment)
-//            Toast.makeText(this, it.title, Toast.LENGTH_SHORT).show()
             return@setOnItemSelectedListener true
 
         }

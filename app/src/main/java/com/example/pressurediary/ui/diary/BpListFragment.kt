@@ -3,20 +3,16 @@ package com.example.pressurediary.ui.diary
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
-import androidx.core.view.size
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
-import okhttp3.internal.toImmutableList
-import okio.utf8Size
 import org.koin.android.ext.android.inject
-import org.koin.core.component.getScopeId
 
 private const val BP_LIST_KEY = "BP_LIST_KEY"
 
@@ -28,14 +24,14 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     private val evaluator: BpEvaluator by inject()
 
     private lateinit var adapter: BpListAdapter
-    private val listener = { bpEntity: BpEntity ->
-        fillView(bpEntity)
-    }
 
     private val bpRepo: BpDaoInteractor by inject() //получили через Koin
     private lateinit var recyclerView: RecyclerView
 
     private lateinit var bpList: MutableList<BpEntity>
+
+    //подсчет количество записей в БД
+    private var records: Int = 0
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,8 +39,8 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         initView(view)
 
-        //подсчет количество записей в БД (не правильный, исправить)
-        val  records = bpRepo.getAllBpList().size
+        //подсчет количество записей в БД (подсчет на старте)
+        records = bpRepo.getAllBpList().size
         recordsTv.text = "Записи: $records"
 
         adapter.setData(bpRepo.getAllBpList())
@@ -54,9 +50,6 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         fab.setOnClickListener {
             getController().openDetailsBp(null)
-//            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null)
-//                .show()
         }
 
         // подписка на изменения
@@ -77,14 +70,8 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         recordsTv = view.findViewById(R.id.records_text_view)
         recyclerView = view.findViewById(R.id.cardio_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = BpListAdapter(evaluator, listener)
+        adapter = BpListAdapter(evaluator)
         recyclerView.adapter = adapter
-    }
-
-    private fun fillView(bpEntity: BpEntity) {
-//        recordsTv.text
-        adapter.setData(bpList)
-
     }
 
     interface Controller {
@@ -98,7 +85,11 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         getController()
     }
 
-    fun onDataChanged() {
+    @SuppressLint("SetTextI18n")
+    private fun onDataChanged() {
+        //подсчет количество записей в БД (каждый раз как мы добавляем данные)
+        records = bpRepo.getAllBpList().size
+        recordsTv.text = "Записи: $records"
         adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
     }
 

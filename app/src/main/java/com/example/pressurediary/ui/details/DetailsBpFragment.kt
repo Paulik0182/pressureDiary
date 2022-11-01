@@ -3,7 +3,10 @@ package com.example.pressurediary.ui.details
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -175,7 +178,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
                     systolicLevel = systolicEt.text.toString().toInt(),
                     diastolicLevel = diastolicEt.text.toString().toInt(),
                     pulse = pulseEt.text.toString().toInt(),
-                    conditionUser = descriptionEt.text.toString()
+                    conditionUser = descriptionEt.text.toString(),
                     //В данном коде мы взяли только часть интересующих полей и изменили их,
                     // остальные поля остались прежними
                 )

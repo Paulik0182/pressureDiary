@@ -1,7 +1,6 @@
 package com.example.pressurediary.ui.chart
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -10,14 +9,13 @@ import com.example.pressurediary.domain.BpEvaluation
 import com.example.pressurediary.domain.interactors.BpEvaluator
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.ui.utils.getColor
+import com.example.pressurediary.ui.utils.getColorFromAttr
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import org.koin.android.ext.android.inject
-
-private const val DEFAULT_CHART_TEXT_SIZE = 16f
 
 class ChartFragment : Fragment(R.layout.fragment_chart) {
 
@@ -76,7 +74,8 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
         //заводим сущьность pie data
         val pieData = PieData(pieDataSet)
-        pieData.setValueTextSize(DEFAULT_CHART_TEXT_SIZE)//задали размер выведеных значений
+        pieData.setValueTextSize(requireContext().resources.getDimension(R.dimen.default_chart_text_size))//задали размер выведеных значений
+        pieData.setValueTextColor(requireContext().getColorFromAttr(R.attr.default_text))
 
         //принимает на вход некую сущьность (данные)
         pieChart.data = pieData
@@ -91,18 +90,17 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 //        pieChart.setEntryLabelTextSize(22f)//размер только надписей
         pieChart.setUsePercentValues(true)//Использовать процентные соотношения %
 
-        //Если не инициализировать свою PercentFormatter круговую диаграмму, она не будет отображать %
-        // Вариант 1
 //        pieData.setValueFormatter(PercentFormatter(pieChart))//отформатировали значения (на графике рисуется значек %)
         // Вариант 2
         pieDataSet.valueFormatter = PercentFormatter(pieChart) //на графике рисуется значек %
 
         //Условное название графика
         pieChart.description.text = getText(R.string.pressure_distribution).toString()
-        pieChart.description.textSize = DEFAULT_CHART_TEXT_SIZE//размер названия
+        pieChart.description.textSize =
+            requireContext().resources.getDimension(R.dimen.default_chart_text_size)//размер названия
 
         //Цвет фона
-        pieChart.setBackgroundColor(Color.WHITE)
+        pieChart.setBackgroundColor(requireContext().getColorFromAttr(R.attr.second_plan_background))
     }
 
     interface Controller {
