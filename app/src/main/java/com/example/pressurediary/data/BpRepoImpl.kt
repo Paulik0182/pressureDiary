@@ -4,7 +4,6 @@ import com.example.pressurediary.domain.Emoji
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import java.util.*
-import kotlin.collections.ArrayList
 
 class BpRepoImpl: BpRepo {
 
@@ -74,6 +73,7 @@ class BpRepoImpl: BpRepo {
             oldBpList.diastolicLevel = changedBp.diastolicLevel
             oldBpList.pulse = changedBp.pulse
             oldBpList.conditionUser = changedBp.conditionUser
+            oldBpList.wellBeing = changedBp.wellBeing
         }
     }
 }
