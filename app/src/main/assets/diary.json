@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "time_in_ms": "Calendar.getInstance().timeInMillis",
+    "upper_level": 140,
+    "lower_level": 75,
+    "pulse": 55,
+    "well_being": "Emoji.FINE",
+    "condition_user": "Нормально"
+  },
+  {
+    "id": 2,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 10",
+    "upper_level": 150,
+    "lower_level": 80,
+    "pulse": 70,
+    "well_being": "Emoji.BADLY",
+    "condition_user": "Плохо"
+  },
+  {
+    "id": 3,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 200000000",
+    "upper_level": 120,
+    "lower_level": 95,
+    "pulse": 75,
+    "well_being": "Emoji.WELL",
+    "condition_user": "Хорошо"
+  },
+  {
+    "id": 4,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 30",
+    "upper_level": 125,
+    "lower_level": 85,
+    "pulse": 60,
+    "well_being": "Emoji.EXCELLENT",
+    "condition_user": "Отлично"
+  },
+  {
+    "id": 5,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 400000000",
+    "upper_level": 130,
+    "lower_level": 90,
+    "pulse": 80,
+    "well_being": "Emoji.FINE",
+    "condition_user": "Нормально"
+  },
+  {
+    "id": 6,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 50",
+    "upper_level": 145,
+    "lower_level": 60,
+    "pulse": 70,
+    "well_being": "Emoji.BADLY",
+    "condition_user": "Плохо"
+  },
+  {
+    "id": 7,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 60",
+    "upper_level": 155,
+    "lower_level": 100,
+    "pulse": 80,
+    "well_being": "Emoji.FATAL",
+    "condition_user": "Очень плохо"
+  },
+  {
+    "id": 8,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 700000000",
+    "upper_level": 140,
+    "lower_level": 75,
+    "pulse": 55,
+    "well_being": "Emoji.FINE",
+    "condition_user": "Нормально"
+  },
+  {
+    "id": 9,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 80",
+    "upper_level": 150,
+    "lower_level": 80,
+    "pulse": 70,
+    "well_being": "Emoji.BADLY",
+    "condition_user": "Плохо"
+  },
+  {
+    "id": 10,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 90",
+    "upper_level": 120,
+    "lower_level": 95,
+    "pulse": 75,
+    "well_being": "Emoji.WELL",
+    "condition_user": "Хорошо"
+  },
+  {
+    "id": 11,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 100",
+    "upper_level": 125,
+    "lower_level": 85,
+    "pulse": 60,
+    "well_being": "Emoji.EXCELLENT",
+    "condition_user": "Отлично"
+  },
+  {
+    "id": 12,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 110",
+    "upper_level": 130,
+    "lower_level": 90,
+    "pulse": 80,
+    "well_being": "Emoji.FINE",
+    "condition_user": "Нормально"
+  },
+  {
+    "id": 13,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 120",
+    "upper_level": 145,
+    "lower_level": 60,
+    "pulse": 70,
+    "well_being": "Emoji.BADLY",
+    "condition_user": "Плохо"
+  },
+  {
+    "id": 14,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 130",
+    "upper_level": 155,
+    "lower_level": 100,
+    "pulse": 80,
+    "well_being": "Emoji.FATAL",
+    "condition_user": "Очень плохо"
+  },
+  {
+    "id": 15,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 140",
+    "upper_level": 110,
+    "lower_level": 60,
+    "pulse": 55,
+    "well_being": "Emoji.FATAL",
+    "condition_user": "Очень плохо"
+  },
+  {
+    "id": 16,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 150",
+    "upper_level": 100,
+    "lower_level": 55,
+    "pulse": 60,
+    "well_being": "Emoji.FATAL",
+    "condition_user": "Очень плохо"
+  },
+  {
+    "id": 17,
+    "time_in_ms": "Calendar.getInstance().timeInMillis + 200000000",
+    "upper_level": 170,
+    "lower_level": 100,
+    "pulse": 75,
+    "well_being": "Emoji.WELL",
+    "condition_user": "Хорошо"
+  }
+]
