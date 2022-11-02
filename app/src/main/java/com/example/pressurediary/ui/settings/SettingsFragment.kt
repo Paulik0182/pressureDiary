@@ -48,6 +48,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 else AppCompatDelegate.MODE_NIGHT_NO
             )
         }
+//        throw RuntimeException("Привет")//принудительное падение
     }
 
     private fun initViews(view: View) {
