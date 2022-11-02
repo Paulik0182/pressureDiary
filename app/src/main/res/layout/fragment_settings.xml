@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
+            android:textSize="@dimen/size_text_button"
             android:textColor="?attr/default_text"
             android:text="@string/settings" />
 
@@ -30,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:textOff="Светлая"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
             android:textOn="Темная"
             app:showText="true"
             android:text="Светлая / Темная тема"
@@ -107,6 +110,7 @@
             android:textColor="?attr/default_text"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
             android:textSize="@dimen/size_text_button"
             android:drawableLeft="@drawable/ic_baseline_receipt_long_24"
             app:backgroundTint="?attr/button_background" />
@@ -120,6 +124,7 @@
             android:textColor="?attr/default_text"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
             android:drawableLeft="@drawable/ic_baseline_share_24"
             android:textSize="@dimen/size_text_button"
             app:backgroundTint="?attr/button_background" />
@@ -131,6 +136,7 @@
             android:onClick="ClickButton"
             android:text="@string/reference"
             android:textColor="?attr/default_text"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_baseline_room_preferences_24"
