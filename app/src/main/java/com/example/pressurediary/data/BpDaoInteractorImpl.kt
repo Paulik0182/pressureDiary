@@ -5,7 +5,7 @@ import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 
 class BpDaoInteractorImpl(
-    val bpRepo: BpRepo
+    private val bpRepo: BpRepo
 ): BpDaoInteractor {
 
     private val listeners: MutableSet<Runnable> = mutableSetOf()
@@ -26,6 +26,9 @@ class BpDaoInteractorImpl(
     }
 
     override fun getAllBpList(): List<BpEntity> = bpRepo.getAllBpList()
+    override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
+//        TODO("Not yet implemented")
+    }
 
     override fun removeBp(bpEntity: BpEntity) {
         bpRepo.removeBp(bpEntity)

@@ -41,12 +41,17 @@ class BpRepoImpl: BpRepo {
     }
 
     override fun addBp(bpEntity: BpEntity) {
-        bpEntity.id = ++idCounter//добавляем к id по одному значению. Сначало плюс один, а потом читаем значение
+        bpEntity.id =
+            ++idCounter//добавляем к id по одному значению. Сначало плюс один, а потом читаем значение
         data.add(bpEntity)
     }
 
     override fun getAllBpList(): List<BpEntity> {
         return ArrayList(data)
+    }
+
+    override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
+        TODO("Not yet implemented")
     }
 
     override fun removeBp(bpEntity: BpEntity) {
