@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/bp_details_background"
+    android:orientation="vertical"
+    tools:context=".ui.details.DetailsBpFragment">
+
+    <TextView
+        android:id="@+id/title_data_time_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:background="@drawable/my_radius_25"
+        android:gravity="center"
+        android:hint="00.00.0000  00:00"
+        android:textColor="?attr/default_text"
+        android:textSize="@dimen/time_details_bp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
+        android:background="@drawable/my_radius_25"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_sis_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_details_bp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_dia_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_details_bp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/heading_pulse_bp_list"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_details_bp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin">
+
+            <EditText
+                android:id="@+id/systolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/large_text_details_bp" />
+
+            <EditText
+                android:id="@+id/diastolic_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/large_text_details_bp" />
+
+            <EditText
+                android:id="@+id/pulse_detail_edit_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:gravity="center_horizontal"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/large_text_details_bp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/abbreviations_mrt_details_bp"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_parameters_details_bp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/abbreviations_mrt_details_bp"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_parameters_details_bp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="@string/abbreviations_impact_frequency_details_bp"
+                android:textColor="?attr/default_text"
+                android:textSize="@dimen/abbreviations_parameters_details_bp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/condition_text_view"
+                android:layout_width="@dimen/heart_size_width_details_bp"
+                android:layout_height="@dimen/heart_size_height_details_bp"
+                android:background="@drawable/ic_heat_green_24"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
+        android:background="@drawable/my_radius_25"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/emoji_fatal_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_1"
+            android:textSize="@dimen/large_text_details_bp" />
+
+        <TextView
+            android:id="@+id/emoji_badly_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_2"
+            android:textSize="@dimen/large_text_details_bp" />
+
+        <TextView
+            android:id="@+id/emoji_fine_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_3"
+            android:textSize="@dimen/large_text_details_bp" />
+
+        <TextView
+            android:id="@+id/emoji_well_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_4"
+            android:textSize="@dimen/large_text_details_bp" />
+
+        <TextView
+            android:id="@+id/emoji_excellent_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_layout"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:text="@string/emoji_5"
+            android:textSize="@dimen/large_text_details_bp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_top_bottom"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin_top_bottom"
+        android:background="@drawable/my_radius_25"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_description_details_bp"
+            android:layout_marginTop="@dimen/margin_top_end_description_details_bp"
+            android:gravity="left|top"
+            android:hint="@string/note_details_bp"
+            android:textColor="?attr/default_text"
+            android:textSize="@dimen/abbreviations_parameters_details_bp" />
+
+        <EditText
+            android:id="@+id/description_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_description_details_bp"
+            android:layout_marginBottom="@dimen/default_margin_layout"
+            android:layout_marginEnd="@dimen/margin_top_end_description_details_bp"
+            android:layout_marginStart="@dimen/margin_start_description_details_bp"
+            android:gravity="left|top"
+            android:hint="@string/note_details_bp"
+            android:singleLine="true"
+            android:maxLength="60"
+            android:textColor="?attr/default_text"
+            android:textSize="@dimen/abbreviations_parameters_details_bp" />
+
+    </LinearLayout>
+
+</LinearLayout>
