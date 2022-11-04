@@ -1,6 +1,8 @@
 package com.example.pressurediary.ui.details
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
@@ -25,8 +27,6 @@ import java.util.*
 private const val DETAILS_BP_KEY = "DETAILS_BP_KEY"
 
 class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
-
-    var backPressedTime: Long = 0
 
     private lateinit var titleDataTimeTv: TextView
     private lateinit var systolicEt: EditText
@@ -203,20 +203,18 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
             R.id.delete_icon_menu_items -> {
                 val bpRepo = bpRepo
 
-                if (System.currentTimeMillis() - backPressedTime <= 3_000) {
-                    bpRepo.removeBp(bpEntity)
-                    activity?.onBackPressed()//выход (кнопка назад)
-                    backPressedTime = 0//обнуляем время если вышли из фрагмента
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Вы уверены что хотите удалить запись?\nЕсли \"ДА\" нажмите еще раз!", Toast.LENGTH_LONG
-                    )
-                        .show()
-                }
-                backPressedTime = System.currentTimeMillis()
-
-                bpRepo.removeBp(bpEntity)
+                // всплывающее окно (уточнее действия)!!!
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Вы уверены что хотите удалить запись?")//сообщение на всплыв. окне
+                    .setPositiveButton("ДА") { dialogInterface: DialogInterface, i: Int ->
+                        bpRepo.removeBp(bpEntity)//Удаление записи
+                        activity?.onBackPressed()//выход (кнопка назад)
+                        dialogInterface.dismiss()//закрываем окно. Обязательно!!
+                    }
+                    .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, i: Int ->
+                        dialogInterface.dismiss()//закрываем окно
+                    }
+                    .show()
             }
         }
         return super.onOptionsItemSelected(item)
