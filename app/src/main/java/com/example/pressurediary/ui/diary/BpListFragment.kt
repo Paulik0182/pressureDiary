@@ -39,11 +39,8 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
         initView(view)
 
-        //подсчет количество записей в БД (подсчет на старте)
-        records = bpRepo.getAllBpList().size
-        recordsTv.text = "Записи: $records"
+        updateData()
 
-        adapter.setData(bpRepo.getAllBpList())
         adapter.setOnItemClickListener {
             getController().openDetailsBp(it)
         }
@@ -56,8 +53,21 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
         bpRepo.addOnDataChangedListener(listenerDataChange)
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun updateData() {
+        //подписочный механизм
+        bpRepo.getAllBpList {
+            //подсчет количество записей в БД (подсчет на старте)
+            records = it.size
+            recordsTv.text = "Записи: $records"
+
+            //кладем данные
+            adapter.setData(it)
+        }
+    }
+
     private val listenerDataChange = Runnable {
-        onDataChanged()
+        updateData()
     }
 
     override fun onDestroyView() {
@@ -83,14 +93,6 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun onDataChanged() {
-        //подсчет количество записей в БД (каждый раз как мы добавляем данные)
-        records = bpRepo.getAllBpList().size
-        recordsTv.text = "Записи: $records"
-        adapter.setData(bpRepo.getAllBpList())//Если изменились данные, вставляем их в адаптер
     }
 
     companion object {

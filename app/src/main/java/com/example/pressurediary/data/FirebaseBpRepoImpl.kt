@@ -8,6 +8,7 @@ import com.google.firebase.ktx.Firebase
 
 /**
  * DataSnapshot - это срез данных который приходит
+ * get() - это один вызов, то-есть дождались значение и показали. Разовое получение данных
  */
 const val DATABASE_URL_KEY =
     "https://pressure-diary-78d25-default-rtdb.europe-west1.firebasedatabase.app/"
@@ -18,36 +19,10 @@ class FirebaseBpRepoImpl : BpRepo {
 
     //ссылка на бд. reference - это ссылка на значение
     private val database by lazy {
-        Firebase.database(DATABASE_URL_KEY).apply { setPersistenceEnabled(true) }
-    }    //setPersistenceEnabled(true) для работы без интернета
-
-    private var successBp: ((List<BpEntity>) -> Unit)? = null
-
-
-    init {
-        database.reference.child("Значение").setValue("'это я'")
-
-        database.reference.keepSynced(true)//для синхранизации данных (кешируем данные)
-
-        database.reference.get()
-            .addOnSuccessListener {
-                val pressure: MutableList<BpEntity> = mutableListOf()// собираем колекцию
-                it.children.forEach { snapshot ->
-                    //обработка исключения. Если есть соответствующие данные то обрабатываем,
-                    // если данные не соответствуют то ничего с ними не делаем
-                    try {
-                        //Парсим значения. Если значение не null то добавляем в колекцию (lessons.add(it) )
-                        snapshot.getValue(BpEntity::class.java)?.let { bp ->
-                            pressure.add(bp)
-                        }
-                        //ничего с ними не делаем
-                    } catch (exc: DatabaseException) {
-                        exc.printStackTrace()
-                    }
-                }
-                data = pressure
-                successBp?.invoke(data)
-            }
+        Firebase.database(DATABASE_URL_KEY).apply {
+            setPersistenceEnabled(true) //для работы без интернета
+            reference.keepSynced(true) //для синхранизации данных (кешируем данные)
+        }
     }
 
     override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
@@ -56,6 +31,7 @@ class FirebaseBpRepoImpl : BpRepo {
         database.reference.get()
             .addOnSuccessListener {
                 val pressure: MutableList<BpEntity> = mutableListOf()// собираем колекцию
+                //ищем все записи (snapshot)
                 it.children.forEach { snapshot ->
                     //обработка исключения. Если есть соответствующие данные то обрабатываем,
                     // если данные не соответствуют то ничего с ними не делаем
@@ -75,17 +51,19 @@ class FirebaseBpRepoImpl : BpRepo {
     }
 
     override fun addBp(bpEntity: BpEntity) {
-        //TODO
+        updateBp(bpEntity)
     }
-
 
     override fun getAllBpList(): List<BpEntity> = data
 
     override fun removeBp(bpEntity: BpEntity) {
-        TODO("Not yet implemented")
+        database.reference.child(bpEntity.id).removeValue()
     }
 
     override fun updateBp(changedBp: BpEntity) {
-        //TODO
+        //push() - создает новую запись с индивидуальным кодом (ключь) и уже туда помещает данные
+//        database.reference.push().setValue(changedBp)
+        //создаем новую запись с id
+        database.reference.child(changedBp.id).setValue(changedBp)
     }
 }

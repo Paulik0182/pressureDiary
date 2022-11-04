@@ -27,7 +27,7 @@ class BpDaoInteractorImpl(
 
     override fun getAllBpList(): List<BpEntity> = bpRepo.getAllBpList()
     override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
-//        TODO("Not yet implemented")
+        bpRepo.getAllBpList(onSuccess)
     }
 
     override fun removeBp(bpEntity: BpEntity) {

@@ -40,6 +40,8 @@ class BpListAdapter(
     fun setData(data: List<BpEntity>) {
         // очищаем список (обязательно очищаем или данные будут множется, задваиватся)
         bpListWithHeaders.clear()
+        lastKnownBp =
+            null //Обнуляем каждый раз переменную. Иначе появляется баг с отображением даты (груперуемой даты)
         // Делаем обратную сортировку данных на конкретном экране
         // проходим по всему массиву данных и заполняем bpListWithHeaders (элементами список)
         data
@@ -48,17 +50,19 @@ class BpListAdapter(
             }
             .forEach {
                 val lastKnownBpCalendar = Calendar.getInstance()//создали календарь
-                lastKnownBpCalendar.timeInMillis = lastKnownBp?.timeInMs ?: 0 // положили нужное время
-                val lastDay = lastKnownBpCalendar.get(Calendar.DAY_OF_YEAR)// достали номер дня в году
+                lastKnownBpCalendar.timeInMillis =
+                    lastKnownBp?.timeInMs ?: 0 // положили нужное время
+                val lastDay =
+                    lastKnownBpCalendar.get(Calendar.DAY_OF_YEAR)// достали номер дня в году
 
                 // тоже самое повторяем новое
                 val newKnownBpCalendar = Calendar.getInstance()//создали календарь
                 newKnownBpCalendar.timeInMillis = it.timeInMs ?: 0 // положили нужное время
                 val newDay = newKnownBpCalendar.get(Calendar.DAY_OF_YEAR)// достали номер дня в году
 
-                val neadToShowHeader = lastKnownBp == null || lastDay != newDay
+                val needToShowHeader = lastKnownBp == null || lastDay != newDay
                 //заполняем элементами viewHolder
-                if (neadToShowHeader){
+                if (needToShowHeader) {
                     bpListWithHeaders.add(BaseBpAdapterItem(HEADER_HOLDER_TYPE, data = it.timeInMs))
                 }
                 bpListWithHeaders.add(BaseBpAdapterItem(BP_HOLDER_TYPE, bpEntity = it))
