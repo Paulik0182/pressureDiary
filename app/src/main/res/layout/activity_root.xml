@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         app:menu="@menu/bottom_nav_menu"
         android:background="?attr/bottom_navigation_view"
+        android:visibility="visible"
         android:layout_height="wrap_content"
         app:itemIconTint="?attr/item_icon_tint"
         app:itemTextColor="?attr/item_text"

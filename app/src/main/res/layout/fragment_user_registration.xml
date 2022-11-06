@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/bp_details_background"
+    android:orientation="vertical"
+    android:visibility="visible"
+    tools:context=".ui.user.UserRegistrationFragment">
+
+    <TextView
+        android:id="@+id/heading_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_weight="0.4"
+        android:gravity="center"
+        android:text="@string/registration_users"
+        android:textColor="?attr/default_text"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_weight="6"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            app:boxBackgroundMode="none">
+
+            <EditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#808080"
+                android:gravity="center"
+                android:hint="@string/pattern_email"
+                android:inputType="textEmailAddress"
+                android:lines="1"
+                android:maxLines="1"
+                android:padding="20dp"
+                android:textColor="?attr/default_text"
+                android:textColorHint="#808080"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            app:boxBackgroundMode="none"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterOverflowTextAppearance="@style/counterOverride"
+            app:counterTextAppearance="@style/counterText">
+
+            <EditText
+                android:id="@+id/name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#808080"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/pattern_login"
+                android:inputType="textPersonName"
+                android:lines="1"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:padding="20dp"
+                android:textColor="?attr/default_text"
+                android:textColorHint="#808080"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_one_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            app:boxBackgroundMode="none"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password_one_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#808080"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/pattern_password_one"
+                android:inputType="numberPassword"
+                android:maxLength="10"
+                android:padding="20dp"
+                android:textColor="?attr/default_text"
+                android:textColorHint="#808080"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_two_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            app:boxBackgroundMode="none"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/password_two_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#808080"
+                android:gravity="center"
+                android:hint="@string/pattern_password_two"
+                android:inputType="numberPassword"
+                android:maxLength="10"
+                android:padding="20dp"
+                android:textColor="?attr/default_text"
+                android:textColorHint="#808080"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/registration_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="?attr/default_text"
+            android:text="@string/registration"
+            android:textAllCaps="false"
+            android:textColor="?attr/default_text"
+            android:textSize="15sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/save_changes_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="?attr/default_text"
+            android:text="@string/save_changes"
+            android:textAllCaps="false"
+            android:textColor="?attr/default_text"
+            android:textSize="15sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/recover_password_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="?attr/default_text"
+            android:text="@string/recover_password"
+            android:textAllCaps="false"
+            android:textColor="?attr/default_text"
+            android:textSize="15sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>

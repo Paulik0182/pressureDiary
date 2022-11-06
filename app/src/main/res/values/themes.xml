@@ -15,6 +15,11 @@
         <!-- Customize your theme here. -->
         <!-- This attributes is used by title -->
 
+
+        <item name="colorControlNormal">#d32f2f</item>
+        <item name="colorControlActivated">#ff5722</item>
+        <item name="colorControlHighlight">#f44336</item>
+
         <!-- Область данных измерений -->
         <item name="measurement_value">@color/light_green</item>
         <item name="measurement_frame">@color/orange</item>

@@ -6,6 +6,15 @@
     <string name="version">Версия:</string>
     <string name="records_bp_list">Записи:</string>
 
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="recover_password">Востановить пароль</string>
+    <string name="registration">Регистрация</string>
+    <string name="registration_users">Регистрация пользователя</string>
+    <string name="pattern_email">login@gmail.com</string>
+    <string name="pattern_login">Login / name</string>
+    <string name="pattern_password_one">numeric Password</string>
+    <string name="pattern_password_two">numeric Password</string>
+
     <string name="heading_time_bp_list">Время</string>
     <string name="heading_wellbeing_bp_list">Самоч.</string>
     <string name="heading_pulse_bp_list">Пульс</string>

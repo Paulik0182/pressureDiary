@@ -15,6 +15,10 @@
         <!-- Customize your theme here. -->
         <!-- Customize your theme here. -->
 
+        <item name="colorControlNormal">#d32f2f</item>
+        <item name="colorControlActivated">#ff5722</item>
+        <item name="colorControlHighlight">#f44336</item>
+
         <!-- Область данных измерений -->
         <item name="measurement_value">@color/white</item>
         <item name="measurement_frame">@color/pre_hypertension</item>
