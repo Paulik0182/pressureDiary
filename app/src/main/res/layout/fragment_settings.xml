@@ -95,7 +95,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:layout_marginTop="@dimen/default_margin_top_bottom"
         android:layout_marginBottom="@dimen/default_margin_top_bottom"
         android:gravity="center"
@@ -105,7 +105,6 @@
             android:id="@+id/about_app_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ClickButton"
             android:text="@string/about_app"
             android:textColor="?attr/default_text"
             android:layout_marginTop="@dimen/default_margin"
@@ -119,7 +118,6 @@
             android:id="@+id/share_app_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ClickButton"
             android:text="@string/share_app"
             android:textColor="?attr/default_text"
             android:layout_marginTop="@dimen/default_margin"
@@ -133,13 +131,25 @@
             android:id="@+id/reference_app_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ClickButton"
             android:text="@string/reference"
             android:textColor="?attr/default_text"
             android:fontFamily="@font/playfair_display_bold_allfont_ru"
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             android:drawableLeft="@drawable/ic_baseline_room_preferences_24"
+            android:textSize="@dimen/size_text_button"
+            app:backgroundTint="?attr/button_background" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:drawableLeft="@drawable/ic_baseline_logout_24"
+            android:fontFamily="@font/playfair_display_bold_allfont_ru"
+            android:text="@string/logout"
+            android:textColor="?attr/default_text"
             android:textSize="@dimen/size_text_button"
             app:backgroundTint="?attr/button_background" />
 

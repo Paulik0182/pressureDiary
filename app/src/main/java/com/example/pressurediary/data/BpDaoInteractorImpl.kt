@@ -40,8 +40,13 @@ class BpDaoInteractorImpl(
         notifyListener()
     }
 
+    override fun clearCache() {
+        bpRepo.clearCache()
+        notifyListener()// уведомили всех слушателей
+    }
+
     private fun notifyListener() {
-        listeners.forEach{
+        listeners.forEach {
             it.run()
         }
     }

@@ -34,17 +34,22 @@ class RootActivity : AppCompatActivity(),
     private lateinit var binding: ActivityRootBinding
     var backPressedTime: Long = 0
 
+    //запуск фрагмента для ввода логина
+    private fun showLoginFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.fragmentContainerFrameLayout.id, UserLoginFragment())
+            .commit()
+        binding.bottomNavBar.visibility = View.INVISIBLE
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRootBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (savedInstanceState == null)//проверяем какой запуск первый или нет (например, после поворота экрана)
-            supportFragmentManager
-                .beginTransaction()
-                .replace(binding.fragmentContainerFrameLayout.id, UserLoginFragment())
-                .commit()
-        binding.bottomNavBar.visibility = View.INVISIBLE
+            showLoginFragment()
 
 //        binding.bottomNavBar.setOnItemSelectedListener {
 //            title = it.title
@@ -133,6 +138,10 @@ class RootActivity : AppCompatActivity(),
     override fun openReferenceApp() {
         onReferenceApp()
         title = "Справка"
+    }
+
+    override fun openLogin() {
+        showLoginFragment()
     }
 
     override fun onSuccessLogin() {

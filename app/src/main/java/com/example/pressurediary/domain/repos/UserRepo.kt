@@ -5,6 +5,6 @@ import com.example.pressurediary.domain.entities.UserEntity
 interface UserRepo {
     fun addUser(userEntity: UserEntity)//добавить
     fun getUser(): UserEntity?//получить
-    fun removeUser(userEntity: UserEntity)//удалить
+    fun removeUser()//удалить
     fun updateUser(changedUser: UserEntity)//обновить
 }

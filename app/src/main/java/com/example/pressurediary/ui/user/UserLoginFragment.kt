@@ -7,9 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
-import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
-import com.example.pressurediary.domain.repos.UserRepo
 import org.koin.android.ext.android.inject
 
 class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
@@ -18,9 +16,6 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
     private val binding get() = _binding!!
 
     private val loginInteractor: LoginInteractor by inject()
-    private val userRepo: UserRepo by inject()
-
-    private lateinit var userEntity: UserEntity
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,11 +32,11 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
                     0
                 }
             loginInteractor.login(login, password) {
-                it?.let {
-                    // передтем как зайти, нужно сохранить логин и пароль в UserRepo
-                    userRepo.addUser(it)
+                if (it) {
                     getController().onSuccessLogin()
-                } ?: showError()
+                } else {
+                    showError()
+                }
             }
         }
 

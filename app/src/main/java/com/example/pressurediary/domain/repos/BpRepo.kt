@@ -8,4 +8,6 @@ interface BpRepo {
     fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) //получить firebase
     fun removeBp(bpEntity: BpEntity)//удалить
     fun updateBp(changedBp: BpEntity)//обновить
+
+    fun clearCache() //очищаем кэш
 }

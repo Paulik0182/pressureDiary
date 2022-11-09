@@ -30,8 +30,10 @@ class FirebaseBpRepoImpl(
     }
 
     //перед тем как что-то достаем из БД начинаем знать о пользователе
-    private val userDiaryDatabaseReference =
-        database.reference.child(userRepo.getUser()!!.id).child("diary")
+    private val userDiaryDatabaseReference
+        get() =
+            database.reference.child(userRepo.getUser()!!.id).child("diary")
+
 
     override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
         database.reference.keepSynced(true)//для синхранизации данных (кешируем данные)
@@ -77,5 +79,9 @@ class FirebaseBpRepoImpl(
 //        database.reference.push().setValue(changedBp)
         //создаем новую запись с id
         userDiaryDatabaseReference.child(changedBp.id).setValue(changedBp)
+    }
+
+    override fun clearCache() {
+        userDiaryDatabaseReference.keepSynced(false)
     }
 }

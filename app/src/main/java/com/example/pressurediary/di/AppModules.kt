@@ -11,11 +11,11 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-//    single<BpRepo> { BpRepoImpl() }
+    single<UserRepo> { UserRepoImpl() }
     single<BpRepo> { FirebaseBpRepoImpl(get()) }
     single<BpDaoInteractor> { BpDaoInteractorImpl(get()) }
     single<BpEvaluator> { BpEvaluatorImpl() }
     single<ReferenceRepo> { ReferenceRepoImpl() }
-    single<UserRepo> { UserRepoImpl() }
-    single<LoginInteractor> { LoginInteractorImpl() }
+    single<LoginInteractor> { LoginInteractorImpl(get(), get<BpDaoInteractor>()) }
+    //get<BpDaoInteractor>()) - потаму что у него ест правильный метод КЭШ который потом всех уведомит
 }

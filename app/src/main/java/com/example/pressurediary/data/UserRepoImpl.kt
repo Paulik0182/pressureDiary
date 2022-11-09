@@ -14,7 +14,7 @@ class UserRepoImpl : UserRepo {
     override fun getUser(): UserEntity? = user
 
 
-    override fun removeUser(userEntity: UserEntity) {
+    override fun removeUser() {
         user = null
     }
 

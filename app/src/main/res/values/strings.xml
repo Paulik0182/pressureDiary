@@ -34,6 +34,7 @@
     <string name="library_name">Название библиотеки</string>
     <string name="share_app">Поделится приложением</string>
     <string name="reference">Справка</string>
+    <string name="logout">выход из системы</string>
     <string name="about_app">О приложении</string>
     <string name="close">Закрыть</string>
     <string name="link">Ссылка</string>
