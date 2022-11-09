@@ -6,9 +6,9 @@ import com.example.pressurediary.domain.interactors.LoginInteractor
 class LoginInteractorImpl : LoginInteractor {
 
     //для примера создаем пользователя и возвращаем его
-    private val mockUser: UserEntity = UserEntity(
-        name = "mockUser"
-    )
+//    private val mockUser: UserEntity = UserEntity(
+//        name = "mockUser"
+//    )
 
     override fun login(login: String, password: Int, onResult: (UserEntity?) -> Unit) {
         //проверка пользователя
@@ -18,7 +18,7 @@ class LoginInteractorImpl : LoginInteractor {
             onResult.invoke(null)
         } else {
 //            onResult.invoke(null)
-            onResult.invoke(UserEntity(name = login))
+            onResult.invoke(UserEntity(id = login, name = login))
         }
     }
 }
