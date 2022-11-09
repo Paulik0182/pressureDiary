@@ -73,7 +73,7 @@ class UserRegistrationFragment : Fragment() {
 
             val userRepo = userRepo
             userRepo.updateUser(changedUserEntity)//добавили новые данные
-            getController().onDataChanged()//обновили данные
+            getController().onSuccess()//обновили данные
 //            activity?.onBackPressed()//выход
 
             Toast.makeText(
@@ -85,7 +85,7 @@ class UserRegistrationFragment : Fragment() {
     }
 
     interface Controller {
-        fun onDataChanged()
+        fun onSuccess()
     }
 
     private fun getController(): Controller = activity as Controller

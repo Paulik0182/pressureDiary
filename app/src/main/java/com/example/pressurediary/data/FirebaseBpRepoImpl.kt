@@ -2,6 +2,7 @@ package com.example.pressurediary.data
 
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
+import com.example.pressurediary.domain.repos.UserRepo
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -13,7 +14,10 @@ import com.google.firebase.ktx.Firebase
 const val DATABASE_URL_KEY =
     "https://pressure-diary-78d25-default-rtdb.europe-west1.firebasedatabase.app/"
 
-class FirebaseBpRepoImpl : BpRepo {
+class FirebaseBpRepoImpl(
+    // реализация с пользователем
+    private val userRepo: UserRepo
+) : BpRepo {
 
     private var data: List<BpEntity> = emptyList()
 
@@ -25,10 +29,18 @@ class FirebaseBpRepoImpl : BpRepo {
         }
     }
 
+    //перед тем как что-то достаем из БД начинаем знать о пользователе
+    private val userDiaryDatabaseReference =
+        database.reference.child(userRepo.getUser()!!.id).child("diary")
+
     override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
         database.reference.keepSynced(true)//для синхранизации данных (кешируем данные)
 
-        database.reference.get()
+        //перед тем как что-то достаем из БД начинаем знать о пользователе
+//        val userId = userRepo.getUser()!!.id
+        // распарс юзера
+
+        userDiaryDatabaseReference.get()
             .addOnSuccessListener {
                 val pressure: MutableList<BpEntity> = mutableListOf()// собираем колекцию
                 //ищем все записи (snapshot)
@@ -57,13 +69,13 @@ class FirebaseBpRepoImpl : BpRepo {
     override fun getAllBpList(): List<BpEntity> = data
 
     override fun removeBp(bpEntity: BpEntity) {
-        database.reference.child(bpEntity.id).removeValue()
+        userDiaryDatabaseReference.child(bpEntity.id).removeValue()
     }
 
     override fun updateBp(changedBp: BpEntity) {
         //push() - создает новую запись с индивидуальным кодом (ключь) и уже туда помещает данные
 //        database.reference.push().setValue(changedBp)
         //создаем новую запись с id
-        database.reference.child(changedBp.id).setValue(changedBp)
+        userDiaryDatabaseReference.child(changedBp.id).setValue(changedBp)
     }
 }

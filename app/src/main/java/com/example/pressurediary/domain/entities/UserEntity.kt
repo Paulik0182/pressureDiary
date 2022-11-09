@@ -20,10 +20,10 @@ data class UserEntity(
     @SerializedName("id")
     var id: String = UUID.randomUUID().toString(),
 
-    @get: PropertyName("time_in_ms")
-    @field: PropertyName("time_in_ms")
-    @SerializedName("time_in_ms")
-    var timeInMs: Long = Calendar.getInstance().timeInMillis,
+    @get: PropertyName("creation_date_in_ms")
+    @field: PropertyName("creation_date_in_ms")
+    @SerializedName("creation_date_in_ms")
+    var creationDateInMs: Long = Calendar.getInstance().timeInMillis,
 
     @get: PropertyName("name")
     @field: PropertyName("name")
@@ -38,11 +38,6 @@ data class UserEntity(
     @get: PropertyName("password")
     @field: PropertyName("password")
     @SerializedName("password")
-    var password: Int = 0,
-
-    @get: PropertyName("bp_entity")
-    @field: PropertyName("bp_entity")
-    @SerializedName("bp_entity")
-    var bpEntity: MutableList<BpEntity> = mutableListOf(),
+    var password: Int = 0
 
     ) : Parcelable

@@ -135,7 +135,7 @@ class RootActivity : AppCompatActivity(),
         title = "Справка"
     }
 
-    override fun openBpListFragment() {
+    override fun onSuccessLogin() {
         binding.bottomNavBar.visibility = View.VISIBLE
 //        binding.fragmentContainerFrameLayout.visibility = View.INVISIBLE
         binding.bottomNavBar.setOnItemSelectedListener {
@@ -152,7 +152,7 @@ class RootActivity : AppCompatActivity(),
         binding.bottomNavBar.selectedItemId = R.id.bp_list_item
     }
 
-    override fun openRegistrationUserFragment() {
+    override fun openRegistrationUser() {
         val intent = Intent(this, UserActivity::class.java)
         startActivityForResult(intent, REGISTRATION_USER_REQUEST_KOD)
     }
