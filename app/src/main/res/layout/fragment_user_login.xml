@@ -34,8 +34,9 @@
             android:gravity="center"
             android:hint="Login"
             android:inputType="textPersonName"
-            android:maxLength="10"
+            android:maxLength="30"
             android:padding="10dp"
+            android:text="bob@test.com"
             android:textColor="?attr/default_text"
             android:textColorHint="#808080"
             android:textSize="15sp" />
@@ -80,6 +81,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
+            android:visibility="invisible"
             android:text="Востановить пароль"
             android:textColor="?attr/default_text"
             android:textSize="18sp" />
@@ -90,6 +92,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
+            android:visibility="visible"
             android:text="Регистрация"
             android:textColor="?attr/default_text"
             android:textSize="18sp" />
@@ -100,6 +103,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
+            android:visibility="invisible"
             android:text="Вход без регистрации"
             android:textColor="?attr/default_text"
             android:textSize="18sp" />

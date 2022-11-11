@@ -3,7 +3,10 @@ package com.example.pressurediary.data
 import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.domain.repos.UserRepo
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseException
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -18,6 +21,10 @@ class FirebaseBpRepoImpl(
     // реализация с пользователем
     private val userRepo: UserRepo
 ) : BpRepo {
+
+    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val dataFirebase: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val users: DatabaseReference = dataFirebase.getReference("Users")
 
     private var data: List<BpEntity> = emptyList()
 

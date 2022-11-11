@@ -93,4 +93,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     //Firebase -> database
     implementation 'com.google.firebase:firebase-database-ktx'
+    //для Аутентификации
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+
 }

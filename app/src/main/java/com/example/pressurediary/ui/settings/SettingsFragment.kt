@@ -11,6 +11,7 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -23,6 +24,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private lateinit var lightDarkThemeSwitch: SwitchCompat
 
     private val loginInteractor: LoginInteractor by inject()
+
+    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,6 +61,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         logoutButton.setOnClickListener {
             //удаляем из репозитория пользователя данные
             loginInteractor.logout()
+
+            myAuth.signOut()//выход пользователя из приложения!
+
             // отправляем на страницу залагинится
             getController().openLogin()
         }

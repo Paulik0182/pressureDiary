@@ -4,11 +4,14 @@ import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
 import com.example.pressurediary.domain.repos.BpRepo
 import com.example.pressurediary.domain.repos.UserRepo
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginInteractorImpl(
     private val userRepo: UserRepo,
     private val bpRepo: BpRepo
 ) : LoginInteractor {
+
+    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     //для примера создаем пользователя и возвращаем его
 //    private val mockUser: UserEntity = UserEntity(
@@ -29,7 +32,7 @@ class LoginInteractorImpl(
         }
     }
 
-    //работа с разлогированию
+    //работа с разлогированием
     override fun logout() {
         //очищаем кэш (это действие первое)
         bpRepo.clearCache()

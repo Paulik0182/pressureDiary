@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             app:boxBackgroundMode="none"
+            android:visibility="invisible"
             app:counterEnabled="true"
             app:counterMaxLength="10"
             app:counterOverflowTextAppearance="@style/counterOverride"
@@ -99,7 +100,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:backgroundTint="#808080"
-                android:ems="10"
                 android:gravity="center"
                 android:hint="@string/pattern_password_one"
                 android:inputType="numberPassword"
@@ -115,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
+            android:visibility="invisible"
             app:boxBackgroundMode="none"
             app:passwordToggleEnabled="true">
 

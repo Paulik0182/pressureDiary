@@ -1,6 +1,8 @@
 package com.example.pressurediary.ui.user
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +12,15 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.databinding.FragmentUserRegistrationBinding
 import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.repos.UserRepo
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 
 class UserRegistrationFragment : Fragment() {
 
     private var _binding: FragmentUserRegistrationBinding? = null
     private val binding get() = _binding!!
+
+    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val userRepo: UserRepo by inject() //получили через Koin
 
@@ -25,10 +30,9 @@ class UserRegistrationFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentUserRegistrationBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,51 +41,51 @@ class UserRegistrationFragment : Fragment() {
         binding.saveChangesButton.visibility = View.INVISIBLE
         binding.recoverPasswordButton.visibility = View.INVISIBLE
 
-//        setUserEntity()
-
         onClickRegistrationUser()
-    }
-
-    private fun setUserEntity() {
-        val pasOne = binding.passwordOneEditText
-        val pasTwo = binding.passwordTwoEditText
-
-        binding.emailEditText.setText(userEntity.email)
-        binding.nameEditText.setText(userEntity.name)
-
-        if (pasOne == pasTwo) {
-            binding.passwordOneEditText.setText(userEntity.password)
-        } else {
-            Toast.makeText(
-                requireContext(), "Введен не правильно пароль!" +
-                        "\nПовторите ввод пароля.", Toast.LENGTH_SHORT
-            ).show()
-            binding.passwordOneEditText.text = null
-            binding.passwordTwoEditText.text = null
-        }
     }
 
     private fun onClickRegistrationUser() {
         binding.registrationButton.setOnClickListener {
-            //Делаем копию данных чтобы потом изменить часть данных.
-            val changedUserEntity = userEntity
-                .copy(
-                    name = binding.nameEditText.text.toString(),
-                    email = binding.emailEditText.text.toString(),
-                    password = binding.passwordOneEditText.text.toString().toInt()
-                )
+            val login = binding.emailEditText.text.toString()
 
-            val userRepo = userRepo
-            userRepo.updateUser(changedUserEntity)//добавили новые данные
-            getController().onSuccess()//обновили данные
-//            activity?.onBackPressed()//выход
+            val password =
+                try {
+                    binding.passwordOneEditText.text.toString().toInt()
+                } catch (e: Exception) {
+                    0
+                }
 
-            Toast.makeText(
-                requireContext(),
-                "Сохранить",
-                Toast.LENGTH_SHORT
-            ).show()
+            if (login.isEmpty() || password.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show()
+            } else {
+                myAuth.createUserWithEmailAndPassword(login, password.toString())
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            onWindowDialog()
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Не все поля заполнены",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            }
         }
+    }
+
+    private fun onWindowDialog() {
+        // всплывающее окно (уточнее действия)!!!
+        AlertDialog.Builder(requireContext())
+            .setTitle("Учетная запись создана\nЗавершить регистрацию?")//сообщение на всплыв. окне
+            .setPositiveButton("ДА") { dialogInterface: DialogInterface, i: Int ->
+                getController().onSuccess()//выход (кнопка назад)
+                dialogInterface.dismiss()//закрываем окно. Обязательно!!
+            }
+            .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, i: Int ->
+                dialogInterface.dismiss()//закрываем окно
+            }
+            .show()
     }
 
     interface Controller {

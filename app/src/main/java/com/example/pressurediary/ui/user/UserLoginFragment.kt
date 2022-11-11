@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 
 class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
@@ -17,6 +18,8 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
 
     private val loginInteractor: LoginInteractor by inject()
 
+    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -24,20 +27,38 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
         _binding = FragmentUserLoginBinding.bind(view)
 
         binding.loginButton.setOnClickListener {
+
             val login = binding.nameEditText.text.toString()
+
             val password =
                 try {
                     binding.passwordEditText.text.toString().toInt()
                 } catch (e: Exception) {
                     0
                 }
-            loginInteractor.login(login, password) {
-                if (it) {
-                    getController().onSuccessLogin()
-                } else {
-                    showError()
-                }
+
+            if (login.isEmpty()) {
+                showError()
+            } else {
+                myAuth.signInWithEmailAndPassword(login, password.toString())
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            loginInteractor.login(login, password) {
+                                getController().onSuccessLogin()
+                            }
+                        } else {
+                            showError()
+                        }
+                    }
             }
+
+//            loginInteractor.login(login, password) {
+//                if (it) {
+//                    getController().onSuccessLogin()
+//                } else {
+//                    showError()
+//                }
+//            }
         }
 
         binding.anonymousLoginTextView.setOnClickListener {
