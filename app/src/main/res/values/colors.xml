@@ -3,8 +3,43 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
+    <color name="purple_010">#8FCBE2</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pre_hypertension">#F48A04</color>
+    <color name="hypertension">#F11202</color>
+    <color name="normal">#43A047</color>
+
+    <color name="bnv_default">#8DEDCB</color>
+    <color name="bnv_default_diary">#266A52</color>
+    <color name="light_grey">#BFBBBB</color>
+    <color name="light_green">#2B9B3E</color>
+    <color name="white_grey">#F1EEEE</color>
+    <color name="almost_white">#FBFAFA</color>
+    <color name="white_grey_diary">#747171</color>
+    <color name="almost_black">#4B3F3F</color>
+    <color name="translucent_black_grey">#2A2BBC43</color>
+    <color name="translucent_black_grey_diary">#2A075E16</color>
+    <color name="orange">#F39420</color>
+
+    <color name="pink">#FFC0CB </color>
+    <color name="dark_pink">#622255 </color>
+    <color name="transparent">#ffffff </color>
+
+    <!--  drawable  -->
+    <color name="orange_500">#A08500</color>
+    <color name="orange_300">#EAC300</color>
+    <color name="red">#EE0C0C</color>
+    <color name="purple">#A20DC5</color>
+    <color name="heart_light_green">#2BED15</color>
+    <color name="heart_orange">#F3BE00</color>
+    <!--  drawable  emoji-->
+    <color name="coral">#F3568F</color>
+    <color name="red_fatal">#981C49</color>
+    <color name="sand">#F3E775</color>
+    <color name="well_light_green">#7CE981</color>
+
+    <!--  @color/well_light_green -->
 </resources>
