@@ -2,42 +2,44 @@ package com.example.pressurediary.data
 
 import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
-import com.example.pressurediary.domain.repos.BpRepo
-import com.example.pressurediary.domain.repos.UserRepo
+import com.example.pressurediary.ui.utils.ifLet
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginInteractorImpl(
-    private val userRepo: UserRepo,
-    private val bpRepo: BpRepo
 ) : LoginInteractor {
 
-    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    //для примера создаем пользователя и возвращаем его
-//    private val mockUser: UserEntity = UserEntity(
-//        name = "mockUser"
-//    )
+    override fun login(login: String, password: Int, onResult: (Boolean) -> Unit) {
+        auth.signInWithEmailAndPassword(login, password.toString())
+            .addOnCompleteListener {
+                onResult(it.isSuccessful)
+            }
+    }
 
-    override fun login(id: String, login: String, password: Int, onResult: (Boolean) -> Unit) {
-        //проверка пользователя
-//        if (login == "mock" && password == 0) {
-        //вариант 2 . Если логин пустой тогда не пускаем, иначе будем создавать нового пользователя
-        if (login.isBlank()) {
-            onResult.invoke(false)
-        } else {
-//          // сохраняем пользователя который пришел
-            val user = UserEntity(id = id, name = login)
-            userRepo.addUser(user)
-            onResult.invoke(true)
-        }
+    override fun register(login: String, password: Int, onResult: (Boolean) -> Unit) {
+        auth.createUserWithEmailAndPassword(login, password.toString())
+            .addOnCompleteListener {
+                onResult(it.isSuccessful)
+            }
     }
 
     //работа с разлогированием
     override fun logout() {
-        //очищаем кэш (это действие первое)
-        bpRepo.clearCache()
-        //удаление пользователя (это действие второе)
-        userRepo.removeUser()
+        auth.signOut()
+    }
 
+    override fun getUser(): UserEntity? {
+        val id = auth.currentUser?.uid
+        val email = auth.currentUser?.email
+
+        ifLet(id, email) {
+            return UserEntity(
+                id = it[0],
+                email = it[1],
+                name = it[1]
+            )
+        }
+        return null
     }
 }

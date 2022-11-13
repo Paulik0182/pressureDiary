@@ -34,10 +34,4 @@ data class UserEntity(
     @field: PropertyName("email")
     @SerializedName("email")
     var email: String = "",
-
-    @get: PropertyName("password")
-    @field: PropertyName("password")
-    @SerializedName("password")
-    var password: Int = 0
-
     ) : Parcelable

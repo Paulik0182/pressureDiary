@@ -11,8 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.databinding.FragmentUserRegistrationBinding
 import com.example.pressurediary.domain.entities.UserEntity
-import com.example.pressurediary.domain.repos.UserRepo
-import com.google.firebase.auth.FirebaseAuth
+import com.example.pressurediary.domain.interactors.LoginInteractor
 import org.koin.android.ext.android.inject
 
 class UserRegistrationFragment : Fragment() {
@@ -20,9 +19,7 @@ class UserRegistrationFragment : Fragment() {
     private var _binding: FragmentUserRegistrationBinding? = null
     private val binding get() = _binding!!
 
-    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
-    private val userRepo: UserRepo by inject() //получили через Koin
+    private val loginInteractor: LoginInteractor by inject()
 
     private lateinit var userEntity: UserEntity
 
@@ -58,18 +55,17 @@ class UserRegistrationFragment : Fragment() {
             if (login.isEmpty() || password.toString().isEmpty()) {
                 Toast.makeText(requireContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show()
             } else {
-                myAuth.createUserWithEmailAndPassword(login, password.toString())
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            onWindowDialog()
-                        } else {
-                            Toast.makeText(
-                                requireContext(),
-                                "Ошибка регистрации!!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                loginInteractor.register(login, password) {
+                    if (it) {
+                        onWindowDialog()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ошибка регистрации!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
+                }
             }
         }
     }

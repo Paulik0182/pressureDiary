@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
 import com.example.pressurediary.domain.interactors.LoginInteractor
-import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.android.inject
 
 class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
@@ -17,8 +16,6 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
     private val binding get() = _binding!!
 
     private val loginInteractor: LoginInteractor by inject()
-
-    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,25 +37,14 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
             if (login.isEmpty()) {
                 showError()
             } else {
-                myAuth.signInWithEmailAndPassword(login, password.toString())
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            loginInteractor.login(it.result.user!!.uid, login, password) {
-                                getController().onSuccessLogin()
-                            }
-                        } else {
-                            showError()
-                        }
+                loginInteractor.login(login, password) {
+                    if (it) {
+                        getController().onSuccessLogin()
+                    } else {
+                        showError()
                     }
+                }
             }
-
-//            loginInteractor.login(login, password) {
-//                if (it) {
-//                    getController().onSuccessLogin()
-//                } else {
-//                    showError()
-//                }
-//            }
         }
 
         binding.anonymousLoginTextView.setOnClickListener {

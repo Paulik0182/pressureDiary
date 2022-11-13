@@ -1,12 +1,9 @@
 package com.example.pressurediary.data
 
 import com.example.pressurediary.domain.entities.BpEntity
+import com.example.pressurediary.domain.interactors.LoginInteractor
 import com.example.pressurediary.domain.repos.BpRepo
-import com.example.pressurediary.domain.repos.UserRepo
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseException
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -18,13 +15,8 @@ const val DATABASE_URL_KEY =
     "https://pressure-diary-78d25-default-rtdb.europe-west1.firebasedatabase.app/"
 
 class FirebaseBpRepoImpl(
-    // реализация с пользователем
-    private val userRepo: UserRepo
+    private val loginInteractor: LoginInteractor
 ) : BpRepo {
-
-    private val myAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val dataFirebase: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val users: DatabaseReference = dataFirebase.getReference("Users")
 
     private var data: List<BpEntity> = emptyList()
 
@@ -39,7 +31,7 @@ class FirebaseBpRepoImpl(
     //перед тем как что-то достаем из БД начинаем знать о пользователе
     private val userDiaryDatabaseReference
         get() =
-            database.reference.child(userRepo.getUser()!!.id).child("diary")
+            database.reference.child(loginInteractor.getUser()!!.id).child("diary")
 
 
     override fun getAllBpList(onSuccess: (List<BpEntity>) -> Unit) {
