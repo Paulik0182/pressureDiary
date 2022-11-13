@@ -18,7 +18,7 @@ class LoginInteractorImpl(
 //        name = "mockUser"
 //    )
 
-    override fun login(login: String, password: Int, onResult: (Boolean) -> Unit) {
+    override fun login(id: String, login: String, password: Int, onResult: (Boolean) -> Unit) {
         //проверка пользователя
 //        if (login == "mock" && password == 0) {
         //вариант 2 . Если логин пустой тогда не пускаем, иначе будем создавать нового пользователя
@@ -26,7 +26,7 @@ class LoginInteractorImpl(
             onResult.invoke(false)
         } else {
 //          // сохраняем пользователя который пришел
-            val user = UserEntity(id = login, name = login)
+            val user = UserEntity(id = id, name = login)
             userRepo.addUser(user)
             onResult.invoke(true)
         }

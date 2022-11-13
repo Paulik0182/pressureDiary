@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
+            app:boxBackgroundColor="@color/white"
             app:boxBackgroundMode="none">
 
             <EditText
@@ -91,6 +92,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             app:boxBackgroundMode="none"
+            app:boxBackgroundColor="@color/white"
             app:passwordToggleEnabled="true">
 
             <EditText

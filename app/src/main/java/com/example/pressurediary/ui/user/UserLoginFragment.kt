@@ -43,7 +43,7 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
                 myAuth.signInWithEmailAndPassword(login, password.toString())
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            loginInteractor.login(login, password) {
+                            loginInteractor.login(it.result.user!!.uid, login, password) {
                                 getController().onSuccessLogin()
                             }
                         } else {

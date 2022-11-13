@@ -65,7 +65,7 @@ class UserRegistrationFragment : Fragment() {
                         } else {
                             Toast.makeText(
                                 requireContext(),
-                                "Не все поля заполнены",
+                                "Ошибка регистрации!!",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -82,7 +82,7 @@ class UserRegistrationFragment : Fragment() {
                 getController().onSuccess()//выход (кнопка назад)
                 dialogInterface.dismiss()//закрываем окно. Обязательно!!
             }
-            .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, i: Int ->
+            .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()//закрываем окно
             }
             .show()
