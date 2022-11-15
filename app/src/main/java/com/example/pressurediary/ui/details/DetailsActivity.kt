@@ -1,15 +1,13 @@
 package com.example.pressurediary.ui.details
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.entities.BpEntity
 
 class DetailsActivity : AppCompatActivity(),
     DetailsBpFragment.Controller {
 
-    @RequiresApi(33)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)

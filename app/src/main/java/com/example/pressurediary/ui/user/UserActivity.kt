@@ -14,12 +14,6 @@ class UserActivity : AppCompatActivity(),
         binding = ActivityUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        //проверка логина (регистрация)
-//        userRepo.getUser()?.let {
-//            onSuccess()
-//        }
-
-        // чтобы не пересоздавалась активити, делаем проверку
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()

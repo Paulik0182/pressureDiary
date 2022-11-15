@@ -12,7 +12,7 @@
     <dimen name="default_values_text">26sp</dimen>
 
     <!-- margin (not default)-->
-    <dimen name="margin_about_app_dp">60dp</dimen>
+    <dimen name="margin_about_app_dp">40dp</dimen>
     <dimen name="margin_fab_dp">16dp</dimen>
     <dimen name="margin_start_description_details_bp">18dp</dimen>
     <dimen name="margin_top_end_description_details_bp">5dp</dimen>
@@ -36,7 +36,7 @@
     <dimen name="heart_size_width_details_bp">107dp</dimen>
     <dimen name="heart_size_height_details_bp">81dp</dimen>
     <dimen name="height_description_details_bp">90dp</dimen>
-    <dimen name="height_reference_image_view">50dp</dimen>
+    <dimen name="height_reference_image_view">70dp</dimen>
 
     <!-- fragment details -->
     <dimen name="size_text_reference">24sp</dimen>

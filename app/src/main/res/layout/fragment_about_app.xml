@@ -17,6 +17,7 @@
         android:gravity="center"
         android:layout_marginEnd="@dimen/margin_about_app_dp"
         android:layout_marginStart="@dimen/margin_about_app_dp"
+        android:autoLink="web"
         android:textSize="@dimen/default_text"
         android:text="@string/about_app" />
 

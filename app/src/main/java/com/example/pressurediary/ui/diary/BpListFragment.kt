@@ -30,7 +30,6 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var bpList: MutableList<BpEntity>
 
-    //подсчет количество записей в БД
     private var records: Int = 0
 
     @SuppressLint("SetTextI18n")
@@ -55,13 +54,10 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     @SuppressLint("SetTextI18n")
     private fun updateData() {
-        //подписочный механизм
         bpRepo.getAllBpList {
-            //подсчет количество записей в БД (подсчет на старте)
             records = it.size
             recordsTv.text = "Записи: $records"
 
-            //кладем данные
             adapter.setData(it)
         }
     }
@@ -93,14 +89,5 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = BpListFragment().apply {
-            arguments = Bundle().apply {
-                putString(BP_LIST_KEY, "BP_LIST_KEY")
-            }
-        }
     }
 }

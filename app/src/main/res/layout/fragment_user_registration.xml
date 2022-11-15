@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/black"
             app:boxBackgroundMode="none">
 
             <EditText
@@ -93,6 +94,7 @@
             android:background="@drawable/border"
             app:boxBackgroundMode="none"
             app:boxBackgroundColor="@color/white"
+            app:hintTextColor="@color/black"
             app:passwordToggleEnabled="true">
 
             <EditText

@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserRegistrationBinding
 import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
 class UserRegistrationFragment : Fragment() {
@@ -53,17 +54,13 @@ class UserRegistrationFragment : Fragment() {
                 }
 
             if (login.isEmpty() || password.toString().isEmpty()) {
-                Toast.makeText(requireContext(), "Не все поля заполнены", Toast.LENGTH_SHORT).show()
+                view?.toastFragment(getString(R.string.not_all_fields))
             } else {
                 loginInteractor.register(login, password) {
                     if (it) {
                         onWindowDialog()
                     } else {
-                        Toast.makeText(
-                            requireContext(),
-                            "Ошибка регистрации!!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        view?.toastFragment(getString(R.string.registration_error))
                     }
                 }
             }
@@ -71,14 +68,13 @@ class UserRegistrationFragment : Fragment() {
     }
 
     private fun onWindowDialog() {
-        // всплывающее окно (уточнее действия)!!!
         AlertDialog.Builder(requireContext())
             .setTitle("Учетная запись создана\nЗавершить регистрацию?")//сообщение на всплыв. окне
-            .setPositiveButton("ДА") { dialogInterface: DialogInterface, i: Int ->
+            .setPositiveButton(getText(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
                 getController().onSuccess()//выход (кнопка назад)
                 dialogInterface.dismiss()//закрываем окно. Обязательно!!
             }
-            .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, _: Int ->
+            .setNegativeButton(getText(R.string.no)) { dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()//закрываем окно
             }
             .show()
@@ -93,15 +89,6 @@ class UserRegistrationFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = UserRegistrationFragment().apply {
-            arguments = Bundle().apply {
-
-            }
-        }
     }
 
     override fun onDestroyView() {

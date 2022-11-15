@@ -11,7 +11,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.domain.BpEvaluation
@@ -21,6 +20,7 @@ import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
 import com.example.pressurediary.ui.utils.bpDataTimeFormatter
 import com.example.pressurediary.ui.utils.getColor
+import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -56,8 +56,8 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
 
         initView(view)
 
-        bpEntity = requireArguments().getParcelable(DETAILS_BP_KEY)!!//взяли передоваемое значение
-        setBpEntity(bpEntity)//Положили переданное значение в метод
+        bpEntity = requireArguments().getParcelable(DETAILS_BP_KEY)!!
+        setBpEntity(bpEntity)
 
         setupListener()
     }
@@ -89,7 +89,6 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
             bpEntity.wellBeing = Emoji.EXCELLENT
         }
 
-        // чтобы на старте проставлялось соответствующее значение
         when (bpEntity.wellBeing) {
             Emoji.FATAL -> emojiFatalTv.callOnClick()
             Emoji.BADLY -> emojiBadlyTv.callOnClick()
@@ -130,20 +129,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         pulseEt.setText(bpEntity.pulse.toString())
         descriptionEt.setText(bpEntity.conditionUser)
 
-        //вариант 3. раскрашиваем цветами
         val color = evaluator.evaluate(bpEntity).getColor(requireActivity())
-
-        //вариант 2. раскрашиваем цветами
-//        val color = MappersExtensions.getColor(requireActivity(), evaluator.evaluate(bpEntity))
-
-//вариант 1. раскрашиваем цветами
-//        val color = when (evaluator.evaluate(bpEntity)) {
-//            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
-//            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
-//            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
-//            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
-//            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
-//        }
 
         val header = when (evaluator.evaluate(bpEntity)) {
             BpEvaluation.NORMAL -> R.drawable.ic_heat_yellow_24
@@ -172,47 +158,37 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.save_icon_menu_items -> {
-                //Второй способ. Делаем копию данных чтобы потом изменить часть данных.
-                // Первый способ в предыдущем коммите
                 val changedBpEntity = bpEntity.copy(
                     systolicLevel = systolicEt.text.toString().toInt(),
                     diastolicLevel = diastolicEt.text.toString().toInt(),
                     pulse = pulseEt.text.toString().toInt(),
                     conditionUser = descriptionEt.text.toString(),
-                    //В данном коде мы взяли только часть интересующих полей и изменили их,
-                    // остальные поля остались прежними
                 )
 
                 val bpRepo = bpRepo
-                bpRepo.updateBp(changedBpEntity)//добавили новые данные
-                getController().onDataChanged()//обновили данные
-                activity?.onBackPressed()//выход
+                bpRepo.updateBp(changedBpEntity)
+                getController().onDataChanged()
+                activity?.onBackPressed()
 
-                Toast.makeText(
-                    requireContext(),
-                    "Сохранить",
-                    Toast.LENGTH_SHORT
-                ).show()
-
+                view?.toastFragment(getString(R.string.save))
                 return true
             }
             R.id.exit_icon_menu_items -> {
-                activity?.onBackPressed()//выход (кнопка назад)
+                activity?.onBackPressed()
             }
 
             R.id.delete_icon_menu_items -> {
                 val bpRepo = bpRepo
 
-                // всплывающее окно (уточнее действия)!!!
                 AlertDialog.Builder(requireContext())
-                    .setTitle("Вы уверены что хотите удалить запись?")//сообщение на всплыв. окне
-                    .setPositiveButton("ДА") { dialogInterface: DialogInterface, i: Int ->
-                        bpRepo.removeBp(bpEntity)//Удаление записи
-                        activity?.onBackPressed()//выход (кнопка назад)
-                        dialogInterface.dismiss()//закрываем окно. Обязательно!!
+                    .setTitle(getText(R.string.want_to_delete))
+                    .setPositiveButton(getText(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
+                        bpRepo.removeBp(bpEntity)
+                        activity?.onBackPressed()
+                        dialogInterface.dismiss()
                     }
-                    .setNegativeButton("НЕТ") { dialogInterface: DialogInterface, i: Int ->
-                        dialogInterface.dismiss()//закрываем окно
+                    .setNegativeButton(getText(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
+                        dialogInterface.dismiss()
                     }
                     .show()
             }
@@ -232,7 +208,6 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     }
 
     companion object {
-        //начало записи гласит о том, что если уже существует, то возмем ее, если нет то создадим новую
         @JvmStatic
         fun newInstance(
             bpEntity: BpEntity = BpEntity(

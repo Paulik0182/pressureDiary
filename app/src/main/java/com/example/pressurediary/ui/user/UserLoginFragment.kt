@@ -3,11 +3,11 @@ package com.example.pressurediary.ui.user
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
 class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
@@ -20,7 +20,6 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //вариант для разметки
         _binding = FragmentUserLoginBinding.bind(view)
 
         binding.loginButton.setOnClickListener {
@@ -48,19 +47,16 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
         }
 
         binding.anonymousLoginTextView.setOnClickListener {
-            // для ананимного пользователя также заводим нового пользователя
             getController().onSuccessLogin()
         }
 
         binding.registrationTextView.setOnClickListener {
             getController().openRegistrationUser()
         }
-
-//        setUserEntity()
     }
 
     private fun showError() {
-        Toast.makeText(requireContext(), "Не верно введен пароль!!", Toast.LENGTH_SHORT).show()
+        view?.toastFragment(getString(R.string.invalid_password))
     }
 
     interface Controller {

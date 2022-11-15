@@ -42,44 +42,14 @@ class ReferenceRepoImpl : ReferenceRepo {
         data.add(
             ReferenceEntity(
                 1,
-                "MP Android Chart",
-                "В данном приложении была использована библиотека MP Android Chart.  " +
-                        "Эта библиотека, предназначенная для рисования диаграмм на Android." +
-                        "\nВыражаем благодарность создателю Библиотеки!" +
-                        "\nБиблиотека лицензируется по лицензии Apache, версия 2.0" +
-                        "\n(https://www.apache.org/licenses/LICENSE-2.0)",
-                R.drawable.mp_android_chart,
-                "http://github.com/PhilJay/MPAndroidChart"
-            )
-        )
-        data.add(
-            ReferenceEntity(
-                2,
-                "MP Android Chart",
-                "В данном приложении была использована библиотека MP Android Chart.  " +
-                        "Эта библиотека, предназначенная для рисования диаграмм на Android." +
-                        "\nВыражаем благодарность создателю Библиотеки ",
-                R.drawable.mp_android_chart
-            )
-        )
-        data.add(
-            ReferenceEntity(
-                3,
-                "MP Android Chart",
-                "В данном приложении была использована библиотека MP Android Chart.  " +
-                        "Эта библиотека, предназначенная для рисования диаграмм на Android." +
-                        "\nВыражаем благодарность создателю Библиотеки ",
-                R.drawable.mp_android_chart
-            )
-        )
-        data.add(
-            ReferenceEntity(
-                4,
-                "MP Android Chart",
-                "В данном приложении была использована библиотека MP Android Chart.  " +
-                        "Эта библиотека, предназначенная для рисования диаграмм на Android." +
-                        "\nВыражаем благодарность создателю Библиотеки ",
-                R.drawable.mp_android_chart
+                "Firebase",
+                "Firebase - используется для аутентификации, доступа к данным, " +
+                        "отслеживания ошибок и сбоев в приложении." +
+                        "\nFirebase сертифицирован в соответствии с основными стандартами " +
+                        "конфиденциальности и безопасности " +
+                        "\n(https://firebase.google.com/support/privacy/)",
+                R.drawable.firebase,
+                "https://firebase.google.com/"
             )
         )
     }

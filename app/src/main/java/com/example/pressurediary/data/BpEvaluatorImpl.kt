@@ -5,7 +5,7 @@ import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.BpEvaluator
 
 /**
- * класс для оценки уровня давления
+ * оценка уровня давления
  */
 
 class BpEvaluatorImpl: BpEvaluator {

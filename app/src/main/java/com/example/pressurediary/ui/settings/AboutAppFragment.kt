@@ -3,9 +3,9 @@ package com.example.pressurediary.ui.settings
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.pressurediary.BuildConfig
 import com.example.pressurediary.R
 
@@ -35,8 +35,12 @@ class AboutAppFragment : Fragment(R.layout.fragment_about_app) {
         versionCodTv.text = "Код версии: " + BuildConfig.VERSION_CODE
         versionTv.text = "Версия: " + BuildConfig.VERSION_NAME
         aboutAppTv.text = "О Приложении\nДневник давления создан " +
-                "для самоконтроля артериального давления в течение суток, " +
-                "данные понадобятся самому больному и его лечащему врачу."
+                "для самоконтроля артериального давления в течение суток." +
+                "\n\nПриложение создано в процессе обучения разработкам мобильных проложений для ОС " +
+                "android на языке Kotlin и является результатом применения полученных знаний в процессе обучения " +
+                "и демонстрирует освоение пройденного материала." +
+                "\nСсылка на GITHUB:" +
+                "\n(https://github.com/Paulik0182/pressureDiary)"
     }
 
     interface Controller {

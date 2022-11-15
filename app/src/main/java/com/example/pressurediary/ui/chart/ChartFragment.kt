@@ -21,24 +21,20 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
     private lateinit var pieChart: PieChart
 
-    private val bpRepo: BpRepo by inject() //получили через Koin
-    private val bpEvaluator: BpEvaluator by inject() //получили enum значения через Koin
+    private val bpRepo: BpRepo by inject()
+    private val bpEvaluator: BpEvaluator by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         pieChart = view.findViewById(R.id.pie_chart)
 
-        //получили данные
         bpRepo.getAllBpList {
-            //ВАРИАНТ 1 более подробный
-            // (это *Табличка) делаем списки с состояниями (у нас есть типы оценки состояния) завели Счетчик
             var normalBpCount = 0
             var preHypertensionBpCount = 0
             var hypertension1BpCount = 0
             var hypertension2BpCount = 0
             var unknownBpCount = 0
-            // заполняем данными (прошлись по всем, в зависимости от оценки поставили оценку)
             it.forEach {
                 when (bpEvaluator.evaluate(it)) {
                     BpEvaluation.NORMAL -> normalBpCount++
@@ -49,8 +45,7 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
                 }
             }
 
-            //Заводим некий лист входных псевдо данных
-            val pieEntries = listOf<PieEntry>(
+            val pieEntries = listOf(
                 PieEntry(normalBpCount.toFloat(), getText(R.string.normal).toString()),
                 PieEntry(
                     preHypertensionBpCount.toFloat(),
@@ -67,11 +62,8 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
                 PieEntry(unknownBpCount.toFloat(), getText(R.string.unknown).toString())
             )
 
-            //получаем количество значений и название
             val pieDataSet = PieDataSet(pieEntries, getText(R.string.pressure).toString())
 
-            //Вариант 3 (расширяем функцию. экстеншен)
-            //Раскрашиваем значения. ВНИМАНИЕ на написание colors
             pieDataSet.colors = listOf(
                 BpEvaluation.NORMAL.getColor(requireContext()),
                 BpEvaluation.PRE_HYPERTENSION.getColor(requireContext()),
@@ -80,34 +72,23 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
                 BpEvaluation.UNKNOWN.getColor(requireContext())
             )
 
-            //заводим сущьность pie data
             val pieData = PieData(pieDataSet)
-            pieData.setValueTextSize(requireContext().resources.getDimension(R.dimen.default_chart_text_size))//задали размер выведеных значений
+            pieData.setValueTextSize(requireContext().resources.getDimension(R.dimen.default_chart_text_size))
             pieData.setValueTextColor(requireContext().getColorFromAttr(R.attr.default_text))
 
-            //принимает на вход некую сущьность (данные)
             pieChart.data = pieData
 
-            //регулирования радиуса отверстия
-//        pieChart.holeRadius = 0f
             pieChart.isDrawHoleEnabled = false // Убрать отверстие
-//        pieChart.setCenterTextColor(Color.BLACK)//цвет значений (не названий)
-//        pieChart.setEntryLabelColor(Color.BLACK)//цвет всех надписей
             pieChart.setEntryLabelColor(R.attr.default_text)//цвет всех надписей
             pieChart.setDrawEntryLabels(false)//отключили надписи
-//        pieChart.setEntryLabelTextSize(22f)//размер только надписей
             pieChart.setUsePercentValues(true)//Использовать процентные соотношения %
 
-//        pieData.setValueFormatter(PercentFormatter(pieChart))//отформатировали значения (на графике рисуется значек %)
-            // Вариант 2
             pieDataSet.valueFormatter = PercentFormatter(pieChart) //на графике рисуется значек %
 
-            //Условное название графика
             pieChart.description.text = getText(R.string.pressure_distribution).toString()
             pieChart.description.textSize =
-                requireContext().resources.getDimension(R.dimen.default_chart_text_size)//размер названия
+                requireContext().resources.getDimension(R.dimen.default_chart_text_size)
 
-            //Цвет фона
             pieChart.setBackgroundColor(requireContext().getColorFromAttr(R.attr.second_plan_background))
         }
     }
@@ -121,14 +102,5 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         getController()
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = ChartFragment().apply {
-            arguments = Bundle().apply {
-
-            }
-        }
     }
 }

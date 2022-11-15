@@ -5,10 +5,11 @@ import com.example.pressurediary.domain.entities.BpEntity
 
 /**
  * Для преобразования данных, для подписки на изменения
+ * возвращает оценку измерений
  */
 
 interface BpEvaluator {
-    fun evaluate(bpEntity: BpEntity): BpEvaluation//возвращает оценку измерений
+    fun evaluate(bpEntity: BpEntity): BpEvaluation
 
 
 }

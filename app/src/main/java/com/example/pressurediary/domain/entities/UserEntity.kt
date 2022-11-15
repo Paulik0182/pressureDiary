@@ -6,15 +6,9 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import java.util.*
 
-/**
- * Уневерсальный способ представление времени. Время считают (хранят) в Long
- * в data class метод copy генирируется атоматически. Пример метода ниже.
- */
-
 @Parcelize
 data class UserEntity(
 
-//случайный набор символов (наверное в 16ой системе. 1 к триллиону вероятность коллизии)
     @get: PropertyName("id")
     @field: PropertyName("id")
     @SerializedName("id")

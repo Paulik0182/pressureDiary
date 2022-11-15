@@ -18,10 +18,8 @@ class BpDaoInteractorImpl(
         listeners.remove(listener)
     }
 
-    //ниже продублировали логику, ничего не меняли
     override fun addBp(bpEntity: BpEntity) {
         bpRepo.addBp(bpEntity)
-        // как только произошли изменения в данных нужно вызвать (нужно уведомить слушатель)
         notifyListener()
     }
 
@@ -42,7 +40,7 @@ class BpDaoInteractorImpl(
 
     override fun clearCache() {
         bpRepo.clearCache()
-        notifyListener()// уведомили всех слушателей
+        notifyListener()
     }
 
     private fun notifyListener() {

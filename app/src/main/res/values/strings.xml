@@ -35,10 +35,12 @@
     <string name="share_app">Поделится приложением</string>
     <string name="reference">Справка</string>
     <string name="logout">выход из системы</string>
+    <string name="deleting_records">очистить историю измерения</string>
     <string name="about_app">О приложении</string>
     <string name="close">Закрыть</string>
     <string name="link">Ссылка</string>
     <string name="description">Описание</string>
+    <string name="unregistered_user">Не зарегистрированный пользователь</string>
 
     <!-- fragment chart -->
     <string name="pressure_distribution">Расспределение давления</string>
@@ -57,6 +59,14 @@
     <!-- menu for detailed-->
     <string name="exit">Выход</string>
     <string name="save">Сохранить</string>
+    <string name="exit_message">Нажмите еще раз, чтобы выйти из приложения</string>
+    <string name="invalid_password">Неверно введен пароль!!</string>
+    <string name="not_all_fields">Не все поля заполнены!!</string>
+    <string name="registration_error">Ошибка регистрации!!</string>
+    <string name="exit_the_application">Нажмите еще раз, чтобы выйти из приложения</string>
+    <string name="yes">ДА</string>
+    <string name="no">Нет</string>
+    <string name="want_to_delete">Вы уверены что хотите удалить запись?</string>
 
     <!-- emoji -->
     <string name="emoji_1">&#129301;</string>

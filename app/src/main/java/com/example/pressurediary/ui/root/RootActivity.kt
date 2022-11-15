@@ -3,7 +3,6 @@ package com.example.pressurediary.ui.root
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
@@ -17,6 +16,7 @@ import com.example.pressurediary.ui.settings.SettingsFragment
 import com.example.pressurediary.ui.settings.reference.ReferenceFragment
 import com.example.pressurediary.ui.user.UserActivity
 import com.example.pressurediary.ui.user.UserLoginFragment
+import com.example.pressurediary.ui.utils.toastActivity
 
 private const val TAG_MAIN_CONTAINER_LAYOUT_KEY = "TAG_MAIN_CONTAINER_LAYOUT_KEY"
 private const val BP_ENTITY_DETAILS_KEY = "BP_ENTITY_DETAILS_KEY"
@@ -34,7 +34,6 @@ class RootActivity : AppCompatActivity(),
     private lateinit var binding: ActivityRootBinding
     var backPressedTime: Long = 0
 
-    //запуск фрагмента для ввода логина
     private fun showLoginFragment() {
         supportFragmentManager
             .beginTransaction()
@@ -50,26 +49,6 @@ class RootActivity : AppCompatActivity(),
 
         if (savedInstanceState == null)//проверяем какой запуск первый или нет (например, после поворота экрана)
             showLoginFragment()
-
-//        binding.bottomNavBar.setOnItemSelectedListener {
-//            title = it.title
-//            val fragment = when (it.itemId) {
-//                R.id.bp_list_item -> BpListFragment()
-//                R.id.chart_item -> ChartFragment()
-//                R.id.settings_item -> SettingsFragment()
-//                else -> throw IllegalStateException("Такого фрагмента нет")
-//            }
-//
-//            swapFragment(fragment)
-//            return@setOnItemSelectedListener true
-//
-//        }
-//        //значение по умилчанию (экран)
-//        if (savedInstanceState == null) {
-//            binding.bottomNavBar.selectedItemId = R.id.bp_list_item
-//        } else {
-//            //TODO
-//        }
     }
 
     private fun swapFragment(fragment: Fragment) {
@@ -80,7 +59,6 @@ class RootActivity : AppCompatActivity(),
                 fragment,
                 TAG_MAIN_CONTAINER_LAYOUT_KEY
             )
-//            .addToBackStack(null)
             .commit()
     }
 
@@ -118,14 +96,9 @@ class RootActivity : AppCompatActivity(),
     private fun exitingApplicationDoubleClick() {
         if (System.currentTimeMillis() - backPressedTime <= 3_000) {
             super.onBackPressed()
-//            title =
-            backPressedTime = 0//обнуляем время если вышли из фрагмента
+            backPressedTime = 0
         } else {
-            Toast.makeText(
-                this,
-                "Нажмите еще раз, чтобы выйти из приложения", Toast.LENGTH_LONG
-            )
-                .show()
+            toastActivity(getString(R.string.exit_the_application))
         }
         backPressedTime = System.currentTimeMillis()
     }
@@ -146,7 +119,6 @@ class RootActivity : AppCompatActivity(),
 
     override fun onSuccessLogin() {
         binding.bottomNavBar.visibility = View.VISIBLE
-//        binding.fragmentContainerFrameLayout.visibility = View.INVISIBLE
         binding.bottomNavBar.setOnItemSelectedListener {
             title = it.title
             val fragment = when (it.itemId) {

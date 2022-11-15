@@ -32,27 +32,11 @@ class BpListViewHolder(
         pulseTv.text = bpEntity.pulse.toString()
         wellBeingTv.text = bpEntity.wellBeing.toString()
 
-        //реализация Emoji через ENUM
         wellBeingTv.text = bpEntity.wellBeing.getEmoji(itemView.context)
 
-        //форматируем вид представления времени. Рекомендуемый способ.
-        // Уневерсальный способ представление времени. Время считают в Long
         timeTv.text = bpTimeFormatter.format(bpEntity.timeInMs)
 
-        //вариант 3. раскрашиваем цветами
         val color = evaluation.getColor(itemView.context)
-
-        //вариант 2. раскрашиваем цветами
-//        val color = MappersExtensions.getColor(itemView.context, evaluation)
-
-        //вариант 1.
-//        val color = when (evaluation) {
-//            BpEvaluation.NORMAL -> BpEvaluation.NORMAL.color
-//            BpEvaluation.PRE_HYPERTENSION -> BpEvaluation.PRE_HYPERTENSION.color
-//            BpEvaluation.HYPERTENSION_1 -> BpEvaluation.HYPERTENSION_1.color
-//            BpEvaluation.HYPERTENSION_2 -> BpEvaluation.HYPERTENSION_2.color
-//            BpEvaluation.UNKNOWN -> BpEvaluation.UNKNOWN.color
-//        }
 
         systolicTv.setTextColor(color)
         diastolicTv.setTextColor(color)
