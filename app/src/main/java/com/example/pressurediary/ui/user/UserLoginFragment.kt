@@ -8,7 +8,6 @@ import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
 import com.example.pressurediary.domain.interactors.LoginInteractor
 import com.example.pressurediary.ui.utils.isEmailValid
-import com.example.pressurediary.ui.utils.isPasswordValid
 import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
@@ -36,17 +35,12 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
                 }
 
             if (login.isEmailValid()) {
-                if (password.toString().isPasswordValid()) {
-                    loginInteractor.login(login, password) {
-                        if (it) {
-                            getController().onSuccessLogin()
-                        } else {
-                            showError()
-                        }
+                loginInteractor.login(login, password) {
+                    if (it) {
+                        getController().onSuccessLogin()
+                    } else {
+                        showError()
                     }
-                } else {
-                    //TODO Почему эта строка не срабатывает?
-                    view.toastFragment(getString(R.string.registration_error))
                 }
             } else {
                 view.toastFragment(getString(R.string.email_valid))
