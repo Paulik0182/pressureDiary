@@ -12,6 +12,8 @@ import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserRegistrationBinding
 import com.example.pressurediary.domain.entities.UserEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.example.pressurediary.ui.utils.isEmailValid
+import com.example.pressurediary.ui.utils.isPasswordValid
 import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
@@ -53,29 +55,33 @@ class UserRegistrationFragment : Fragment() {
                     0
                 }
 
-            if (login.isEmpty() || password.toString().isEmpty()) {
-                view?.toastFragment(getString(R.string.not_all_fields))
-            } else {
-                loginInteractor.register(login, password) {
-                    if (it) {
-                        onWindowDialog()
-                    } else {
-                        view?.toastFragment(getString(R.string.registration_error))
+            if (login.isEmailValid()) {
+                if (password.toString().isPasswordValid()) {
+                    loginInteractor.register(login, password) {
+                        if (it) {
+                            onWindowDialog()
+                        } else {
+                            view?.toastFragment(getString(R.string.registration_error))
+                        }
                     }
+                } else {
+                    view?.toastFragment(getString(R.string.not_all_fields))
                 }
+            } else {
+                view?.toastFragment(getString(R.string.email_valid))
             }
         }
     }
 
     private fun onWindowDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Учетная запись создана\nЗавершить регистрацию?")//сообщение на всплыв. окне
+            .setTitle("Учетная запись создана\nЗавершить регистрацию?")
             .setPositiveButton(getText(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
-                getController().onSuccess()//выход (кнопка назад)
-                dialogInterface.dismiss()//закрываем окно. Обязательно!!
+                getController().onSuccess()
+                dialogInterface.dismiss()
             }
             .setNegativeButton(getText(R.string.no)) { dialogInterface: DialogInterface, _: Int ->
-                dialogInterface.dismiss()//закрываем окно
+                dialogInterface.dismiss()
             }
             .show()
     }

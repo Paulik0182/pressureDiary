@@ -7,8 +7,6 @@ import androidx.annotation.ColorInt
 
 /**
  * Для то чтобы можно было воспользоватся цветом из ресурсов (здесь это для графика)
- * На прямую воспользоватся цветом из ресурса нельзя поэтому нужно делать вот так
- * и тогда в коде можно сделать вот так
  * textView.setTextColor(getColorFromAttr(R.attr.color))
  * pieChart.setBackgroundColor(requireContext().getColorFromAttr(R.attr.second_plan_background))
  */

@@ -24,7 +24,6 @@ class LoginInteractorImpl(
             }
     }
 
-    //работа с разлогированием
     override fun logout() {
         auth.signOut()
     }

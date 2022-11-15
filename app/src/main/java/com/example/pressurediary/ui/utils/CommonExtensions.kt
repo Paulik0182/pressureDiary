@@ -1,7 +1,7 @@
 package com.example.pressurediary.ui.utils
 
 /**
- * Для проверке каждого значения на null. Используется при идентификации.
+ * Для проверки каждого значения на null. Используется при идентификации.
  */
 
 inline fun <T : Any> ifLet(vararg elements: T?, closure: (List<T>) -> Unit) {

@@ -62,7 +62,8 @@
     <string name="exit_message">Нажмите еще раз, чтобы выйти из приложения</string>
     <string name="invalid_password">Неверно введен пароль!!</string>
     <string name="not_all_fields">Не все поля заполнены!!</string>
-    <string name="registration_error">Ошибка регистрации!!</string>
+    <string name="email_valid">Не правильно указан Email!!</string>
+    <string name="registration_error">Пароль должен содержать не менее 6 цифр!!</string>
     <string name="exit_the_application">Нажмите еще раз, чтобы выйти из приложения</string>
     <string name="yes">ДА</string>
     <string name="no">Нет</string>

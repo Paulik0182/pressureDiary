@@ -40,7 +40,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
     private lateinit var emojiExcellentTv: TextView
     private lateinit var descriptionEt: EditText
 
-    private val bpRepo: BpDaoInteractor by inject() //получили через Koin
+    private val bpRepo: BpDaoInteractor by inject()
     private val evaluator: BpEvaluator by inject()
 
     private lateinit var bpEntity: BpEntity

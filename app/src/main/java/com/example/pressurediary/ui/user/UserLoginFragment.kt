@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
 import com.example.pressurediary.databinding.FragmentUserLoginBinding
 import com.example.pressurediary.domain.interactors.LoginInteractor
+import com.example.pressurediary.ui.utils.isEmailValid
 import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
@@ -33,16 +34,16 @@ class UserLoginFragment : Fragment(R.layout.fragment_user_login) {
                     0
                 }
 
-            if (login.isEmpty()) {
-                showError()
-            } else {
+            if (login.isEmailValid()) {
                 loginInteractor.login(login, password) {
                     if (it) {
                         getController().onSuccessLogin()
                     } else {
-                        showError()
+                        view.toastFragment(getString(R.string.email_valid))
                     }
                 }
+            } else {
+                showError()
             }
         }
 

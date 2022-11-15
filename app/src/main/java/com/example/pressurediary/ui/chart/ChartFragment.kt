@@ -78,12 +78,12 @@ class ChartFragment : Fragment(R.layout.fragment_chart) {
 
             pieChart.data = pieData
 
-            pieChart.isDrawHoleEnabled = false // Убрать отверстие
-            pieChart.setEntryLabelColor(R.attr.default_text)//цвет всех надписей
-            pieChart.setDrawEntryLabels(false)//отключили надписи
-            pieChart.setUsePercentValues(true)//Использовать процентные соотношения %
+            pieChart.isDrawHoleEnabled = false
+            pieChart.setEntryLabelColor(R.attr.default_text)
+            pieChart.setDrawEntryLabels(false)
+            pieChart.setUsePercentValues(true)
 
-            pieDataSet.valueFormatter = PercentFormatter(pieChart) //на графике рисуется значек %
+            pieDataSet.valueFormatter = PercentFormatter(pieChart)
 
             pieChart.description.text = getText(R.string.pressure_distribution).toString()
             pieChart.description.textSize =

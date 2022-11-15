@@ -14,8 +14,6 @@ import com.example.pressurediary.domain.interactors.BpDaoInteractor
 import com.example.pressurediary.domain.interactors.BpEvaluator
 import org.koin.android.ext.android.inject
 
-private const val BP_LIST_KEY = "BP_LIST_KEY"
-
 class BpListFragment : Fragment(R.layout.fragment_bp_list) {
 
     private lateinit var recordsTv: TextView
