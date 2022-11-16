@@ -92,7 +92,6 @@ class RootActivity : AppCompatActivity(),
         exitingApplicationDoubleClick()
     }
 
-    //выход из приложения по двойному нажатию на кнопку
     private fun exitingApplicationDoubleClick() {
         if (System.currentTimeMillis() - backPressedTime <= 3_000) {
             super.onBackPressed()

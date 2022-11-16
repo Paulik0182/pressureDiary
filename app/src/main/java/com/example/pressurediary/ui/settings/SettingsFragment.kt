@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import com.example.pressurediary.R
-import com.example.pressurediary.domain.entities.BpEntity
 import com.example.pressurediary.domain.interactors.LoginInteractor
 import com.example.pressurediary.domain.repos.BpRepo
+import com.example.pressurediary.ui.utils.toastFragment
 import org.koin.android.ext.android.inject
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
@@ -32,14 +32,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
     private val loginInteractor: LoginInteractor by inject()
     private val bpRepo: BpRepo by inject()
 
-    private lateinit var bpEntity: BpEntity
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initViews(view)
-
-//        bpEntity = requireArguments().getParcelable("BP_ENTITY_KEY")!!
 
         onUser()
 
@@ -78,12 +74,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
         deletingRecordsButton.setOnClickListener {
             onWindowDialog()
-
-//            if (bpEntity != null) {
-//                onWindowDialog()
-//            } else {
-//                Toast.makeText(requireContext(), "Отсутствуют записи", Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 
@@ -92,8 +82,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
             .setTitle("Внимание!!!\nВся история измерений будет удалина!")
             .setPositiveButton(getText(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
-//                bpRepo.removeBp(bpEntity)
-
+                bpRepo.removeAllBp {
+                    isRemoving
+                }
+                view?.toastFragment(getString(R.string.del_all_bp))
                 dialogInterface.dismiss()
             }
             .setNegativeButton(getText(R.string.no)) { dialogInterface: DialogInterface, _: Int ->

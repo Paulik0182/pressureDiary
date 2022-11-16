@@ -58,6 +58,10 @@ class FirebaseBpRepoImpl(
         userDiaryDatabaseReference.child(bpEntity.id).removeValue()
     }
 
+    override fun removeAllBp(onSuccess: (List<BpEntity>) -> Unit) {
+        userDiaryDatabaseReference.removeValue()
+    }
+
     override fun updateBp(changedBp: BpEntity) {
         userDiaryDatabaseReference.child(changedBp.id).setValue(changedBp)
     }

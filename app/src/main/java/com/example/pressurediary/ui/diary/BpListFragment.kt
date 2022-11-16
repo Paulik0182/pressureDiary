@@ -46,7 +46,6 @@ class BpListFragment : Fragment(R.layout.fragment_bp_list) {
             getController().openDetailsBp(null)
         }
 
-        // подписка на изменения
         bpRepo.addOnDataChangedListener(listenerDataChange)
     }
 

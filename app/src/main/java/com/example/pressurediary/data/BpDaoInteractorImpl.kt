@@ -33,6 +33,11 @@ class BpDaoInteractorImpl(
         notifyListener()
     }
 
+    override fun removeAllBp(onSuccess: (List<BpEntity>) -> Unit) {
+        bpRepo.removeAllBp(onSuccess)
+        notifyListener()
+    }
+
     override fun updateBp(changedBp: BpEntity) {
         bpRepo.updateBp(changedBp)
         notifyListener()

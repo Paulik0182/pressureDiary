@@ -59,6 +59,7 @@
     <!-- menu for detailed-->
     <string name="exit">Выход</string>
     <string name="save">Сохранить</string>
+    <string name="del_all_bp">Все записи удалины!!</string>
     <string name="exit_message">Нажмите еще раз, чтобы выйти из приложения</string>
     <string name="invalid_password">Неверно введен пароль!!</string>
     <string name="not_all_fields">Не все поля заполнены!!</string>

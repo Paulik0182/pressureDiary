@@ -66,7 +66,7 @@ class DetailsBpFragment : Fragment(R.layout.fragment_details_bp) {
         emojiFatalTv.setOnClickListener {
             deselectEmoji()
             it.setBackgroundResource(Emoji.FATAL.getColor(requireContext()))
-            bpEntity.wellBeing = Emoji.FATAL//присваиваем значение састояничя
+            bpEntity.wellBeing = Emoji.FATAL
         }
         emojiBadlyTv.setOnClickListener {
             deselectEmoji()
