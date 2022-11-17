@@ -1,3 +1,83 @@
 <resources>
-    <string name="app_name">Pressure diary</string>
+    <string name="app_name">Дневник давления</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="submit">Добавить измерение</string>
+    <string name="cod_version">Код версии:</string>
+    <string name="version">Версия:</string>
+    <string name="records_bp_list">Записи:</string>
+
+    <string name="save_changes">Сохранить изменения</string>
+    <string name="recover_password">Востановить пароль</string>
+    <string name="registration">Регистрация</string>
+    <string name="registration_users">Регистрация пользователя</string>
+    <string name="pattern_email">login@gmail.com</string>
+    <string name="pattern_login">Login / name</string>
+    <string name="pattern_password_one">numeric Password</string>
+    <string name="pattern_password_two">numeric Password</string>
+
+    <string name="heading_time_bp_list">Время</string>
+    <string name="heading_wellbeing_bp_list">Самоч.</string>
+    <string name="heading_pulse_bp_list">Пульс</string>
+    <string name="heading_dia_bp_list">ДИА</string>
+    <string name="heading_sis_bp_list">СИС</string>
+    <string name="meaning_text">000</string>
+    <string name="meaning_text_zero">0</string>
+    <string name="meaning_text_time">00:00</string>
+
+    <string name="abbreviations_mrt_details_bp">мм.рт.ст.</string>
+    <string name="abbreviations_impact_frequency_details_bp">чсс</string>
+
+    <string name="hint_details_bp">00.00.0000  00:00</string>
+    <string name="format_date">00.00.0000</string>
+    <string name="note_details_bp">Примечание:</string>
+    <string name="libraries_used">Используемые библиотеки:</string>
+    <string name="library_name">Название библиотеки</string>
+    <string name="share_app">Поделится приложением</string>
+    <string name="reference">Справка</string>
+    <string name="logout">выход из системы</string>
+    <string name="deleting_records">очистить историю измерения</string>
+    <string name="about_app">О приложении</string>
+    <string name="close">Закрыть</string>
+    <string name="link">Ссылка</string>
+    <string name="description">Описание</string>
+    <string name="unregistered_user">Не зарегистрированный пользователь</string>
+
+    <!-- fragment chart -->
+    <string name="pressure_distribution">Расспределение давления</string>
+    <string name="normal">Нормальное</string>
+    <string name="prehypertension">Предгипертензия</string>
+    <string name="hypertension_1">Гипертензия 1</string>
+    <string name="hypertension_2">Гипертензия 2</string>
+    <string name="unknown">Не известно</string>
+    <string name="pressure">Давление</string>
+
+    <!-- bottom nav menu -->
+    <string name="measurement">Измерение</string>
+    <string name="chart">График</string>
+    <string name="settings">Настройки</string>
+
+    <!-- menu for detailed-->
+    <string name="exit">Выход</string>
+    <string name="save">Сохранить</string>
+    <string name="del_all_bp">Все записи удалины!!</string>
+    <string name="exit_message">Нажмите еще раз, чтобы выйти из приложения</string>
+    <string name="invalid_password">Неверно введен пароль!!</string>
+    <string name="not_all_fields">Не все поля заполнены!!</string>
+    <string name="email_valid">Не правильно указан Email!!</string>
+    <string name="registration_error">Пароль должен содержать не менее 6 цифр!!</string>
+    <string name="exit_the_application">Нажмите еще раз, чтобы выйти из приложения</string>
+    <string name="yes">ДА</string>
+    <string name="no">Нет</string>
+    <string name="want_to_delete">Вы уверены что хотите удалить запись?</string>
+
+    <!-- emoji -->
+    <string name="emoji_1">&#129301;</string>
+    <string name="emoji_2">&#128532;</string>
+    <string name="emoji_3">&#128528;</string>
+    <string name="emoji_4">&#128522;</string>
+    <string name="emoji_5">&#129303;</string>
+
+    <!-- @string/settings -->
 </resources>
+
+
